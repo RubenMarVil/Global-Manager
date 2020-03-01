@@ -1,0 +1,167 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fichero: PrincipalTFG.tex
+% Autor: Rubén Márquez Villalta
+% Fecha (creación): Febrero 2020 
+% Descripción: Documento principal de la memoria del TFG
+% Universidad: Escuela Superior de Informática, UCLM(Ciudad Real)
+% Titulo: “Global-Manager: Entrenando mediante un Juego Serio a los 
+% Jefes de Proyecto en los Desafíos del Desarrollo Global del Software”
+%
+% ##### Compilación #####
+%
+% Este documento ha sido desarrollado para compilarse con `pdflatex`,
+% `biblatex` (bibliografía con `biber`).
+%
+% Para su compilación se aconseja utilizar `latexmk` (requiere para su 
+% ejecución de un intérprete [`Perl`](http://strawberryperl.com/)):
+%
+% <\$> latexmk -pdf -silent -synctex=1 --enable-write18 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% --------------------------------------------------------------------
+%
+% PREÁMBULO DEL DOCUMENTO TFG
+%
+% --------------------------------------------------------------------
+
+% ----- Clase del documento (book) -----
+\documentclass[
+	11pt,			% Tamaño de letra
+	a4paper,		% Tamaño de papel
+	twoside,		% Impresión a doble cara
+	openright,		% Apertura del capítulo a la derecha
+	final			% Versión final
+]{book}
+
+
+% ----- Importación de paquetes -----
+\usepackage[utf8]{inputenx}			% Codificación de entrada: utf8
+\usepackage[english,spanish]{babel}	% Idioma del documento
+
+% ## Geometría de las páginas del documento
+\usepackage[		% Márgenes del documento
+	top=2.5cm,		% Margen superior
+	bottom=2.5cm,	% Margen inferior
+	inner=3.5cm,	% Margen al interior
+	outer=2cm		% Margen al exterior
+]{geometry}
+
+% ## Tipografía
+\usepackage[tt=false]{libertine} 	% Libertine con Old-Style Figures
+\usepackage[libertine]{newtxmath}	% Times
+
+\usepackage[T1]{fontenc}	% Codificación de salida
+\usepackage{microtype}		% Mejoras de mircrotipografía en la obtención del PDF
+
+% ## Graficos y tablas
+\usepackage{graphicx}			% Inclusión de figuras
+\graphicspath{{../figuras/}}	% Path de búsqueda de ficheros gráficos
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}	% Precedencia de extensiones
+\usepackage{tabularx,booktabs}
+
+% ## Personalización de títulos de figuras y tablas
+\usepackage[		% Personalización de títulos de figuras y tablas
+	margin=10pt,	% Margen
+	font=small,		% Tamaño de tipografía
+	labelfont=bf,	% Prefijo-Etiqueta en negrita
+	format=hang		% Sangrado del texto de pie de foto
+]{caption}
+\captionsetup[table]{skip=4pt}	% Separación del caption en las tablas
+
+% ## Bibliografía: Biblatex con biber
+\usepackage[			% Estilo de la bibliografía	
+	backend=biber, 		% Backend
+	sortcites,			% Citas acortadas
+	defernumbers=true, 	% Para numerar al final
+	style=numeric-comp, % Estilo numérico condensado
+	autolang=other, 	% Requerido para opción multilingüe
+	language=auto   	% Requerido para opción multilingüe
+]{biblatex}
+%\addbibresource{biblioTFG.bib} 	% Fichero de bibliografía.
+
+% ## Paquete de estilo para el TFG (ESI-UCLM)
+\usepackage[spanish]{{../estilo/uclmTFGesi}}	% Opción de idioma de la memoria y prefijos de género.
+
+% ## Datos del documento
+\tituloPrimera{GLOBAL-MANAGER: Entrenando mediante un Juego Serio a los Jefes de Proyecto en los Desafíos del Desarrollo Global del Software}		% Título principal
+\titulo{GLOBAL-MANAGER}								% Título corto
+\autor{Rubén Márquez Villalta}						% Autor
+\email{Ruben.Marquez@alu.uclm.es}					% E-mail del autor
+\tutor{Francisco Pascual Romero Chicharro} 			% Tutor
+\cotutor{Aurora Vizcaíno Barceló}					% Co-autora
+\instEdu{UNIVERSIDAD DE CASTILLA-LA MANCHA}			% Universidad
+\escudo{escudoInf}									% Escudo Informática
+\centroEdu{ESCUELA SUPERIOR DE INFORMÁTICA}			% Centro educativo
+\deptoEduPrimera{Departamento de Tecnologías y Sistemas de la Información}	% Departamento
+\titulacion{GRADO EN INGENIERÍA INFORMÁTICA}		% Titulación
+\especialidad{TECNOLOGÍA ESPECÍFICA DE COMPUTACIÓN}	% Tecnología especialidad
+\tipoDoc{TRABAJO FIN DE GRADO}						% Tipo de documento
+\fechaDef{julio, 2020} 								% Fecha de defensa
+\mesDef{julio}        								% Mes de defensa
+\yearDef{2020}        								% Año de defensa
+\lugarDef{Ciudad Real}								% Lugar de defensa
+
+% ## Propiedades del documento PDF
+\hypersetup{
+	pdftitle={Global-Manager TFG}, 		% Título
+	pdfauthor={Rubén Márquez Villalta}, % Autor
+	pdfsubject={TFG},  					% Tema
+	pdftoolbar=true, 					% Muestra la toolbar de Acrobat
+	pdfmenubar=true	 					% Muestra la menubar de Acrobat
+}
+
+% --------------------------------------------------------------------
+%
+% CUERPO DEL DOCUMENTO
+%
+% --------------------------------------------------------------------
+
+\begin{document}
+\frontmatter	% Cambio de numeración de páginas a números romanos
+
+\pagestyle{empty}
+
+
+% ---------------------------------
+%
+% PORTADAS
+%
+% ---------------------------------
+
+\portadaTFG		% Portada principal
+
+\portadillaTFG	% Portada interior con tutor y co-tutora
+
+
+% ---------------------------------
+%
+% CRÉDITOS
+%
+% ---------------------------------
+
+\input{Creditos}
+
+\tribunalTFG	% Página para calificaciones del tribunal
+
+% TODO: Rellenar la dedicatoria
+\dedicado{Dedicatoria...}
+
+
+% ---------------------------------
+%
+% RESUMEN
+%
+% ---------------------------------
+
+\input{Resumen}
+
+
+% ---------------------------------
+%
+% AGRADECIMIENTOS
+%
+% ---------------------------------
+
+\input{Agradecimientos}
+\end{document}

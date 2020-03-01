@@ -1,0 +1,41 @@
+% ---------------------------------
+%
+% RESUMEN
+%
+% ---------------------------------
+
+\pagestyle{plain}	% Página con numeración inferior al pie
+
+
+% ----- Resumen del documento -----
+\selectlanguage{spanish}	% Idioma del resumen(español)
+\cleardoublepage			% Se incluye para modificar el contador de página antes de añadir bookmark
+\pdfbookmark[0]{Resumen}{idx_resumen}	% Bookmark en PDF
+\addcontentsline{toc}{chapter}{Resumen} % Añade al TOC
+
+\begin{abstract}
+
+% TODO: Rellenar con el resumen
+
+\end{abstract}
+
+
+% ----- Abstract del documento -----
+\selectlanguage{english}	% Idioma del abstract(inglés)
+\cleardoublepage			% Se incluye para modificar el contador de página antes de añadir bookmark
+\pdfbookmark[0]{Resumen}{idx_resumen}	% Bookmark en PDF
+\addcontentsline{toc}{chapter}{Resumen} % Añade al TOC
+
+\begin{abstract}
+
+% TODO: Rellenar con el abstract
+
+\end{abstract}
+
+
+% ----- Ajuste del idioma para el resto del documento -----
+\ifspanish
+	\selectlanguage{spanish}	% Emplea idioma español
+\else
+	\selectlanguage{english}	% Emplea idioma inglés
+\fi
