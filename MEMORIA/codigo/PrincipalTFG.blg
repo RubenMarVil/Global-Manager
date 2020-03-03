@@ -1,0 +1,5 @@
+[1] Config.pm:304> INFO - This is Biber 2.13
+[1] Config.pm:307> INFO - Logfile is 'PrincipalTFG.blg'
+[81] biber-MSWIN64:315> INFO - === 
+[123] Biber.pm:375> INFO - Reading 'PrincipalTFG.bcf'
+[358] Utils.pm:300> WARN - No data sources defined!

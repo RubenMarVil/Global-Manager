@@ -1,0 +1,33 @@
+% ---------------------------------
+%
+% ÍNDICES
+%
+% ---------------------------------
+
+\setindexnames 		% Ajusta nombres
+\pagestyle{fancy}	% Estilo de página ajustado por fancyhdr
+
+% ## Índice general
+\cleardoublepage
+\pdfbookmark[0]{Índice general}{idx_toc}	% Bookmark en PDF
+\tableofcontents	% Índice general
+
+% ## Índice de figuras
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\listfigurename}	% Añade la lista de figuras al TOC y bookmark en PDF
+\listoffigures	% Índice de figuras
+
+% ## Índice de tablas
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\listtablename}	% Añade la lista de tablas al TOC y bookmark en PDF
+\listoftables	% Índice de tablas
+
+% ## Índice de listados
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\lstlistlistingname}	% Añade la lista de listados al TOC y bookmark en PDF
+\lstlistoflistings	% Índice de figuras
+
+% ## Índice de algoritmos
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\listalgorithmcfname}	% Añade la lista de algoritmos al TOC y bookmark en PDF
+\listofalgorithms	% Índice de figuras

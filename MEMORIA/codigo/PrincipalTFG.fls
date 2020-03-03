@@ -1,4 +1,4 @@
-PWD C:\Users\RubenMa\OneDrive\4ºCURSO\TRABAJO FIN DE GRADO\MEMORIA\GLOBAL-MANAGER\codigo
+PWD C:\Users\RubenMa\OneDrive\4ºCURSO\TRABAJO FIN DE GRADO\Global-Manager_TFG\MEMORIA\GLOBAL-MANAGER\codigo
 INPUT C:\Users\RubenMa\AppData\Local\MiKTeX\2.9\miktex\data\le\pdftex\pdflatex.fmt
 INPUT PrincipalTFG.tex
 OUTPUT PrincipalTFG.log
@@ -351,6 +351,8 @@ INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\lbx\
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\biblatex\lbx\english.lbx
 INPUT PrincipalTFG.aux
 INPUT PrincipalTFG.aux
+INPUT Introduccion.aux
+INPUT Introduccion.aux
 OUTPUT PrincipalTFG.aux
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\omlnxlmi.fd
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\tex\latex\newtx\omlnxlmi.fd
@@ -475,13 +477,44 @@ INPUT Agradecimientos.tex
 INPUT Agradecimientos.tex
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinLibertineTB-tlf-t1.tfm
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinBiolinumTB-tlf-t1.tfm
+INPUT Indices.tex
+INPUT Indices.tex
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\public\libertine\LinBiolinumTB-tlf-t1.vf
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinBiolinumTB-tlf-t1--base.tfm
+INPUT PrincipalTFG.toc
+INPUT PrincipalTFG.toc
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinLibertineTB-tlf-sc-t1.tfm
+OUTPUT PrincipalTFG.toc
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\public\libertine\LinLibertineTB-tlf-t1.vf
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinLibertineTB-tlf-t1--base.tfm
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\public\libertine\LinLibertineTB-tlf-sc-t1.vf
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinLibertineTB-tlf-sc-t1--base.tfm
+INPUT PrincipalTFG.lof
+INPUT PrincipalTFG.lof
+OUTPUT PrincipalTFG.lof
+INPUT PrincipalTFG.lot
+INPUT PrincipalTFG.lot
+OUTPUT PrincipalTFG.lot
+INPUT PrincipalTFG.lol
+INPUT PrincipalTFG.lol
+OUTPUT PrincipalTFG.lol
+INPUT PrincipalTFG.loa
+INPUT PrincipalTFG.loa
+OUTPUT PrincipalTFG.loa
+OUTPUT Introduccion.aux
+INPUT Introduccion.tex
+INPUT Introduccion.tex
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinBiolinumTB-tlf-t1.tfm
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\vf\public\libertine\LinBiolinumTB-tlf-t1.vf
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\tfm\public\libertine\LinBiolinumTB-tlf-t1--base.tfm
 INPUT PrincipalTFG.aux
+INPUT Introduccion.aux
+INPUT Introduccion.aux
 INPUT .\PrincipalTFG.out
 INPUT .\PrincipalTFG.out
 INPUT PrincipalTFG.run.xml
 OUTPUT PrincipalTFG.run.xml
+INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\libertine\lbtn_tlukpt.enc
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\libertine\lbtn_25tcsq.enc
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\libertine\lbtn_7grukw.enc
 INPUT C:\Users\RubenMa\AppData\Local\Programs\MiKTeX 2.9\fonts\enc\dvips\libertine\lbtn_ncsllp.enc

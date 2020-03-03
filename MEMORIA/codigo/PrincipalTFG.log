@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.2.7)  28 FEB 2020 10:00
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7250 64-bit) (preloaded format=pdflatex 2020.2.7)  3 MAR 2020 11:28
 entering extended mode
 **./PrincipalTFG.tex
 (PrincipalTFG.tex
@@ -2031,7 +2031,7 @@ LaTeX Info: Redefining \% on input line 30.
 LaTeX Info: Redefining \sptext on input line 34.
 LaTeX Info: Redefining \. on input line 34.
 LaTeX Info: Redefining \% on input line 34.
-)
+(Introduccion.aux))
 \openout1 = `PrincipalTFG.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 120.
@@ -2233,7 +2233,7 @@ Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
 Package pdflscape Info: Auto-detected driver: pdftex on input line 84.
 )
 \c@lstlisting=\count396
-<../figuras/escudoInf.pdf, id=52, 571.13374pt x 690.58pt>
+<../figuras/escudoInf.pdf, id=88, 571.13374pt x 690.58pt>
 File: ../figuras/escudoInf.pdf Graphic file (type pdf)
 <use ../figuras/escudoInf.pdf>
 Package pdftex.def Info: ../figuras/escudoInf.pdf  used on input line 132.
@@ -2322,16 +2322,101 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
 (Font)              scaled to size 24.88pt on input line 10.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
 (Font)              scaled to size 24.88pt on input line 10.
+) (Indices.tex [11
+
+] [12
+
+] (PrincipalTFG.toc
+LaTeX Info: Redefining \sptext on input line 2.
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+LaTeX Info: Redefining \sptext on input line 3.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/sc' will be
+(Font)              scaled to size 10.95pt on input line 5.
+LaTeX Info: Redefining \sptext on input line 9.
+LaTeX Info: Redefining \. on input line 9.
+LaTeX Info: Redefining \% on input line 9.
 )
+\tf@toc=\write6
+\openout6 = `PrincipalTFG.toc'.
+
+[13
+
+] [14
+
+] (PrincipalTFG.lof
+LaTeX Info: Redefining \sptext on input line 2.
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+LaTeX Info: Redefining \sptext on input line 3.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
+LaTeX Info: Redefining \sptext on input line 5.
+LaTeX Info: Redefining \. on input line 5.
+LaTeX Info: Redefining \% on input line 5.
+)
+\tf@lof=\write7
+\openout7 = `PrincipalTFG.lof'.
+
+[15
+
+] [16
+
+] (PrincipalTFG.lot
+LaTeX Info: Redefining \sptext on input line 2.
+LaTeX Info: Redefining \. on input line 2.
+LaTeX Info: Redefining \% on input line 2.
+LaTeX Info: Redefining \sptext on input line 3.
+LaTeX Info: Redefining \. on input line 3.
+LaTeX Info: Redefining \% on input line 3.
+LaTeX Info: Redefining \sptext on input line 5.
+LaTeX Info: Redefining \. on input line 5.
+LaTeX Info: Redefining \% on input line 5.
+)
+\tf@lot=\write8
+\openout8 = `PrincipalTFG.lot'.
+
+[17
+
+] [18
+
+] (PrincipalTFG.lol)
+\tf@lol=\write9
+\openout9 = `PrincipalTFG.lol'.
+
+[19
+
+] [20
+
+] (PrincipalTFG.loa)
+\tf@loa=\write10
+\openout10 = `PrincipalTFG.loa'.
+
+)
+\c@totpages=\count397
+[21
+
+] [22
+
+]
+\openout2 = `Introduccion.aux'.
+
+(Introduccion.tex
+Cap\'{\i }tulo 1.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+(Font)              scaled to size 14.4pt on input line 1.
+) [1
+
+
+]
 
 Package caption Warning: Unused \captionsetup[table] on input line 70.
 See the caption package documentation for explanation.
 
-[11
-
-]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 167.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 167.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 190.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 190.
 (PrincipalTFG.aux
 LaTeX Info: Redefining \sptext on input line 29.
 LaTeX Info: Redefining \. on input line 29.
@@ -2342,38 +2427,39 @@ LaTeX Info: Redefining \% on input line 30.
 LaTeX Info: Redefining \sptext on input line 34.
 LaTeX Info: Redefining \. on input line 34.
 LaTeX Info: Redefining \% on input line 34.
-)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 167.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 167.
+(Introduccion.aux))
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 190.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 190.
 Package rerunfilecheck Info: File `PrincipalTFG.out' has not changed.
-(rerunfilecheck)             Checksum: 9D34305357DE78E7958D6464ECACB966;279.
+(rerunfilecheck)             Checksum: B3F4A3465EC5DE3D192A7E4B01A5286D;813.
 Package logreq Info: Writing requests to 'PrincipalTFG.run.xml'.
 \openout1 = `PrincipalTFG.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36142 strings out of 492484
- 657248 string characters out of 3120696
- 1184511 words of memory out of 3000000
- 39776 multiletter control sequences out of 15000+200000
- 95651 words of font info for 87 fonts, out of 3000000 for 9000
+ 36229 strings out of 492484
+ 659585 string characters out of 3120696
+ 1187290 words of memory out of 3000000
+ 39813 multiletter control sequences out of 15000+200000
+ 105395 words of font info for 92 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,9n,96p,1159b,2030s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 68i,11n,96p,1159b,2034s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine
-/lbtn_25tcsq.enc}{C:/Users/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/
-dvips/libertine/lbtn_7grukw.enc}{C:/Users/RubenMa/AppData/Local/Programs/MiKTeX
- 2.9/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/Users/RubenMa/AppData/Local/
-Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C:/Users/RubenMa
-/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}<C
-:/Users/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/
-LinBiolinumTB.pfb><C:/Users/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/typ
-e1/public/libertine/LinLibertineT.pfb><C:/Users/RubenMa/AppData/Local/Programs/
-MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/Users/RubenMa/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTI.pfb
->
-Output written on PrincipalTFG.pdf (11 pages, 526075 bytes).
+/lbtn_tlukpt.enc}{C:/Users/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/
+dvips/libertine/lbtn_25tcsq.enc}{C:/Users/RubenMa/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{C:/Users/RubenMa/AppData/Local/
+Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_ncsllp.enc}{C:/Users/RubenMa
+/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}{C
+:/Users/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/libertine/lbt
+n_nh77jq.enc}<C:/Users/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
+blic/libertine/LinBiolinumTB.pfb><C:/Users/RubenMa/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/libertine/LinLibertineT.pfb><C:/Users/RubenMa/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/LinLibertineTB.pfb><C:/U
+sers/RubenMa/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/libertine/Lin
+LibertineTI.pfb>
+Output written on PrincipalTFG.pdf (23 pages, 553195 bytes).
 PDF statistics:
- 298 PDF objects out of 1000 (max. 8388607)
- 15 named destinations out of 1000 (max. 500000)
- 26786 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 405 PDF objects out of 1000 (max. 8388607)
+ 37 named destinations out of 1000 (max. 500000)
+ 27882 words of extra memory for PDF output out of 29859 (max. 10000000)
 
