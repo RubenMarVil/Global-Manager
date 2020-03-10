@@ -78,7 +78,7 @@
 	autolang=other, 	% Requerido para opción multilingüe
 	language=auto   	% Requerido para opción multilingüe
 ]{biblatex}
-%\addbibresource{biblioTFG.bib} 	% Fichero de bibliografía.
+\addbibresource{biblioTFG.bib} 	% Fichero de bibliografía.
 
 % ## Paquete de estilo para el TFG (ESI-UCLM)
 \usepackage[spanish]{{../estilo/uclmTFGesi}}	% Opción de idioma de la memoria y prefijos de género.
@@ -186,5 +186,26 @@
 
 \cleanhdfirst	% Activación de la numeración con números arábigos y reinicio del contador de páginas
 
+\setcounter{secnumdepth}{4}	% Control de numeración de secciones hasta una profundidad de 4
+\setcounter{tocdepth}{4}	% Control de numeración de secciones en el TOC hasta una profundidad 4
+
 \include{Introduccion}
+\include{Objetivo}
+\include{Antecedentes}
+\include{Metodologia}
+\include{Resultados}
+\include{Conclusion}
+
+
+% ---------------------------------
+%
+% BACKMATTER (BIBLIOGRAFÍA)
+%
+% ---------------------------------
+
+\backmatter
+
+\addcontentsline{toc}{chapter}{\bibname} % Añade la bibliografía al Índice de contenidos
+
+\printbibliography	% Bibliografía con todas las fuentes en un apartado
 \end{document}
