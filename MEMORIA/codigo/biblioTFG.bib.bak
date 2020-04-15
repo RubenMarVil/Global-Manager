@@ -45,13 +45,4 @@
   organization = {Springer},
 }
 
-@InProceedings{lino2015project,
-  author       = {Lino, Jose Eduardo Nunes and Paludo, Marco Antonio and Binder, Fabio Vinicius and Reinehr, Sheila and Malucelli, Andreia},
-  title        = {Project management game 2D (PMG-2D): A serious game to assist software project managers training},
-  booktitle    = {2015 IEEE Frontiers in Education Conference (FIE)},
-  year         = {2015},
-  pages        = {1--8},
-  organization = {IEEE},
-}
-
 @Comment{jabref-meta: databaseType:bibtex;}
