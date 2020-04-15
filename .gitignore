@@ -13,3 +13,5 @@
 *.run.xml
 *.synctex.gz
 *.toc
+*.bib.bak
+*.bib.sav
