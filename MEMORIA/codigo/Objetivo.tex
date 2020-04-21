@@ -1,11 +1,34 @@
 \chapter{Objetivos}
 \label{cap:Objetivo}
 
+Este capítulo se centrará en presentar y explicar de manera detallada cual es el objetivo principal que se persigue con la realización del presente TFG, al igual que los objetivos específicos, donde se especificarán aquellos objetivos funcionales y técnicos necesarios para la elaboración del proyecto.
+
 \section{Objetivo principal}
 \label{sec:ObjetivoP}
 
-\section{Objetivos funcionales}
+El principal objetivo del presente TFG consiste en diseñar y desarrollar una aplicación software de escritorio, la cual consistirá en un JS en \emph{2.5D}, o lo que también se conoce como \emph{pseudo-3D}\footnote{\url{https://es.wikipedia.org/wiki/2.5D}}, donde la tridimensionalidad de un video juego en 3D se limita a un plano de dos dimensiones. Este JS, al cual titularemos como \emph{GLOBAL-MANAGER}, ayudará a estudiantes en ingeniería de software e ingenieros de software inexpertos del sector a adquirir ciertas \emph{soft skills}, las cuales son necesarias para llevar a cabo una correcta gestión de un proyecto DGS. En las partidas del juego, los jugadores adquirirán el rol del jefe de proyecto en un entorno DGS, donde tendrá que gestionar dicho proyecto desde su creación hasta la entrega del producto a su correspondiente cliente. Por lo que, se le permitirá al jugador jugar diferentes partidas para que se pueda entrenar en dicha labor y poder afrontar con éxito en el futuro un posible trabajo de jefe de un proyecto DGS. 
+
+
+\section{Objetivos específicos funcionales}
 \label{sec:ObjetivosF}
 
-\section{Objetivos técnicos}
+El actual proyecto está compuesto por una serie de objetivos específicos funcionales (OEFs), los cuales han de tenerse en cuenta en el desarrollo del JS \emph{Global-Manager}. Al final del TFG y en especial en el Capítulo \ref{cap:ConclusionPropuesta}, se llevará a cabo un análisis para comprobar si dichos objetivos han sido debidamente cumplimentados. Estos OEFs son los siguientes:
+
+\begin{itemize}
+	\item \textbf{OEF 1.} El JS diferenciará un total de 3 niveles distintos de jugador. Estos niveles se calcularán utilizando técnicas de \emph{inteligencia artificial} (IA), en función de los conocimientos del jugador en la gestión de proyectos y en el modelo de desarrollo de software DGS. Los niveles de usuarios que dispondrá el juego serán:
+	\begin{itemize}
+		\item[-] \textsc{Nivel bajo:} Se corresponderá a aquellos jugadores que posean bajos o nulos conocimientos en la gestión de proyectos o en el DGS, además de no tener una gran experiencia en el desarrollo de software. Son aquellas personas que necesitarán un aprendizaje mucho más lento y prolongado para adquirir todos los conocimientos necesarios para la gestión de proyectos DGS.
+		\item[-] \textsc{Nivel medio:} Se corresponderá a aquellos jugadores que posean ciertos conocimientos en la gestión de proyectos o en el DGS, o incluso poseer cierta experiencia en dichos campos. Estas personas necesitarán de un aprendizaje mucho más rápido, debido a que ya conocerán ciertos aspectos de la materia y les costará menos acostumbrarse al juego.
+		\item[-] \textsc{Nivel alto:} Se corresponderá a aquellos jugadores que posean grandes conocimientos en la gestión de proyectos o en el DGS, además de haber trabajado en numerosas ocasiones en alguno de estos campos. En este último nivel, los jugadores no necesitarán tanto adquirir conocimientos, sino reforzarlos y entrenarse para mejorar su capacidad de gestionar proyectos DGS satisfactoriamente.
+	\end{itemize}
+\end{itemize}
+
+
+\section{Objetivos específicos técnicos}
 \label{sec:ObjetivosT}
+
+Una vez definidos cuales serán los OEFs del proyecto en la Sección \ref{sec:ObjetivosF}, es necesario definir otros objetivos específicos técnicos (OETs). Estos OETs son los siguientes:
+
+\begin{itemize}
+	\item \textbf{OET 1.} En el cálculo del nivel del jugador (anteriormente descrito) se deberán utilizar técnicas de IA, en especial utilizando \emph{Lógica Borrosa}. Al principio del juego y antes de que el jugador juegue una partida, deberá rellenar un formulario con diferentes preguntas sobre sus conocimientos y experiencia en gestión de proyectos y DGS. A través de estas preguntas se obtendrá un nivel para el nuevo jugador. Para implementar esta encuesta y el cálculo automático del nivel se llevará a cabo una entrevista a un experto en la materia, para adquirir aquellos conocimientos que nos hagan saber cuales son los aspectos importantes para conocer las nociones sobre gestión de proyectos y DGS de una persona. 
+\end{itemize}
