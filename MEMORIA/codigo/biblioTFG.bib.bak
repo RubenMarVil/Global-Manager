@@ -132,4 +132,43 @@
   pages     = {529--533},
 }
 
+@Article{calderon2018multivocal,
+  author    = {Calder{\'o}n, Alejandro and Ruiz, Mercedes and O'Connor, Rory V},
+  title     = {A multivocal literature review on serious games for software process standards education},
+  journal   = {Computer Standards \& Interfaces},
+  year      = {2018},
+  volume    = {57},
+  pages     = {36--48},
+  publisher = {Elsevier},
+}
+
+@Article{vizcaino2015vision,
+  author  = {Vizca{\'i}no, Aurora and Garc{\'i}a, F{\'e}lix and Piattini, Mario},
+  title   = {Visi{\'o}n general del desarrollo global de software},
+  journal = {International Journal of Information Systems and Software Engineering for Big Companies (IJISEBC)},
+  year    = {2015},
+  volume  = {1},
+  number  = {1},
+  pages   = {8--22},
+}
+
+@InProceedings{boehm2006view,
+  author    = {Boehm, Barry},
+  title     = {A view of 20th and 21st century software engineering},
+  booktitle = {Proceedings of the 28th international conference on Software engineering},
+  year      = {2006},
+  pages     = {12--29},
+}
+
+@Article{conchuir2009global,
+  author    = {Conch{\'u}ir, Eoin {\'O} and {\r A}gerfalk, P{\"a}r J and Olsson, Helena H and Fitzgerald, Brian},
+  title     = {Global software development: where are the benefits?},
+  journal   = {Communications of the ACM},
+  year      = {2009},
+  volume    = {52},
+  number    = {8},
+  pages     = {127--131},
+  publisher = {ACM New York, NY, USA},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}
