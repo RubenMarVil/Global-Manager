@@ -161,7 +161,7 @@
 }
 
 @Article{conchuir2009global,
-  author    = {Conch{\'u}ir, Eoin {\'O} and {\r A}gerfalk, P{\"a}r J and Olsson, Helena H and Fitzgerald, Brian},
+  author    = {Conch{\'u}ir, Eoin {\'O} and {\AA}gerfalk, P{\"a}r J and Olsson, Helena H and Fitzgerald, Brian},
   title     = {Global software development: where are the benefits?},
   journal   = {Communications of the ACM},
   year      = {2009},
@@ -169,6 +169,15 @@
   number    = {8},
   pages     = {127--131},
   publisher = {ACM New York, NY, USA},
+}
+
+@InProceedings{conchuir2006exploring,
+  author       = {Conch{\'u}ir, Eoin {\'O} and Holmstrom, Helena and {\AA}gerfalk, P{\"a}r J and Fitzgerald, Brian},
+  title        = {Exploring the assumed benefits of global software development},
+  booktitle    = {2006 IEEE International Conference on Global Software Engineering (ICGSE'06)},
+  year         = {2006},
+  pages        = {159--168},
+  organization = {IEEE},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
