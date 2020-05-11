@@ -1,15 +1,62 @@
 \chapter{Método de Trabajo}
 \label{cap:Metodologia}
 
+En el presente capítulo, se especificará tanto la metodología de trabajo como el proceso de desarrollo que se ha escogido para la elaboración del proyecto. Además, se definirán los diferentes roles que poseerán las personas involucradas en el dicho proyecto, al igual que las herramientas tanto software como hardware utilizadas para alcanzar los objetivos del proyecto.
+
+En primer lugar se ha escogido como marco de trabajo la metodología ágil de \emph{Scrum} \footnote{\url{https://www.scrum.org/}}. Se ha escogido este marco de trabajo debido a su facilidad para adecuarse a un proyecto que debe realizarse en pocos meses como es el TFG, además de ayudarnos a adaptarnos rápidamente a los posibles cambios de necesidades que puedan aparecer a lo largo del desarrollo.
+
+Para guiar el proceso de desarrollo se ha decantado por utilizar un \emph{Modelo Basado en Prototipos}, debido a su facilidad de emparejarlo con la forma de trabajar de Scrum, completando mediante incrementos las diferentes funcionalidades del producto y consiguiendo en cortos periodos de tiempo, avances y prototipos funcionales.
+
 \section{Scrum}
 \label{sec:Scrum}
+
+Como se ha dicho anteriormente, se ha escogido como marco de trabajo para la gestión del proyecto a Scrum. Dicho marco de trabajo consiste en un conjunto de buenas prácticas para trabajar colaborativamente y en equipo, utilizado para llevar a cabo el desarrollo de proyectos software de una manera ágil. Este marco de trabajo esta basado en un desarrollo mediante interacciones, lo que permite englobar al proyecto en un ciclo de vida de desarrollo software iterativo e incremental. Se ha decantado por utilizar Scrum debido a su facilidad para integrarlo en un proyecto TFG que necesita ser desarrollado de forma ágil en pocos meses, además de su flexibilidad con relación a posibles cambios en los requisitos o a nuevas exigencias del cliente, ya que resulta complicado realizar una definición exacta del producto al principio del desarrollo. Incluso, gracias a Scrum se puede llevar a cabo una aproximación de los tiempos de una manera más sencilla y precisa que utilizando otras metodologías \cite{schwaber2013guia}. 
+
+Según la guía de Scrum, existen tres pilares fundamentales que caracterizan a Scrum de otros marcos de trabajo, estos pilares son:
+
+\begin{itemize}
+	\item \textbf{Transparencia.} Todos los aspectos relevantes que afecten a los diferentes procesos del proyecto deben ser visibles para todos los involucrados en el resultado, es decir, dichos aspectos deben ser definidos mediante un estándar común. Por lo tanto, es necesario que todos los participantes compartan un lenguaje común para referirse al proceso, y las personas que desarrollen el trabajo y aquellos que acepten el resultado deben tener un entendimiento común para "Terminado".
+	\item \textbf{Inspección.} Es necesaria una inspección constante tanto de los artefactos como del progreso que se está desarrollando para alcanzar los objetivos, con el fin de identificar y corregir las posibles variaciones no deseadas que puedan aparecer, ya que puede implicar grandes problemas.
+	\item \textbf{Adaptabilidad.} Debido a que es posible que se produzca alguna desviación en alguno de los procesos o artefactos del proyecto, es necesario llevar a cabo ajustes en los procesos y materiales con el fin de minimizar dichas desviaciones para que no se conviertan en problemas mayores.
+\end{itemize} 
 
 \subsection{Roles}
 \label{sec:Roles}
 
+Un proyecto que utiliza la metodología Scrum está compuesto por un equipo Scrum, el cual lo componen diferentes miembros con distintos roles. Dicho equipo resulta ser autoorganizado, debido a que el equipo elige la mejor forma de llevar a cabo las diferentes tareas, y multifuncional, ya que dentro del equipo se encuentran las competencias necesarias para el desarrollo del proyecto. El establecimiento de los roles es un aspecto importante y deben ser conocidos por todos los componentes del equipo en todo momento. Estos roles se dividen en tres: \emph{Dueño del Producto}, \emph{Equipo de Desarrollo} y \emph{Scrum Master}.
+
+\begin{itemize}
+	\item \textbf{Dueño del Producto (Product Owner).} Hace referencia a la persona responsable de las necesidades tanto del proyecto como del futuro producto software. Debe expresar, organizar y ordenar los requisitos del producto software, además de ser el responsable de aceptar los incrementos con cada iteración.
+	
+	El dueño del producto del presente proyecto estará compuesto por los dos tutores del mismo TFG, \emph{Francisco Pascual Romero Chicharro} y \emph{Aurora Vizcaíno Barceló}.
+	\item \textbf{Equipo de Desarrollo (Development Team).} Compuesto por el grupo de profesionales que llevarán a cabo el desarrollo tanto de los diferentes incrementos como del producto final, transformando así los requisitos y necesidades del dueño del producto en funcionalidades del producto software. El equipo de desarrollo deberá ser autoorganizado, multifuncional y actúa como un todo.
+	
+	El equipo de desarrollo estará compuesta por una sola persona, el cual se corresponde con el autor del presente TFG, \emph{Rubén Márquez Villalta}.
+	\item \textbf{Scrum Master.} Persona responsable de garantizar que los diferentes miembros del equipo Scrum están trabajando según la teoría, prácticas y reglas de Scrum. El Scrum Master es un líder al servicio del equipo Scrum, el cual ayuda a maximizar la productividad y el valor del producto, además de favorecer en la mejora de las interacciones entre los miembros y en la gestión y solución de posibles imprevistos.
+	
+	El responsable de garantizar que se está cumpliendo la metodología ágil Scrum a lo largo del proyecto y por lo tanto poseer el rol de Scrum Master, consistirá también en el autor del TFG, \emph{Rubén Márquez Villalta}.
+\end{itemize}
+
 \subsection{Componentes de Scrum}
 \label{sec:ComponentesScrum}
 
+En un proyecto Scrum podemos encontrar diferentes componentes o artefactos, los cuales son característicos de este tipo de metodología y que ayudan a organizar y gestionar mejor el proyecto. En la figura \ref{fig:artefactosScrum} podemos encontrar un resumen de los artefactos utilizados en Scrum, estos son:
+
+\begin{itemize}
+	\item \textbf{Lista de Producto (Product Backlog).} Consiste en una pila de requisitos necesarios para conseguir el objetivo de desarrollar el producto final. La lista está compuesta por historias de usuario creadas por el dueño del producto, a las cuales además se les impone un valor y una prioridad, para que de esta manera la lista quede ordenada. El dueño del producto es el responsable de diseñar, gestionar y ordenar esta pila con funcionalidades, requisitos, mejoras y correcciones del proyecto, aunque puede delegar dicha tarea en el equipo de desarrollo.
+	\item \textbf{Sprint.} En Scrum a cada iteración se le conoce con el término \emph{Sprint}. Cada Sprint hace referencia a un bloque de tiempo (normalmente de una a cuatro semanas), en donde se desarrolla un incremento del producto utilizable y potencialmente despegable. Antes de comenzar cada Sprint se decide que funcionalidades y requisitos de la lista de producto se implementarán a lo largo del mismo. 
+	\item \textbf{Pila del Sprint (Sprint Backlog).} Se corresponde con el conjunto de funcionalidades y requisitos de la lista de producto que se han elegido antes de comenzar un determinado Sprint, y por lo tanto, a lo largo del Sprint el equipo de desarrollo se encargara de implementar dicha pila de funcionalidades. Además, se incorpora un plan para la entrega del incremento y un objetivo del Sprint.
+	\item \textbf{Incremento.} Consiste en la suma de todos los elementos implementados de la pila del Sprint durante el mismo y el valor de todos los incrementos obtenidos en los anteriores Sprints. Los incrementos consistirán en productos en si mismos y tendrán que estar en condiciones de ser desplegados. El dueño del producto será el encargado de aceptar el incremento.
+\end{itemize}
+
+Además de los anteriores artefactos, Scrum se apoya en un conjunto de reuniones que se realizan a lo largo del proyecto y los diferentes Sprints, con el objetivo de llevar a cabo una continua gestión y comunicación entre los diferentes miembros del equipo Scrum. Estas reuniones son las siguientes:
+
+\begin{itemize}
+	\item \textbf{Reunión de Planificación de Sprint (Sprint Planning Meeting)}. Esta reunión se lleva cabo antes de comenzar un Sprint. En ella, todo el equipo Scrum debate sobre las tareas que se desarrollaran a lo largo del Sprint y define la pila del Sprint junto con el objetivo del Sprint.
+	\item \textbf{Revisión de Sprint (Sprint Review)}. Esta reunión se lleva a cabo al finalizar un Sprint. En ella, el dueño del producto inspecciona el incremento obtenido en el Sprint y decide si se acepta o no. Además, se actualiza la pila de producto si fuese necesario con nuevas funcionalidades o con las que no se hayan llevado a cabo durante el Sprint.
+	\item \textbf{Scrum diario (Daily Scrum)}. Consiste en una reunión de poca duración que se lleva a cabo diariamente durante el desarrollo de un Sprint, con el objetivo de que el equipo de desarrollo sincronice sus actividades, para que todos ellos estén al corriente de las tareas que se realizan a diario.
+	\item \textbf{Retrospectiva de Sprint (Sprint Retrospective)}. Esta reunión tiene lugar después de llevar a cabo la revisión de Sprint y antes que la reunión de planificación del siguiente Sprint. Gracias a esta reunión el equipo Scrum se puede inspeccionar a si mismo y comprobar que aspectos se han desarrollado correctamente y cuales han de ser mejorados para el próximo Sprint.
+\end{itemize}
 \section{Desarrollo basado en Prototipos}
 \label{sec:Prototipos}
 
