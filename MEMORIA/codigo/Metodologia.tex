@@ -42,6 +42,8 @@ Un proyecto que utiliza la metodología Scrum está compuesto por un equipo Scru
 
 En un proyecto Scrum podemos encontrar diferentes componentes o artefactos, los cuales son característicos de este tipo de metodología y que ayudan a organizar y gestionar mejor el proyecto. En la figura \ref{fig:artefactosScrum} podemos encontrar un resumen de los artefactos utilizados en Scrum, estos son:
 
+% TODO: Añadir figura con el ciclo Scrum y todos sus artefactos y reuniones
+
 \begin{itemize}
 	\item \textbf{Lista de Producto (Product Backlog).} Consiste en una pila de requisitos necesarios para conseguir el objetivo de desarrollar el producto final. La lista está compuesta por historias de usuario creadas por el dueño del producto, a las cuales además se les impone un valor y una prioridad, para que de esta manera la lista quede ordenada. El dueño del producto es el responsable de diseñar, gestionar y ordenar esta pila con funcionalidades, requisitos, mejoras y correcciones del proyecto, aunque puede delegar dicha tarea en el equipo de desarrollo.
 	\item \textbf{Sprint.} En Scrum a cada iteración se le conoce con el término \emph{Sprint}. Cada Sprint hace referencia a un bloque de tiempo (normalmente de una a cuatro semanas), en donde se desarrolla un incremento del producto utilizable y potencialmente despegable. Antes de comenzar cada Sprint se decide que funcionalidades y requisitos de la lista de producto se implementarán a lo largo del mismo. 
@@ -57,11 +59,37 @@ Además de los anteriores artefactos, Scrum se apoya en un conjunto de reuniones
 	\item \textbf{Scrum diario (Daily Scrum)}. Consiste en una reunión de poca duración que se lleva a cabo diariamente durante el desarrollo de un Sprint, con el objetivo de que el equipo de desarrollo sincronice sus actividades, para que todos ellos estén al corriente de las tareas que se realizan a diario.
 	\item \textbf{Retrospectiva de Sprint (Sprint Retrospective)}. Esta reunión tiene lugar después de llevar a cabo la revisión de Sprint y antes que la reunión de planificación del siguiente Sprint. Gracias a esta reunión el equipo Scrum se puede inspeccionar a si mismo y comprobar que aspectos se han desarrollado correctamente y cuales han de ser mejorados para el próximo Sprint.
 \end{itemize}
-\section{Desarrollo basado en Prototipos}
+\section{Desarrollo Basado en Prototipos}
+\label{sec:DesarrolloPrototipos}
+
+El Desarrollo Basado en Prototipos o Modelo de Prototipos consiste en un estilo de modelo de desarrollo evolutivo. El proceso de desarrollar software requiere una evolución en el producto, ya que se demandan pequeños componentes funcionales antes del desarrollo completo del sistema. Este modelo de desarrollo se basa en la creación de modelos o prototipos del sistema (utilizando poco tiempo y recursos) de manera evolutiva y cada vez con la implementación de más o menos funcionalidades, consiguiendo así una retroalimentación constante con el cliente mostrándose el comportamiento de los componentes desarrollados hasta el momento, antes de la creación del sistema final, ahorrándose así tiempo y costes ante posibles cambios por parte del cliente. De darse en un modelo de desarrollo tradicional en cascada sería más complicado debido a sus limitaciones en la realimentación con el cliente entre sus fases.
+
+El desarrollo basado en prototipos se sustenta en la idea de ayudar al cliente a plantear los requisitos, cuando no se posee una idea clara de lo que se desea, o cuando el desarrollador software tiene dudas sobre la solución elaborada. De esta manera, el cliente conseguirá resultados a corto plazo con una retroalimentación de lo que se está desarrollando, con el fin de refinar los requisitos del producto software, configurar posibles mejoras y validar los resultados obtenidos.
+
+\subsection{Prototipos}
 \label{sec:Prototipos}
+
+El desarrollo basado en prototipos requiere de la construcción constante de prototipos. Un prototipo\footnote{\url{https://es.wikipedia.org/wiki/Prototipo}} en el desarrollo software se define como un modelo de comportamiento o representación que posee parte de las características del sistema final y puede ser usado para entenderlo completamente o ciertos aspectos de él y así clarificar los requerimientos. En el desarrollo basado en prototipos podemos encontrar dos tipos distintos de prototipos: \emph{Prototipos Evolutivos} y \emph{Prototipos Experimentales}
+
+\begin{itemize}
+	\item \textbf{Prototipos Evolutivos.} Consisten en prototipos que se desarrollan en función de unos requisitos iniciales y como su nombre indica van evolucionando con la retroalimentación del cliente, el cual refina los requisitos para conseguir evolucionar hacia el sistema final.
+	\item \textbf{Prototipos Experimentales.} También conocidos como Prototipos Desechables, consisten en prototipos que se diseñan con el fin de experimentar con ciertas funcionalidades o tecnologías, o para comprobar el rendimiento de un componente software que debe cumplir algún requisito técnico. Este tipo de prototipos suele desechar al finalizarse.
+\end{itemize}
 
 \subsection{Etapas del modelo de prototipos}
 \label{sec:EtapasPrototipos}
+
+En el modelo de desarrollo basado en prototipos podemos diferenciar un conjunto de etapas principales, las cuales se deberán cumplir para conseguir el desarrollo del producto final. Estas etapas consisten en:
+
+% TODO: Añadir figura con el proceso del modelo de prototipos y todas sus etapas
+
+\begin{itemize}
+	\item \textbf{Recolección de requisitos.} Se lleva a cabo una recopilación de cuales son los requisitos iniciales que demanda el cliente.
+	\item \textbf{Modelado.} Se efectúa un análisis y posterior modelado de casos de uso e historias de usuario en función de las especificaciones del cliente.
+	\item \textbf{Construcción del Prototipo.} Se implementa un prototipo que cumpla todas o algunas de las especificaciones definidas por el cliente.
+	\item \textbf{Desarrollo, entrega y retroalimentación.} El prototipo desarrollado en la etapa anterior se entrega al cliente, el cual deberá comprobar y decidir si cumple con los requisitos acordados, se producirá así una retroalimentación. Se añaden nuevos requisitos a desarrollar y se procede a construir un nuevo prototipo. De esta manera, se encamina el desarrollo hacia la obtención del sistema final.
+	\item \textbf{Entrega del desarrollo final.} Una vez el anterior prototipo haya sido aceptado por el cliente y posea todas las funcionalidades y requisitos acordados, se procederá a la entrega del producto final al cliente.
+\end{itemize}
 
 \section{Marco Tecnológico}
 \label{sec:MarcoTecnologico}
