@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: fd575cb086cceca4db47b57990eac360
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ONE DAY
+  fontNames:
+  - ONE DAY
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 036ff26211d92f9478c11ba4ae01bc0d, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
