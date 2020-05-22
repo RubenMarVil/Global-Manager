@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\src\ChallangeHandle.cs" />
     <Compile Include="Assets\src\ChallengesOrderHandle.cs" />
+    <Compile Include="Assets\src\SiteSliderHandle.cs" />
     <Compile Include="Assets\src\SliderHandleAge.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
