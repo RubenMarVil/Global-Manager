@@ -5,22 +5,19 @@ using UnityEngine;
 public class SiteSliderHandle : MonoBehaviour
 {
     public GameObject[] siteList;
-    private Vector2[] contentDimensions;
+    private Vector2[] contentDimensionsSite;
 
-    // Start is called before the first frame update
     void Start()
     {
-        contentDimensions = new[] {new Vector2(0, 409), new Vector2(0, 541), 
+        contentDimensionsSite = new[] {new Vector2(0, 409), new Vector2(0, 541), 
             new Vector2(0, 665), new Vector2(0, 797), new Vector2(0, 927), new Vector2(0, 1054)};
-
-
-        
     }
 
     public void OnSliderValueChanged(float numSites)
     {
         Debug.Log($"Sites number: {numSites}");
 
+        // Change site configuration visualization
         for(int i = 0; i < siteList.Length; i++)
         {
             if(i < numSites)
@@ -33,6 +30,6 @@ public class SiteSliderHandle : MonoBehaviour
             }
         }
 
-        GetComponent<RectTransform>().sizeDelta = contentDimensions[(int)numSites - 2];
+        GetComponent<RectTransform>().sizeDelta = contentDimensionsSite[(int)numSites - 2];
     }
 }
