@@ -1,0 +1,837 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NRules.Fluent</name>
+    </assembly>
+    <members>
+        <member name="M:NRules.Fluent.Dsl.ContextExtensions.Update``1(NRules.RuleModel.IContext,``0,System.Action{``0})">
+            <summary>
+            Updates existing fact in the rules engine's memory.
+            First the update action is applied to the fact, then the fact is updated in the engine's memory.
+            </summary>
+            <param name="context">Context instance.</param>
+            <param name="fact">Existing fact to update.</param>
+            <param name="updateAction">Action to apply to the fact.</param>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ContextExtensions.Resolve``1(NRules.RuleModel.IContext)">
+            <summary>
+            Resolves a registered service (normally via an IoC container).
+            </summary>
+            <typeparam name="TService">Type of service to resolve.</typeparam>
+            <param name="context">Context instance.</param>
+            <returns>Service instance.</returns>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.DescriptionAttribute">
+            <summary>
+            Sets rule's description.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.IDependencyExpression">
+            <summary>
+            Rule's dependencies expression builder.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IDependencyExpression.Resolve``1(System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Configures the engine to inject the rules with a required dependency. 
+            </summary>
+            <typeparam name="TDependency">Type of the service to inject.</typeparam>
+            <param name="alias">Alias for the injected service.</param>
+            <returns>Dependencies expression builder.</returns>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.IFilterExpression">
+            <summary>
+            Rule's filters expression builder.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IFilterExpression.OnChange(System.Linq.Expressions.Expression{System.Func{System.Object}}[])">
+            <summary>
+            Configures the engine to filter rule's matches, so that updates are only triggered if given keys changed.
+            If multiple keys are configured, the match is accepted if any of the keys changed.
+            </summary>
+            <param name="keySelectors">Key selector expressions.</param>
+            <returns>Filters expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IFilterExpression.Where(System.Linq.Expressions.Expression{System.Func{System.Boolean}}[])">
+            <summary>
+            Configures the engine to filter rule's matches given a set of predicates.
+            If multiple predicates are configured, the match is accepted if all predicates are true.
+            </summary>
+            <param name="predicates">Predicate expressions.</param>
+            <returns>Filters expression builder.</returns>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.ILeftHandSideExpression">
+            <summary>
+            Rule's left-hand side (conditions) expression builder.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Match``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            Defines a pattern for facts matching a set of conditions.
+            Binds matching fact to a variable.
+            </summary>
+            <typeparam name="TFact">Type of fact to match.</typeparam>
+            <param name="alias">Alias for the matching fact.</param>
+            <param name="conditions">Set of conditions the fact must satisfy to trigger the rule.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Match``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            Defines a pattern for facts matching a set of conditions.
+            Does not bind matching fact to a variable. Optionally, enables aggregation of matching facts.
+            </summary>
+            <param name="conditions">Set of additional conditions the fact must satisfy to trigger the rule.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Exists``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            Defines a pattern that triggers the rule only if there is at least one matching fact (existential quantifier).
+            </summary>
+            <typeparam name="TFact">Type of fact to match.</typeparam>
+            <param name="conditions">Set of conditions the facts must satisfy to trigger the rule.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Not``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            Defines a pattern that triggers the rule only if there are no matching facts (negation quantifier).
+            </summary>
+            <typeparam name="TFact">Type of fact to match.</typeparam>
+            <param name="conditions">Set of conditions the facts must not satisfy to trigger the rule.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.All``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            Defines a pattern that triggers the rule only if all facts that match the base condition
+            also match all the remaining conditions (universal quantifier).
+            </summary>
+            <typeparam name="TFact">Type of fact to match.</typeparam>
+            <param name="baseCondition">Base condition that filters the facts to match the remaining conditions.</param>
+            <param name="conditions">Set of additional conditions that all matching facts must satisfy to trigger the rule.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.All``1(System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
+            <summary>
+            Defines a pattern that triggers the rule only if all facts of a given type match the condition.
+            </summary>
+            <typeparam name="TFact">Type of fact to match.</typeparam>
+            <param name="condition">Condition that all facts of a given type must satisfy to trigger the rule.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Query``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Func{NRules.Fluent.Dsl.IQuery,NRules.Fluent.Dsl.IQuery{``0}})">
+            <summary>
+            Queries rules engine for matching facts.
+            </summary>
+            <typeparam name="TResult">Query result type.</typeparam>
+            <param name="alias">Alias for the query results.</param>
+            <param name="queryExpression">Query expression.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.And(System.Action{NRules.Fluent.Dsl.ILeftHandSideExpression})">
+            <summary>
+            Defines a group of patterns joined by an AND operator.
+            If all of the patterns in the group match then the whole group matches.
+            </summary>
+            <param name="builder">Group expression builder.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Or(System.Action{NRules.Fluent.Dsl.ILeftHandSideExpression})">
+            <summary>
+            Defines a group of patterns joined by an OR operator.
+            If either of the patterns in the group matches then the whole group matches.
+            </summary>
+            <param name="builder">Group expression builder.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Let``1(System.Linq.Expressions.Expression{System.Func{``0}},System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Binds expression to a variable. Expression can use previously defined rule patterns.
+            </summary>
+            <typeparam name="TResult">Type of the expression result.</typeparam>
+            <param name="alias">Alias for the expression.</param>
+            <param name="expression">Expression to bind.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.ILeftHandSideExpression.Having(System.Linq.Expressions.Expression{System.Func{System.Boolean}}[])">
+            <summary>
+            Adds match conditions to existing rule patterns.
+            </summary>
+            <param name="conditions">Additional match conditions.</param>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.IQuery">
+            <summary>
+            Root of the query method chain.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.Dsl.IQuery.Builder">
+            <summary>
+            Internal query builder.
+            This method is intended for framework use only.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.IQuery`1">
+            <summary>
+            Intermediate query chain element.
+            </summary>
+            <typeparam name="TSource">Type of the element the query operates on.</typeparam>
+        </member>
+        <member name="P:NRules.Fluent.Dsl.IQuery`1.Builder">
+            <summary>
+            Internal query builder.
+            This method is intended for framework use only.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.ICollectQuery`1">
+            <summary>
+            Intermediate query chain element used for Collect modifiers.
+            </summary>
+            <typeparam name="TSource">Type of the element the query operates on.</typeparam>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.IOrderedQuery`1">
+            <summary>
+            Intermediate query chain element used for OrderBy modifiers.
+            </summary>
+            <typeparam name="TSource">Type of the element the query operates on.</typeparam>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.IQueryBuilder">
+            <summary>
+            Internal builder for queries.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.IRightHandSideExpression">
+            <summary>
+            Rule's right-hand side (actions) expression builder.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IRightHandSideExpression.Action(System.Linq.Expressions.Expression{System.Action{NRules.RuleModel.IContext}},NRules.RuleModel.ActionTrigger)">
+            <summary>
+            Defines rule's action that engine executes for a given trigger.
+            </summary>
+            <param name="action">Action expression.</param>
+            <param name="actionTrigger">Events that should trigger this action.</param>
+            <returns>Right hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IRightHandSideExpression.Do(System.Linq.Expressions.Expression{System.Action{NRules.RuleModel.IContext}})">
+            <summary>
+            Defines rule's action that engine executes when the rule fires
+            due to the initial rule match or due to an update.
+            </summary>
+            <param name="action">Action expression.</param>
+            <returns>Right hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IRightHandSideExpression.Undo(System.Linq.Expressions.Expression{System.Action{NRules.RuleModel.IContext}})">
+            <summary>
+            Defines rule's action that engine executes when the rule fires
+            due to the match removal (provided the rule previously fired on the match).
+            </summary>
+            <param name="action">Action expression.</param>
+            <returns>Right hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IRightHandSideExpression.Yield``1(System.Linq.Expressions.Expression{System.Func{NRules.RuleModel.IContext,``0}})">
+            <summary>
+            Defines rule's action that yields a linked fact when the rule fires.
+            If the rule fires due to an update, the linked fact is also updated with the new yielded value.
+            </summary>
+            <typeparam name="TFact">Type of fact to yield.</typeparam>
+            <param name="yield">Action expression that yields the linked fact.</param>
+            <returns>Right hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.IRightHandSideExpression.Yield``1(System.Linq.Expressions.Expression{System.Func{NRules.RuleModel.IContext,``0}},System.Linq.Expressions.Expression{System.Func{NRules.RuleModel.IContext,``0,``0}})">
+            <summary>
+            Defines rule's action that yields a linked fact when the rule fires.
+            If the rule fires due to an update, the update expression is evaluated to produce an updated linked fact.
+            </summary>
+            <typeparam name="TFact">Type of fact to yield.</typeparam>
+            <param name="yieldInsert">Action expression that yields a new linked fact.</param>
+            <param name="yieldUpdate">Action expression that yields an updated linked fact.</param>
+            <returns>Right hand side expression builder.</returns>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.NameAttribute">
+            <summary>
+            Sets rule's name.
+            Name set via the attribute overrides the default name, which is the fully qualified class name.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.PriorityAttribute">
+            <summary>
+            Sets rule's priority.
+            If multiple rules get activated at the same time, rules with higher priority get executed first.
+            Priority value can be positive, negative or zero.
+            Default priority is zero.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.QueryExpression`1">
+            <summary>
+            Expression builder for queries.
+            </summary>
+            <typeparam name="TSource">Type of query source.</typeparam>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExpression`1.#ctor(NRules.Fluent.Dsl.IQueryBuilder)">
+            <summary>
+            Constructs a query expression builder that wraps a <see cref="T:NRules.Fluent.Dsl.IQueryBuilder"/>.
+            </summary>
+            <param name="builder">Query builder to wrap.</param>
+        </member>
+        <member name="P:NRules.Fluent.Dsl.QueryExpression`1.Builder">
+            <summary>
+            Wrapped <see cref="T:NRules.Fluent.Dsl.IQueryBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.Match``1(NRules.Fluent.Dsl.IQuery,System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            Creates a query from matching facts in the engine's working memory.
+            </summary>
+            <typeparam name="TFact">Type of facts to query.</typeparam>
+            <param name="query">Query expression builder.</param>
+            <param name="conditions">Set of conditions the fact must satisfy.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.From``1(NRules.Fluent.Dsl.IQuery,System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Creates a query from a given expression.
+            </summary>
+            <typeparam name="TFact">Type of facts to query.</typeparam>
+            <param name="query">Query expression builder.</param>
+            <param name="source">Expression that generates source facts.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.Where``1(NRules.Fluent.Dsl.IQuery{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}}[])">
+            <summary>
+            Filters source facts using a set of predicate expressions.
+            The facts must match all predicate expressions in order to pass the filter.
+            </summary>
+            <typeparam name="TSource">Type of facts to filter.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="predicates">Filter expressions.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.Select``2(NRules.Fluent.Dsl.IQuery{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Projects source facts using selector expression.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TResult">Type of projected facts.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="selector">Projection expression.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.SelectMany``2(NRules.Fluent.Dsl.IQuery{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Collections.Generic.IEnumerable{``1}}})">
+            <summary>
+            Flattens source facts using collection selector expression.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TResult">Type of flattened facts.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="selector">Collection flattening expression.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.GroupBy``2(NRules.Fluent.Dsl.IQuery{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Aggregates source facts into groups based on a grouping key.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TKey">Type of grouping key.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="keySelector">Key selection expression.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.GroupBy``3(NRules.Fluent.Dsl.IQuery{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Linq.Expressions.Expression{System.Func{``0,``2}})">
+            <summary>
+            Aggregates source facts into groups based on a grouping key.
+            Projects facts as part of grouping based on a value selection expression.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TKey">Type of grouping key.</typeparam>
+            <typeparam name="TElement">Type of projected facts.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="keySelector">Key selection expression.</param>
+            <param name="elementSelector">Projected fact selection expression.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.Collect``1(NRules.Fluent.Dsl.IQuery{``0})">
+            <summary>
+            Aggregates matching facts into a collection.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.OrderBy``2(NRules.Fluent.Dsl.ICollectQuery{System.Collections.Generic.IEnumerable{``0}},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Configures collected matching facts to be sorted ascending by key.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TKey">Type of sorting key.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="keySelector">Key selection expression used for sorting.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.OrderByDescending``2(NRules.Fluent.Dsl.ICollectQuery{System.Collections.Generic.IEnumerable{``0}},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Configures collected matching facts to be sorted descending by key.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TKey">Type of sorting key.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="keySelector">Key selection expression used for sorting.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.ThenBy``2(NRules.Fluent.Dsl.IOrderedQuery{System.Collections.Generic.IEnumerable{``0}},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Configures sorted matching facts to subsequently be sorted ascending by key.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TKey">Type of sorting key.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="keySelector">Key selection expression used for sorting.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.QueryExtensions.ThenByDescending``2(NRules.Fluent.Dsl.IOrderedQuery{System.Collections.Generic.IEnumerable{``0}},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
+            <summary>
+            Configures sorted matching facts to subsequently be sorted descending by key.
+            </summary>
+            <typeparam name="TSource">Type of source facts.</typeparam>
+            <typeparam name="TKey">Type of sorting key.</typeparam>
+            <param name="source">Query expression builder.</param>
+            <param name="keySelector">Key selection expression used for sorting.</param>
+            <returns>Query expression builder.</returns>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.RepeatabilityAttribute">
+            <summary>
+            Sets rule's repeatability, that is, how it behaves when it is activated with the same set of facts multiple times, 
+            which is important for recursion control. By default rules are <see cref="F:NRules.RuleModel.RuleRepeatability.Repeatable"/>, 
+            which means a rule will fire every time it is activated with the same set of facts.
+            If repeatability is set to <see cref="F:NRules.RuleModel.RuleRepeatability.NonRepeatable"/> then the rule will not fire with the same combination of facts, 
+            unless that combination was previously deactivated (i.e. through retraction).
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.Rule">
+            <summary>
+            Base class for inline rule definitions.
+            To create a rule using internal DSL, create a class that inherits from <c>NRules.Fluent.Dsl.Rule</c>
+            and override <see cref="M:NRules.Fluent.Dsl.Rule.Define"/> method.
+            Use <see cref="M:NRules.Fluent.Dsl.Rule.When"/> and <see cref="M:NRules.Fluent.Dsl.Rule.Then"/> methods to define rule's conditions and actions correspondingly.
+            A rule can also be decorated with attributes to add relevant metadata:
+            <see cref="T:NRules.Fluent.Dsl.NameAttribute"/>, <see cref="T:NRules.Fluent.Dsl.DescriptionAttribute"/>, <see cref="T:NRules.Fluent.Dsl.TagAttribute"/>, 
+            <see cref="T:NRules.Fluent.Dsl.PriorityAttribute"/>, <see cref="T:NRules.Fluent.Dsl.RepeatabilityAttribute"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.Rule.Name(System.String)">
+            <summary>
+            Sets rule's name.
+            Name value set at this level overrides the values specified via <see cref="T:NRules.Fluent.Dsl.NameAttribute"/> attribute.
+            </summary>
+            <param name="value">Rule name value.</param>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.Rule.Priority(System.Int32)">
+            <summary>
+            Sets rule's priority.
+            Priority value set at this level overrides the value specified via <see cref="T:NRules.Fluent.Dsl.PriorityAttribute"/> attribute.
+            </summary>
+            <param name="value">Priority value.</param>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.Rule.Dependency">
+            <summary>
+            Returns expression builder for rule's dependencies.
+            </summary>
+            <returns>Dependencies expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.Rule.Filter">
+            <summary>
+            Returns expression builder for rule's filters.
+            </summary>
+            <returns>Filters expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.Rule.When">
+            <summary>
+            Returns expression builder for rule's left-hand side (conditions).
+            </summary>
+            <returns>Left hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.Rule.Then">
+            <summary>
+            Returns expression builder for rule's right-hand side (actions).
+            </summary>
+            <returns>Right hand side expression builder.</returns>
+        </member>
+        <member name="M:NRules.Fluent.Dsl.Rule.Define">
+            <summary>
+            Method called by the rules engine to define the rule.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.Dsl.TagAttribute">
+            <summary>
+            Adds a tag to rule's metadata.
+            A rule class can have multiple tag attributes, and also inherits tag attributes from its parent classes.
+            Tags can be used to filter rules when loading them through fluent load specification.
+            </summary>
+            <remarks>
+            A custom tag attribute class could be inherited from the <see cref="T:NRules.Fluent.Dsl.TagAttribute"/> to provide strongly-typed version of a tag.
+            </remarks>
+        </member>
+        <member name="T:NRules.Fluent.RuleActivationException">
+            <summary>
+            Represents errors that occur when instantiating rule classes.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleActivationException.RuleType">
+            <summary>
+            Rule CLR type that caused exception.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleActivationException.RuleTypeName">
+            <summary>
+            Rule CLR type name that caused exception.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.IRuleActivator">
+            <summary>
+            Rule activator that instantiates rules based on the CLR types.
+            Default activator uses reflection activator.
+            An instance of <c>IRuleActivator</c> can be assigned to <see cref="P:NRules.Fluent.RuleRepository.Activator"/>,
+            so that all rule instantiation requests are delegated to the rule activator.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.IRuleActivator.Activate(System.Type)">
+            <summary>
+            Creates rule's instances from a CLR type.
+            </summary>
+            <param name="type">Rule CLR type.</param>
+            <returns>Rule instances.</returns>
+            <remarks>
+            The same rule type may be instantiated multiple times with different parameters. 
+            Each instance is considered as separate rule, and should have a unique name.
+            </remarks>
+        </member>
+        <member name="T:NRules.Fluent.RuleDefinitionException">
+            <summary>
+            Represents errors that occur while building rule definition using fluent DSL.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleDefinitionException.RuleType">
+            <summary>
+            Rule CLR type that caused exception.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleDefinitionException.RuleTypeName">
+            <summary>
+            Rule CLR type name that caused exception.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.RuleDefinitionFactory">
+            <summary>
+            Creates instances of <see cref="T:NRules.RuleModel.IRuleDefinition"/> from the fluent DSL <see cref="T:NRules.Fluent.Dsl.Rule"/> instances.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.RuleDefinitionFactory.Create(System.Collections.Generic.IEnumerable{NRules.Fluent.Dsl.Rule})">
+            <summary>
+            Creates instances of <see cref="T:NRules.RuleModel.IRuleDefinition"/> from the fluent DSL <see cref="T:NRules.Fluent.Dsl.Rule"/> instances.
+            </summary>
+            <param name="rules">Fluent DSL <see cref="T:NRules.Fluent.Dsl.Rule"/> instances.</param>
+            <returns>Corresponding instances of <see cref="T:NRules.RuleModel.IRuleDefinition"/>.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleDefinitionFactory.Create(NRules.Fluent.Dsl.Rule)">
+            <summary>
+            Creates a <see cref="T:NRules.RuleModel.IRuleDefinition"/> for an instance of a fluent DSL <see cref="T:NRules.Fluent.Dsl.Rule"/>.
+            </summary>
+            <param name="rule">Fluent DSL <see cref="T:NRules.Fluent.Dsl.Rule"/> instance.</param>
+            <returns>Corresponding instance of <see cref="T:NRules.RuleModel.IRuleDefinition"/>.</returns>
+        </member>
+        <member name="T:NRules.Fluent.IRuleLoadSpec">
+            <summary>
+            Fluent specification to load rule definitions via reflection.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.PrivateTypes(System.Boolean)">
+            <summary>
+            Enables/disables discovery of private rule classes.
+            Default is off.
+            </summary>
+            <param name="include">Include private types if <c>true</c>, don't include otherwise.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.NestedTypes(System.Boolean)">
+            <summary>
+            Enables/disables discovery of nested rule classes.
+            Default is off.
+            </summary>
+            <param name="include">Include nested types if <c>true</c>, don't include otherwise.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.From(System.Reflection.Assembly[])">
+            <summary>
+            Specifies to load all rule definitions from a given collection of assemblies.
+            </summary>
+            <param name="assemblies">Assemblies to load from.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.From(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Specifies to load all rule definitions from a given collection of assemblies.
+            </summary>
+            <param name="assemblies">Assemblies to load from.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.From(System.Type[])">
+            <summary>
+            Specifies to load rule definitions from a given collection of types.
+            </summary>
+            <param name="types">Types that represent rule definitions.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.From(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Specifies to load rule definitions from a given collection of types.
+            </summary>
+            <param name="types">Types that represent rule definitions.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.From(System.Action{NRules.Fluent.IRuleTypeScanner})">
+            <summary>
+            Specifies to load rule definitions by scanning types/assemblies.
+            </summary>
+            <param name="scanAction">Assembly/type scan action.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.Where(System.Func{NRules.Fluent.IRuleMetadata,System.Boolean})">
+            <summary>
+            Specifies which rules to load by filtering on rule's metadata.
+            </summary>
+            <param name="filter">Filter condition based on rule's metadata.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleLoadSpec.To(System.String)">
+            <summary>
+            Specifies the name of the rule set where the rules are loaded to.
+            If not provided, loads rules into default rule set.
+            </summary>
+            <param name="ruleSetName">Name of the rule set to load rules to.</param>
+            <returns>Spec to continue fluent configuration.</returns>
+        </member>
+        <member name="T:NRules.Fluent.IRuleMetadata">
+            <summary>
+            Metadata associated with a rule defined using internal DSL.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.IRuleMetadata.RuleType">
+            <summary>
+            Rule's CLR type.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.IRuleMetadata.Name">
+            <summary>
+            Rule's name.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.IRuleMetadata.Description">
+            <summary>
+            Rule's description.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.IRuleMetadata.Tags">
+            <summary>
+            Tags applied to the rule.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.RuleMetadata">
+            <summary>
+            Metadata associated with a rule defined using internal DSL.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleMetadata.RuleType">
+            <summary>
+            Rule's CLR type.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleMetadata.Name">
+            <summary>
+            Rule's name.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleMetadata.Description">
+            <summary>
+            Rule's description.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleMetadata.Tags">
+            <summary>
+            Tags applied to the rule.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleMetadata.Priority">
+            <summary>
+            Rule's priority.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleMetadata.Repeatability">
+            <summary>
+            Rule's repeatability.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.RuleMetadataExtensions.IsTagged(NRules.Fluent.IRuleMetadata,System.String)">
+            <summary>
+            Tests if the rule is tagged with a given tag.
+            </summary>
+            <param name="metadata">Rule metadata instance.</param>
+            <param name="tag">Tag to test.</param>
+            <returns><c>true</c> if the rule is tagged, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:NRules.Fluent.RuleProperties">
+            <summary>
+            Rule property names.
+            </summary>
+        </member>
+        <member name="F:NRules.Fluent.RuleProperties.ClrType">
+            <summary>
+            CLR Type of the fluent DSL rule class.
+            </summary>
+        </member>
+        <member name="T:NRules.Fluent.RuleRepository">
+            <summary>
+            Rules repository based on the rules defined inline using internal DSL.
+            Use <see cref="M:NRules.Fluent.RuleRepository.Load(System.Action{NRules.Fluent.IRuleLoadSpec})"/> method to fluently load rules into the repository.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.RuleRepository.#ctor">
+            <summary>
+            Creates an empty rule repository.
+            </summary>
+        </member>
+        <member name="P:NRules.Fluent.RuleRepository.Activator">
+            <summary>
+            Rules activator that instantiates rules based on a CLR type.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.RuleRepository.GetRuleSets">
+            <summary>
+            Retrieves all rule sets contained in the repository.
+            </summary>
+            <returns>Collection of rule sets.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleRepository.Load(System.Action{NRules.Fluent.IRuleLoadSpec})">
+            <summary>
+            Loads rules into a rule set using provided loader specification.
+            <seealso cref="T:NRules.Fluent.IRuleLoadSpec"/>
+            </summary>
+            <param name="specAction">Rule loader specification.</param>
+        </member>
+        <member name="M:NRules.Fluent.RuleRepository.Add(NRules.RuleModel.IRuleSet)">
+            <summary>
+            Adds a new rule set to the rule repository.
+            </summary>
+            <param name="ruleSet">Rule set to add.</param>
+            <exception cref="T:System.ArgumentException">A rule set with the same name already exists.</exception>
+        </member>
+        <member name="T:NRules.Fluent.IRuleTypeScanner">
+            <summary>
+            Assembly scanner that finds fluent rule classes.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.IRuleTypeScanner.PrivateTypes(System.Boolean)">
+            <summary>
+            Enables/disables discovery of private rule classes.
+            Default is off.
+            </summary>
+            <param name="include">Include private types if <c>true</c>, don't include otherwise.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleTypeScanner.NestedTypes(System.Boolean)">
+            <summary>
+            Enables/disables discovery of nested rule classes.
+            Default is off.
+            </summary>
+            <param name="include">Include nested types if <c>true</c>, don't include otherwise.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleTypeScanner.Assembly(System.Reflection.Assembly[])">
+            <summary>
+            Finds rule types in the specified assemblies.
+            </summary>
+            <param name="assemblies">Assemblies to scan.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleTypeScanner.AssemblyOf``1">
+            <summary>
+            Finds rule types in the assembly of the specified type.
+            </summary>
+            <typeparam name="T">Type, whose assembly to scan.</typeparam>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleTypeScanner.AssemblyOf(System.Type)">
+            <summary>
+            Finds rule types in the assembly of the specified type.
+            </summary>
+            <param name="type">Type, whose assembly to scan.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.IRuleTypeScanner.Type(System.Type[])">
+            <summary>
+            Finds rule types in the specifies types.
+            </summary>
+            <param name="types">Types to scan.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="T:NRules.Fluent.RuleTypeScanner">
+            <summary>
+            Assembly scanner that finds fluent rule classes.
+            </summary>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.PrivateTypes(System.Boolean)">
+            <summary>
+            Enables/disables discovery of private rule classes.
+            Default is off.
+            </summary>
+            <param name="include">Include private types if <c>true</c>, don't include otherwise.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.NestedTypes(System.Boolean)">
+            <summary>
+            Enables/disables discovery of nested rule classes.
+            Default is off.
+            </summary>
+            <param name="include">Include nested types if <c>true</c>, don't include otherwise.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.Assembly(System.Reflection.Assembly[])">
+            <summary>
+            Finds rule types in the specified assemblies.
+            </summary>
+            <param name="assemblies">Assemblies to scan.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.AssemblyOf``1">
+            <summary>
+            Finds rule types in the assembly of the specified type.
+            </summary>
+            <typeparam name="T">Type, whose assembly to scan.</typeparam>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.AssemblyOf(System.Type)">
+            <summary>
+            Finds rule types in the assembly of the specified type.
+            </summary>
+            <param name="type">Type, whose assembly to scan.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.Type(System.Type[])">
+            <summary>
+            Finds rule types in the specifies types.
+            </summary>
+            <param name="types">Types to scan.</param>
+            <returns>Rule type scanner to continue scanning specification.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.GetRuleTypes">
+            <summary>
+            Retrieves found types.
+            </summary>
+            <returns>Rule types.</returns>
+        </member>
+        <member name="M:NRules.Fluent.RuleTypeScanner.IsRuleType(System.Type)">
+            <summary>
+            Determines if a given CLR type is a rule type.
+            </summary>
+            <param name="type">Type.</param>
+            <returns>Result of the check.</returns>
+        </member>
+    </members>
+</doc>

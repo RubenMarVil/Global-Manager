@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{52256C60-694F-76D1-D534-800FF43C43EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -66,26 +67,63 @@
     <Compile Include="Assets\src\ChallangeHandle.cs" />
     <Compile Include="Assets\src\ChallengesOrderHandle.cs" />
     <Compile Include="Assets\src\CommunicationButtonHandle.cs" />
+    <Compile Include="Assets\src\domain\User.cs" />
+    <Compile Include="Assets\src\rules\AdvancedUserRule.cs" />
+    <Compile Include="Assets\src\rules\BasicUserRule.cs" />
+    <Compile Include="Assets\src\rules\IntermediateUserRule.cs" />
+    <Compile Include="Assets\src\rules\No_KnowledgeUserRule.cs" />
     <Compile Include="Assets\src\SiteSliderHandle.cs" />
     <Compile Include="Assets\src\SiteSliderHandle2.cs" />
     <Compile Include="Assets\src\SliderHandleAge.cs" />
+    <Compile Include="Assets\src\SurveyHandle.cs" />
+    <None Include="Assets\Packages\System.Globalization.4.3.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\NRules.RuleModel.0.9.0\lib\netstandard2.0\NRules.RuleModel.xml" />
+    <None Include="Assets\Packages\System.Text.Encoding.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Packages\System.Runtime.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\System.Reflection.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\System.IO.4.3.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\NRules.Fluent.0.9.0\lib\netstandard2.0\NRules.Fluent.xml" />
+    <None Include="Assets\Packages\System.Globalization.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\NRules.Runtime.0.9.0\lib\netstandard2.0\NRules.xml" />
+    <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\Packages\System.IO.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\Packages\System.Runtime.4.3.0\ThirdPartyNotices.txt" />
+    <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\dotnet_library_license.txt" />
+    <None Include="Assets\Packages\System.Text.Encoding.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\Packages\System.Reflection.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -302,6 +340,18 @@
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.22f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="NRules.Fluent">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/NRules.Fluent.0.9.0/lib/netstandard2.0/NRules.Fluent.dll</HintPath>
+    </Reference>
+    <Reference Include="NRules.RuleModel">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/NRules.RuleModel.0.9.0/lib/netstandard2.0/NRules.RuleModel.dll</HintPath>
+    </Reference>
+    <Reference Include="NRules">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/NRules.Runtime.0.9.0/lib/netstandard2.0/NRules.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/System.Reflection.TypeExtensions.4.3.0/lib/netstandard1.5/System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>

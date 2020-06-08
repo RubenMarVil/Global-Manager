@@ -1,0 +1,1831 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NRules.RuleModel</name>
+    </assembly>
+    <members>
+        <member name="T:NRules.RuleModel.ActionTrigger">
+            <summary>
+            Activation events that trigger the actions.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.ActionTrigger.None">
+            <summary>
+            Action is not triggered.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.ActionTrigger.Activated">
+            <summary>
+            Action is triggered when activation is created.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.ActionTrigger.Reactivated">
+            <summary>
+            Action is triggered when activation is updated.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.ActionTrigger.Deactivated">
+            <summary>
+            Action is triggered when activation is removed.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.ActionElement">
+            <summary>
+            Action executed by the engine when the rule fires.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.ActionElement.DefaultTrigger">
+            <summary>
+            Default value for action trigger.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ActionElement.ActionTrigger">
+            <summary>
+            Activation events that trigger this action.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.ActionGroupElement">
+            <summary>
+            Rule element that groups actions that run when the rule fires.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ActionGroupElement.Actions">
+            <summary>
+            List of actions the group element contains.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.AggregateElement">
+            <summary>
+            Rule element that creates new facts (aggregates) based on matching facts it receives as input.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.AggregateElement.Source">
+            <summary>
+            Fact source of the aggregate.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.AggregateElement.Name">
+            <summary>
+            Aggregate name.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.AggregateElement.CustomFactoryType">
+            <summary>
+            The type of custom aggregator factory.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.AggregateElement.Expressions">
+            <summary>
+            Expressions used by the aggregate.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.AndElement">
+            <summary>
+            Grouping element based on the logical AND condition.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.BindingElement">
+            <summary>
+            Rule element that represents results of an expression.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.BindingElement.Expression">
+            <summary>
+            Binding expression.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.ActionGroupBuilder">
+            <summary>
+            Builder to compose a group of rule actions.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ActionGroupBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.ActionGroupBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ActionGroupBuilder.Action(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Adds a rule action to the group element.
+            The action will be executed on new and updated rule activations.
+            </summary>
+            <param name="expression">Rule action expression.
+            The first parameter of the action expression must be <see cref="T:NRules.RuleModel.IContext"/>.
+            Names and types of the rest of the expression parameters must match the names and types defined in the pattern declarations.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ActionGroupBuilder.Action(System.Linq.Expressions.LambdaExpression,NRules.RuleModel.ActionTrigger)">
+            <summary>
+            Adds a rule action to the group element.
+            </summary>
+            <param name="expression">Rule action expression.
+            The first parameter of the action expression must be <see cref="T:NRules.RuleModel.IContext"/>.
+            Names and types of the rest of the expression parameters must match the names and types defined in the pattern declarations.</param>
+            <param name="actionTrigger">Activation events that trigger the action.</param>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.AggregateBuilder">
+            <summary>
+            Builder to compose an aggregate element.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.AggregateBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.ResultType(System.Type)">
+            <summary>
+            Sets type of the result produced by the aggregation.
+            </summary>
+            <param name="resultType">Type of the result.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Aggregator(System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Linq.Expressions.LambdaExpression}},System.Type)">
+            <summary>
+            Configure a custom aggregator.
+            </summary>
+            <param name="name">Name of the aggregator.</param>
+            <param name="expressions">Named expressions used by the aggregator.</param>
+            <param name="customFactoryType">The type of the custom aggregate factory</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Collect">
+            <summary>
+            Configure a collection aggregator.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.OrderBy(System.Linq.Expressions.LambdaExpression,NRules.RuleModel.SortDirection)">
+            <summary>
+            Configure aggregator to order facts by key.
+            </summary>
+            <param name="keySelector">Key selection expression.</param>
+            <param name="sortDirection">Order to sort the aggregation in.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.GroupBy(System.Linq.Expressions.LambdaExpression,System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Configure group by aggregator.
+            </summary>
+            <param name="keySelector">Key selection expressions.</param>
+            <param name="elementSelector">Element selection expression.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Project(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Configure projection aggregator.
+            </summary>
+            <param name="selector">Projection expression.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Flatten(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Configure flattening aggregator.
+            </summary>
+            <param name="selector">Projection expression.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Pattern(NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates a pattern builder that builds the source of the aggregate.
+            Sets a pattern element as the source of the aggregate element.
+            </summary>
+            <param name="element">Element to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Pattern(NRules.RuleModel.Builders.PatternBuilder)">
+            <summary>
+            Sets a pattern builder as the source of the aggregate element.
+            </summary>
+            <param name="builder">Element builder to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Pattern(System.Type,System.String)">
+            <summary>
+            Creates a pattern builder that builds the source of the aggregate element.
+            </summary>
+            <param name="type">Type of the element the pattern matches.</param>
+            <param name="name">Pattern name (optional).</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.AggregateBuilder.Pattern(NRules.RuleModel.Declaration)">
+            <summary>
+            Creates a pattern builder that builds the source of the aggregate element.
+            </summary>
+            <param name="declaration">Pattern declaration.</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.BindingBuilder">
+            <summary>
+            Builder to compose a binding expression element.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.BindingBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.BindingBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.BindingBuilder.ResultType(System.Type)">
+            <summary>
+            Sets type of the result produced by the binding expression.
+            If not provided, this is set to the return type of the binding expression.
+            </summary>
+            <param name="resultType">Type of the result.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.BindingBuilder.BindingExpression(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Sets a calculated expression on the binding element.
+            </summary>
+            <param name="expression">Expression to bind.</param>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.DependencyGroupBuilder">
+            <summary>
+            Builder to compose a group of rule dependencies.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.DependencyGroupBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.DependencyGroupBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.DependencyGroupBuilder.Dependency(NRules.RuleModel.DependencyElement)">
+            <summary>
+            Adds a dependency element to the group element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.DependencyGroupBuilder.Dependency(System.Type,System.String)">
+            <summary>
+            Adds a dependency to the group element.
+            </summary>
+            <param name="type">Dependency CLR type.</param>
+            <param name="name">Dependency name.</param>
+            <returns>Dependency declaration.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.Element">
+            <summary>
+            Factory class for rule elements.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.RuleDefinition(System.String,System.String,System.Int32,NRules.RuleModel.GroupElement,NRules.RuleModel.ActionGroupElement)">
+            <summary>
+            Creates a rule definition.
+            </summary>
+            <param name="name">Rule's name.</param>
+            <param name="description">Rule's description.</param>
+            <param name="priority">Rule's priority.</param>
+            <param name="leftHandSide">Rule's left-hand side top group element.</param>
+            <param name="rightHandSide">Rule's right-hand side group element.</param>
+            <returns>Created rule definition.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.RuleDefinition(System.String,System.String,System.Int32,System.Collections.Generic.IEnumerable{System.String},NRules.RuleModel.GroupElement,NRules.RuleModel.ActionGroupElement)">
+            <summary>
+            Creates a rule definition.
+            </summary>
+            <param name="name">Rule's name.</param>
+            <param name="description">Rule's description.</param>
+            <param name="priority">Rule's priority.</param>
+            <param name="tags">Tags associated with the rule.</param>
+            <param name="leftHandSide">Rule's left-hand side top group element.</param>
+            <param name="rightHandSide">Rule's right-hand side group element.</param>
+            <returns>Created rule definition.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.RuleDefinition(System.String,System.String,System.Int32,NRules.RuleModel.RuleRepeatability,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IEnumerable{NRules.RuleModel.RuleProperty},NRules.RuleModel.DependencyGroupElement,NRules.RuleModel.GroupElement,NRules.RuleModel.FilterGroupElement,NRules.RuleModel.ActionGroupElement)">
+            <summary>
+            Creates a rule definition.
+            </summary>
+            <param name="name">Rule's name.</param>
+            <param name="description">Rule's description.</param>
+            <param name="priority">Rule's priority.</param>
+            <param name="repeatability">Rule's repeatability.</param>
+            <param name="tags">Tags associated with the rule.</param>
+            <param name="properties">Properties associated with the rule.</param>
+            <param name="dependencies">Rule's dependency group element.</param>
+            <param name="leftHandSide">Rule's left-hand side top group element.</param>
+            <param name="filters">Rule's filter group element.</param>
+            <param name="rightHandSide">Rule's right-hand side group element.</param>
+            <returns>Created rule definition.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.DependencyGroup(NRules.RuleModel.DependencyElement[])">
+            <summary>
+            Creates a dependency group element.
+            </summary>
+            <param name="dependencies">Dependency elements in the group.</param>
+            <returns>Created element.</returns>
+            <seealso cref="T:NRules.RuleModel.DependencyElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.DependencyGroup(System.Collections.Generic.IEnumerable{NRules.RuleModel.DependencyElement})">
+            <summary>
+            Creates a dependency group element.
+            </summary>
+            <param name="dependencies">Dependency elements in the group.</param>
+            <returns>Created element.</returns>
+            <seealso cref="T:NRules.RuleModel.DependencyElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Dependency(System.Type,System.String)">
+            <summary>
+            Creates a dependency element.
+            </summary>
+            <param name="type">Dependency type.</param>
+            <param name="name">Dependency name.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Dependency(NRules.RuleModel.Declaration,System.Type)">
+            <summary>
+            Creates a dependency element.
+            </summary>
+            <param name="declaration">Declaration that references the dependency.</param>
+            <param name="serviceType">Type of the service that the dependency represents.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Group(NRules.RuleModel.Builders.GroupType,System.Collections.Generic.IEnumerable{NRules.RuleModel.RuleLeftElement})">
+            <summary>
+            Creates a left-hand side group element, that contains pattern elements and nested group elements.
+            </summary>
+            <param name="groupType">Type of the group element.</param>
+            <param name="childElements">Child elements contained in the group.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.AndGroup(NRules.RuleModel.RuleLeftElement[])">
+            <summary>
+            Creates a left-hand side group element that combines contained elements using an AND operator.
+            </summary>
+            <param name="childElements">Child elements contained in the group.</param>
+            <returns>Created element.</returns>
+            <see cref="T:NRules.RuleModel.RuleLeftElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.AndGroup(System.Collections.Generic.IEnumerable{NRules.RuleModel.RuleLeftElement})">
+            <summary>
+            Creates a left-hand side group element that combines contained elements using an AND operator.
+            </summary>
+            <param name="childElements">Child elements contained in the group.</param>
+            <returns>Created element.</returns>
+            <see cref="T:NRules.RuleModel.RuleLeftElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.OrGroup(NRules.RuleModel.RuleLeftElement[])">
+            <summary>
+            Creates a left-hand side group element that combines contained elements using an OR operator.
+            </summary>
+            <param name="childElements">Child elements contained in the group.</param>
+            <returns>Created element.</returns>
+            <see cref="T:NRules.RuleModel.RuleLeftElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.OrGroup(System.Collections.Generic.IEnumerable{NRules.RuleModel.RuleLeftElement})">
+            <summary>
+            Creates a left-hand side group element that combines contained elements using an OR operator.
+            </summary>
+            <param name="childElements">Child elements contained in the group.</param>
+            <returns>Created element.</returns>
+            <see cref="T:NRules.RuleModel.RuleLeftElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Exists(NRules.RuleModel.RuleLeftElement)">
+            <summary>
+            Creates an element that represents an existential quantifier.
+            </summary>
+            <param name="source">Source element to apply the existential quantifier to.</param>
+            <returns>Created element.</returns>
+            <see cref="T:NRules.RuleModel.RuleLeftElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Not(NRules.RuleModel.RuleLeftElement)">
+            <summary>
+            Creates an element that represents a negative existential quantifier.
+            </summary>
+            <param name="source">Source element to apply the negative existential quantifier to.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.ForAll(NRules.RuleModel.PatternElement,System.Collections.Generic.IEnumerable{NRules.RuleModel.PatternElement})">
+            <summary>
+            Creates an element that represents a universal quantifier.
+            Facts that match the <c>basePattern</c> must also match all other <c>patterns</c>.
+            </summary>
+            <param name="basePattern">Base patterns of the universal quantifier that defines the universe of facts to consider.</param>
+            <param name="patterns">Additional patterns of the universal quantifier that the fact matched by the base pattern must also satisfy.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Pattern(System.Type,System.String,System.Collections.Generic.IEnumerable{NRules.RuleModel.ConditionElement})">
+            <summary>
+            Creates a pattern element that represents a match of facts in rules engine's working memory.
+            </summary>
+            <param name="type">Type of facts matched by the pattern.</param>
+            <param name="name">Pattern name.</param>
+            <param name="conditions">Condition elements that represent conditions applied to the facts matched by the pattern.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Pattern(NRules.RuleModel.Declaration,System.Collections.Generic.IEnumerable{NRules.RuleModel.ConditionElement})">
+            <summary>
+            Creates a pattern element that represents a match of facts in rules engine's working memory.
+            </summary>
+            <param name="declaration">Declaration that references the pattern.</param>
+            <param name="conditions">Condition elements that represent conditions applied to the facts matched by the pattern.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Pattern(System.Type,System.String,System.Collections.Generic.IEnumerable{NRules.RuleModel.ConditionElement},NRules.RuleModel.PatternSourceElement)">
+            <summary>
+            Creates a pattern element that represents a match over results of the source element.
+            </summary>
+            <param name="type">Type of elements matched by the pattern.</param>
+            <param name="name">Pattern name.</param>
+            <param name="conditions">Condition elements that represent conditions applied to the elements matched by the pattern.</param>
+            <param name="source">Source of the elements matched by the pattern. If it's <c>null</c>, the pattern matches facts in rules engine's working memory.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Pattern(NRules.RuleModel.Declaration,System.Collections.Generic.IEnumerable{NRules.RuleModel.ConditionElement},NRules.RuleModel.PatternSourceElement)">
+            <summary>
+            Creates a pattern element that represents a match over results of the source element.
+            </summary>
+            <param name="declaration">Declaration that references the pattern.</param>
+            <param name="conditions">Condition elements that represent conditions applied to the elements matched by the pattern.</param>
+            <param name="source">Source of the elements matched by the pattern. If it's <c>null</c>, the pattern matches facts in rules engine's working memory.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Condition(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Creates a condition element that represents a condition applied to elements matched by a pattern.
+            </summary>
+            <param name="expression">Condition expression. It must have <c>Boolean</c> as its return type.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Binding(System.Type,System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Creates an element that represents results of an expression evaluation.
+            </summary>
+            <param name="resultType">Type of the expression result.</param>
+            <param name="expression">Binding expression.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Binding(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Creates an element that represents results of an expression evaluation.
+            </summary>
+            <param name="expression">Binding expression.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Aggregate(System.Type,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Linq.Expressions.LambdaExpression}},NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that represents an aggregation of facts.
+            </summary>
+            <param name="resultType">Type of the aggregate result.</param>
+            <param name="name">Aggregate name.</param>
+            <param name="expressions">Expressions used to construct aggregates from individual facts.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Aggregate(System.Type,System.String,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Linq.Expressions.LambdaExpression}},NRules.RuleModel.PatternElement,System.Type)">
+            <summary>
+            Creates an element that represents an aggregation of facts.
+            </summary>
+            <param name="resultType">Type of the aggregate result.</param>
+            <param name="name">Aggregate name.</param>
+            <param name="expressions">Expressions used to construct aggregates from individual facts.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <param name="customFactoryType">Factory type used construct aggregators for this aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Collect(NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that aggregates matching facts into a collection.
+            </summary>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Collect(System.Type,NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that aggregates matching facts into a collection.
+            </summary>
+            <param name="resultType">Type of the aggregate result.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.GroupBy(System.Linq.Expressions.LambdaExpression,System.Linq.Expressions.LambdaExpression,NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that aggregates matching facts into groups.
+            </summary>
+            <param name="keySelector">Expression that extracts grouping keys from source element.</param>
+            <param name="elementSelector">Expression that extracts elements to put into resulting groups.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.GroupBy(System.Type,System.Linq.Expressions.LambdaExpression,System.Linq.Expressions.LambdaExpression,NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that aggregates matching facts into groups.
+            </summary>
+            <param name="resultType">Type of the aggregate result.</param>
+            <param name="keySelector">Expression that extracts grouping keys from source element.</param>
+            <param name="elementSelector">Expression that extracts elements to put into resulting groups.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Project(System.Linq.Expressions.LambdaExpression,NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that projects matching facts into different elements.
+            </summary>
+            <param name="selector">Expression that translates a matching element into a different element.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Project(System.Type,System.Linq.Expressions.LambdaExpression,NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that projects matching facts into different elements.
+            </summary>
+            <param name="resultType">Type of the aggregate result.</param>
+            <param name="selector">Expression that translates a matching element into a different element.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Flatten(System.Type,System.Linq.Expressions.LambdaExpression,NRules.RuleModel.PatternElement)">
+            <summary>
+            Creates an element that flattens collections of elements from matching facts into a single set of facts.
+            </summary>
+            <param name="resultType">Type of the aggregate result.</param>
+            <param name="selector">Expression that selects a collection of elements from a matching fact.</param>
+            <param name="source">Pattern that matches facts for aggregation.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.FilterGroup(NRules.RuleModel.FilterElement[])">
+            <summary>
+            Creates an agenda filter group element.
+            </summary>
+            <param name="filters">Agenda filter elements in the group.</param>
+            <returns>Created element.</returns>
+            <seealso cref="T:NRules.RuleModel.FilterElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.FilterGroup(System.Collections.Generic.IEnumerable{NRules.RuleModel.FilterElement})">
+            <summary>
+            Creates an agenda filter group element.
+            </summary>
+            <param name="filters">Agenda filter elements in the group.</param>
+            <returns>Created element.</returns>
+            <seealso cref="T:NRules.RuleModel.FilterElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Filter(NRules.RuleModel.FilterType,System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Creates an agenda filter element.
+            </summary>
+            <param name="filterType">Type of agenda filter.</param>
+            <param name="expression">Filter expression.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.ActionGroup(NRules.RuleModel.ActionElement[])">
+            <summary>
+            Creates an action group element.
+            </summary>
+            <param name="actions">Action elements in the group.</param>
+            <returns>Created element.</returns>
+            <seealso cref="T:NRules.RuleModel.ActionElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.ActionGroup(System.Collections.Generic.IEnumerable{NRules.RuleModel.ActionElement})">
+            <summary>
+            Creates an action group element.
+            </summary>
+            <param name="actions">Action elements in the group.</param>
+            <returns>Created element.</returns>
+            <seealso cref="T:NRules.RuleModel.ActionElement"/>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Action(System.Linq.Expressions.LambdaExpression,NRules.RuleModel.ActionTrigger)">
+            <summary>
+            Creates an action element that represents an action taken by the engine when the rule fires.
+            </summary>
+            <param name="expression">Action expression. It must have <see cref="T:NRules.RuleModel.IContext"/> as it's first parameter.</param>
+            <param name="actionTrigger">Action trigger that indicates when the action should execute.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.Element.Action(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Creates an action element that represents an action taken by the engine when the rule fires.
+            The action element is created with the default trigger, which executes the action when rule
+            is <see cref="F:NRules.RuleModel.ActionTrigger.Activated"/> or <see cref="F:NRules.RuleModel.ActionTrigger.Reactivated"/>.
+            </summary>
+            <param name="expression">Action expression. It must have <see cref="T:NRules.RuleModel.IContext"/> as it's first parameter.</param>
+            <returns>Created element.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.ExistsBuilder">
+            <summary>
+            Builder to compose an existential element.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.ExistsBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.Pattern(NRules.RuleModel.PatternElement)">
+            <summary>
+            Sets a pattern as the source of the existential element.
+            </summary>
+            <param name="element">Element to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.Pattern(NRules.RuleModel.Builders.PatternBuilder)">
+            <summary>
+            Sets a pattern builder as the source of the existential element.
+            </summary>
+            <param name="builder">Element builder to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.Pattern(System.Type,System.String)">
+            <summary>
+            Creates a pattern builder that builds the source of the existential element.
+            </summary>
+            <param name="type">Type of the element the pattern matches.</param>
+            <param name="name">Pattern name (optional).</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.Pattern(NRules.RuleModel.Declaration)">
+            <summary>
+            Creates a pattern builder that builds the source of the existential element.
+            </summary>
+            <param name="declaration">Pattern declaration.</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.Group(NRules.RuleModel.GroupElement)">
+            <summary>
+            Sets a group as the source of the existential element.
+            </summary>
+            <param name="element">Element to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.Group(NRules.RuleModel.Builders.GroupBuilder)">
+            <summary>
+            Sets a group builder as the source of the existential element.
+            </summary>
+            <param name="builder">Element builder to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ExistsBuilder.Group(NRules.RuleModel.Builders.GroupType)">
+            <summary>
+            Creates a group builder that builds a group as the source of the existential element.
+            </summary>
+            <param name="groupType">Group type.</param>
+            <returns>Group builder.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.FilterGroupBuilder">
+            <summary>
+            Builder to compose a group of rule match filters.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.FilterGroupBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.FilterGroupBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.FilterGroupBuilder.Filter(NRules.RuleModel.FilterElement)">
+            <summary>
+            Adds a filter element to the group element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.FilterGroupBuilder.Filter(NRules.RuleModel.FilterType,System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Adds a filter to the group element.
+            </summary>
+            <param name="filterType">Type of filter.</param>
+            <param name="expression">Filter expression.</param>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.ForAllBuilder">
+            <summary>
+            Builder to compose a forall element (universal quantifier).
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ForAllBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.ForAllBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ForAllBuilder.BasePattern(NRules.RuleModel.PatternElement)">
+            <summary>
+            Sets the base pattern of the forall element.
+            </summary>
+            <param name="element">Element to set as the base pattern.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ForAllBuilder.BasePattern(NRules.RuleModel.Builders.PatternBuilder)">
+            <summary>
+            Sets the base pattern builder of the forall element.
+            </summary>
+            <param name="builder">Element builder to set as the base pattern.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ForAllBuilder.BasePattern(System.Type)">
+            <summary>
+            Creates a pattern builder that builds the base pattern of the forall element.
+            </summary>
+            <param name="type">Type of the element the pattern matches.</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ForAllBuilder.Pattern(NRules.RuleModel.PatternElement)">
+            <summary>
+            Adds a pattern to the forall element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ForAllBuilder.Pattern(NRules.RuleModel.Builders.PatternBuilder)">
+            <summary>
+            Adds a pattern builder to the forall element.
+            </summary>
+            <param name="builder">Element builder to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.ForAllBuilder.Pattern(System.Type)">
+            <summary>
+            Creates a pattern builder that builds a pattern of the forall element.
+            </summary>
+            <param name="type">Type of the element the pattern matches.</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.GroupType">
+            <summary>
+            Type of group element.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.Builders.GroupType.And">
+            <summary>
+            Logical AND.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.Builders.GroupType.Or">
+            <summary>
+            Logical OR.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.GroupBuilder">
+            <summary>
+            Builder to compose a group element.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.GroupBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.GroupType(NRules.RuleModel.Builders.GroupType)">
+            <summary>
+            Sets type of the group element.
+            </summary>
+            <param name="groupType">Group type to set.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Pattern(NRules.RuleModel.PatternElement)">
+            <summary>
+            Adds a pattern to the group element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Pattern(NRules.RuleModel.Builders.PatternBuilder)">
+            <summary>
+            Adds a pattern builder to the group element.
+            </summary>
+            <param name="builder">Element builder to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Pattern(System.Type,System.String)">
+            <summary>
+            Creates a pattern builder that builds a pattern as part of the current group element.
+            </summary>
+            <param name="type">Pattern type.</param>
+            <param name="name">Pattern name (optional).</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Pattern(NRules.RuleModel.Declaration)">
+            <summary>
+            Creates a pattern builder that builds a pattern as part of the current group element.
+            </summary>
+            <param name="declaration">Pattern declaration.</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Group(NRules.RuleModel.GroupElement)">
+            <summary>
+            Adds a nested group to this group element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Group(NRules.RuleModel.Builders.GroupBuilder)">
+            <summary>
+            Adds a nested group builder to this group element.
+            </summary>
+            <param name="builder">Element builder to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Group(NRules.RuleModel.Builders.GroupType)">
+            <summary>
+            Creates a group builder that builds a group as part of the current group element.
+            </summary>
+            <param name="groupType">Group type.</param>
+            <returns>Group builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Exists(NRules.RuleModel.ExistsElement)">
+            <summary>
+            Adds an existential element to the group element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Exists(NRules.RuleModel.Builders.ExistsBuilder)">
+            <summary>
+            Adds an existential element builder to the group element.
+            </summary>
+            <param name="builder">Element builder to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Exists">
+            <summary>
+            Creates a builder for an existential element as part of the current group element.
+            </summary>
+            <returns>Existential builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Not(NRules.RuleModel.NotElement)">
+            <summary>
+            Adds a negative existential element to the group element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Not(NRules.RuleModel.Builders.NotBuilder)">
+            <summary>
+            Adds a negative existential element builder to the group element.
+            </summary>
+            <param name="builder">Element builder to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.Not">
+            <summary>
+            Creates a builder for a negative existential element as part of the current group element.
+            </summary>
+            <returns>Negative existential builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.ForAll(NRules.RuleModel.ForAllElement)">
+            <summary>
+            Adds a forall element to the group element.
+            </summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.ForAll(NRules.RuleModel.Builders.ForAllBuilder)">
+            <summary>
+            Adds a forall element builder to the group element.
+            </summary>
+            <param name="builder">Element builder to add.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.GroupBuilder.ForAll">
+            <summary>
+            Creates a builder for a forall element as part of the current group element.
+            </summary>
+            <returns>Forall builder.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.NotBuilder">
+            <summary>
+            Builder to compose a negative existential element.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.NotBuilder"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.Pattern(NRules.RuleModel.PatternElement)">
+            <summary>
+            Sets a pattern as the source of the negative existential element.
+            </summary>
+            <param name="element">Element to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.Pattern(NRules.RuleModel.Builders.PatternBuilder)">
+            <summary>
+            Sets a pattern builder as the source of the negative existential element.
+            </summary>
+            <param name="builder">Element builder to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.Pattern(System.Type,System.String)">
+            <summary>
+            Creates a pattern builder that builds the source of the negative existential element.
+            </summary>
+            <param name="type">Type of the element the pattern matches.</param>
+            <param name="name">Pattern name (optional).</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.Pattern(NRules.RuleModel.Declaration)">
+            <summary>
+            Creates a pattern builder that builds the source of the negative existential element.
+            </summary>
+            <param name="declaration">Pattern declaration.</param>
+            <returns>Pattern builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.Group(NRules.RuleModel.GroupElement)">
+            <summary>
+            Sets a group as the source of the negative existential element.
+            </summary>
+            <param name="element">Element to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.Group(NRules.RuleModel.Builders.GroupBuilder)">
+            <summary>
+            Sets a group builder as the source of the negative existential element.
+            </summary>
+            <param name="builder">Element builder to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.NotBuilder.Group(NRules.RuleModel.Builders.GroupType)">
+            <summary>
+            Creates a group builder that builds a group as the source of the negative existential element.
+            </summary>
+            <param name="groupType">Group type.</param>
+            <returns>Group builder.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.PatternBuilder">
+            <summary>
+            Builder to compose a rule pattern.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.#ctor(System.Type,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.PatternBuilder"/>.
+            </summary>
+            <param name="type">Pattern type.</param>
+            <param name="name">Pattern name.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.#ctor(NRules.RuleModel.Declaration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NRules.RuleModel.Builders.PatternBuilder"/>.
+            </summary>
+            <param name="declaration">Pattern declaration.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.Condition(System.Linq.Expressions.LambdaExpression)">
+            <summary>
+            Adds a condition expression to the pattern element.
+            </summary>
+            <param name="expression">Condition expression.
+            Names and types of the expression parameters must match the names and types defined in the pattern declarations.</param>
+        </member>
+        <member name="P:NRules.RuleModel.Builders.PatternBuilder.Declaration">
+            <summary>
+            Pattern declaration.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.Aggregate(NRules.RuleModel.AggregateElement)">
+            <summary>
+            Sets an aggregate element as the source of the pattern element.
+            </summary>
+            <param name="element">Element to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.Aggregate(NRules.RuleModel.Builders.AggregateBuilder)">
+            <summary>
+            Sets an aggregate builder as the source of the pattern element.
+            </summary>
+            <param name="builder">Element builder to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.Aggregate">
+            <summary>
+            Creates an aggregate builder that builds the source of the pattern element.
+            </summary>
+            <returns>Aggregate builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.Binding(NRules.RuleModel.BindingElement)">
+            <summary>
+            Sets a binding element as the source of the pattern element.
+            </summary>
+            <param name="element">Element to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.Binding(NRules.RuleModel.Builders.BindingBuilder)">
+            <summary>
+            Sets a binding builder as the source of the pattern element.
+            </summary>
+            <param name="builder">Element builder to set as the source.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.PatternBuilder.Binding">
+            <summary>
+            Creates a binding builder that builds the source of the pattern element.
+            </summary>
+            <returns>Binding builder.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.RuleBuilder">
+            <summary>
+            Builder to compose a rule definition.
+            Contains methods to specify rule's metadata, as well as create child builders for rule's left-hand side and right-hand side.
+            Creates <see cref="T:NRules.RuleModel.IRuleDefinition"/>.
+            </summary>
+            <threadsafety instance="false" />
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.#ctor">
+            <summary>
+            Constructs an empty rule builder.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Name(System.String)">
+            <summary>
+            Sets rule's name.
+            </summary>
+            <param name="name">Rule name value.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Description(System.String)">
+            <summary>
+            Sets rule's description.
+            </summary>
+            <param name="description">Rule description value.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Tags(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds rule's tags.
+            </summary>
+            <param name="tags">Rule tag values.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Tag(System.String)">
+            <summary>
+            Adds rule's tag.
+            </summary>
+            <param name="tag">Rule tag value.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Properties(System.Collections.Generic.IEnumerable{NRules.RuleModel.RuleProperty})">
+            <summary>
+            Adds rule's properties.
+            </summary>
+            <param name="properties">Rule property.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Property(System.String,System.Object)">
+            <summary>
+            Adds rule's property.
+            </summary>
+            <param name="name">Property name.</param>
+            <param name="value">Property value.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Priority(System.Int32)">
+            <summary>
+            Sets rule's priority.
+            Default priority is 0.
+            </summary>
+            <param name="priority">Rule priority value.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Repeatability(NRules.RuleModel.RuleRepeatability)">
+            <summary>
+            Sets rule's repeatability.
+            Default repeatability is <see cref="F:NRules.RuleModel.RuleRepeatability.Repeatable"/>.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Dependencies">
+            <summary>
+            Retrieves dependencies builder.
+            </summary>
+            <returns>Dependencies builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Dependencies(NRules.RuleModel.Builders.DependencyGroupBuilder)">
+            <summary>
+            Sets dependencies builder.
+            </summary>
+            <param name="builder">Builder to set.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.LeftHandSide">
+            <summary>
+            Retrieves left-hand side builder (conditions).
+            </summary>
+            <returns>Left hand side builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.LeftHandSide(NRules.RuleModel.Builders.GroupBuilder)">
+            <summary>
+            Sets left-hand side builder (conditions).
+            </summary>
+            <param name="builder">Builder to set.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Filters">
+            <summary>
+            Retrieves filters builder.
+            </summary>
+            <returns>Filters builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Filters(NRules.RuleModel.Builders.FilterGroupBuilder)">
+            <summary>
+            Sets filters builder.
+            </summary>
+            <param name="builder">Builder to set.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.RightHandSide">
+            <summary>
+            Retrieves right-hand side builder (actions).
+            </summary>
+            <returns>Right hand side builder.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.RightHandSide(NRules.RuleModel.Builders.ActionGroupBuilder)">
+            <summary>
+            Sets right-hand side builder.
+            </summary>
+            <param name="builder">Builder to set.</param>
+        </member>
+        <member name="M:NRules.RuleModel.Builders.RuleBuilder.Build">
+            <summary>
+            Creates rule definition using current state of the builder.
+            </summary>
+            <returns>Rule definition.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.Builders.RuleElementBuilder">
+            <summary>
+            Base class for rule element builders.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.ConditionElement">
+            <summary>
+            Pattern condition element.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.Declaration">
+            <summary>
+            Rule element declaration.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.Declaration.Name">
+            <summary>
+            Symbol name.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.Declaration.Type">
+            <summary>
+            Symbol type.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.Declaration.Target">
+            <summary>
+            Rule element that this declaration is referencing.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.DeclarationExtensions.ToParameterExpression(NRules.RuleModel.Declaration)">
+            <summary>
+            Converts rule element <see cref="T:NRules.RuleModel.Declaration"/> to a <see cref="T:System.Linq.Expressions.ParameterExpression"/>.
+            </summary>
+            <param name="declaration">Declaration to convert.</param>
+            <returns>Parameter expression.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.DeclarationExtensions.ToDeclaration(System.Linq.Expressions.ParameterExpression)">
+            <summary>
+            Converts <see cref="T:System.Linq.Expressions.ParameterExpression"/> to a rule element <see cref="T:NRules.RuleModel.Declaration"/>.
+            </summary>
+            <param name="parameter">Parameter expression to convert</param>
+            <returns>Rule element declaration.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.DependencyElement">
+            <summary>
+            Dependency that the rule uses when its actions run.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.DependencyElement.Declaration">
+            <summary>
+            Declaration that references the dependency.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.DependencyElement.ServiceType">
+            <summary>
+            Type of service that this dependency configures.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.DependencyGroupElement">
+            <summary>
+            Rule element that groups dependencies that the rule uses when its actions runs.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.DependencyGroupElement.Dependencies">
+            <summary>
+            List of dependencies the group element contains.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.ExistsElement">
+            <summary>
+            Existential quantifier.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ExistsElement.Source">
+            <summary>
+            Fact source of the existential element.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.ExpressionCollection">
+            <summary>
+            Ordered readonly collection of named expressions.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ExpressionCollection.Count">
+            <summary>
+            Number of expressions in the collection.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ExpressionCollection.Item(System.String)">
+            <summary>
+            Retrieves single expression by name.
+            </summary>
+            <param name="name">Expression name.</param>
+            <returns>Matching expression.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.ExpressionCollection.Find(System.String)">
+            <summary>
+            Retrieves expressions by name.
+            </summary>
+            <param name="name">Expression name.</param>
+            <returns>Matching expression or empty IEnumerable.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.ExpressionCollection.FindSingleOrDefault(System.String)">
+            <summary>
+            Retrieves single expression by name.
+            </summary>
+            <param name="name">Expression name.</param>
+            <returns>Matching expression or <c>null</c>.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.ExpressionElement">
+            <summary>
+            Rule element that defines an expression.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ExpressionElement.Expression">
+            <summary>
+            Expression.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.FilterType">
+            <summary>
+            Type of filter applied to rule matches.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.FilterType.Predicate">
+            <summary>
+            Filter based on a predicate expression.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.FilterType.KeyChange">
+            <summary>
+            Filter that only accepts matches that result in a change of a given key.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.FilterElement">
+            <summary>
+            Filter that determines which rule matches should trigger rule actions.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.FilterElement.FilterType">
+            <summary>
+            Type of rule match filter.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.FilterGroupElement">
+            <summary>
+            Rule element that groups filters that determine which rule matches should trigger rule actions.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.FilterGroupElement.Filters">
+            <summary>
+            List of filters the group element contains.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.ForAllElement">
+            <summary>
+            Universal quantifier.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ForAllElement.BasePattern">
+            <summary>
+            Base pattern that determines the universe of facts that the universal quantifier is applied to.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.ForAllElement.Patterns">
+            <summary>
+            Patterns that must all match for the selected facts.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.GroupElement">
+            <summary>
+            Grouping element that logically combines the patterns or other grouping elements.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.GroupElement.ChildElements">
+            <summary>
+            List of child elements in the grouping.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.IContext">
+            <summary>
+            Rules engine execution context.
+            Can be used by rules to interact with the rules engine, i.e. insert, update, retract facts.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IContext.Rule">
+            <summary>
+            Current rule definition.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IContext.Match">
+            <summary>
+            Current rule match.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.Halt">
+            <summary>
+            Halts rules execution. The engine continues execution of the current rule and exits the execution cycle.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.Insert(System.Object)">
+            <summary>
+            Inserts a new fact to the rules engine memory.
+            </summary>
+            <param name="fact">Fact to add.</param>
+            <exception cref="T:System.ArgumentException">If fact already exists in working memory.</exception>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.InsertAll(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Inserts new facts to the rules engine memory.
+            </summary>
+            <param name="facts">Facts to add.</param>
+            <exception cref="T:System.ArgumentException">If any fact already exists in working memory.</exception>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.TryInsert(System.Object)">
+            <summary>
+            Inserts a fact to the rules engine memory if the fact does not exist.
+            </summary>
+            <param name="fact">Fact to add.</param>
+            <returns>Whether the fact was inserted or not.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.Update(System.Object)">
+            <summary>
+            Updates existing fact in the rules engine memory.
+            </summary>
+            <param name="fact">Fact to update.</param>
+            <exception cref="T:System.ArgumentException">If fact does not exist in working memory.</exception>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.UpdateAll(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Updates existing facts in the rules engine memory.
+            </summary>
+            <param name="facts">Facts to update.</param>
+            <exception cref="T:System.ArgumentException">If any fact does not exist in working memory.</exception>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.TryUpdate(System.Object)">
+            <summary>
+            Updates a fact in the rules engine memory if the fact exists.
+            </summary>
+            <param name="fact">Fact to update.</param>
+            <returns>Whether the fact was updated or not.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.Retract(System.Object)">
+            <summary>
+            Removes existing fact from the rules engine memory.
+            </summary>
+            <param name="fact">Fact to remove.</param>
+            <exception cref="T:System.ArgumentException">If fact does not exist in working memory.</exception>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.RetractAll(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Removes existing facts from the rules engine memory.
+            </summary>
+            <param name="facts">Facts to remove.</param>
+            <exception cref="T:System.ArgumentException">If any fact does not exist in working memory.</exception>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.TryRetract(System.Object)">
+            <summary>
+            Removes a fact from the rules engine memory if the fact exists.
+            </summary>
+            <param name="fact">Fact to remove.</param>
+            <returns>Whether the fact was retracted or not.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.GetLinkedKeys">
+            <summary>
+            Retrieves keys of facts linked to the current rule activation.
+            </summary>
+            <returns>Keys for linked facts.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.GetLinked(System.Object)">
+            <summary>
+            Retrieves a fact linked to the current rule activation by key.
+            </summary>
+            <param name="key">Key for the linked fact.</param>
+            <returns>Linked fact if it exists, <c>null</c> otherwise.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.InsertLinked(System.Object,System.Object)">
+            <summary>
+            Inserts a new fact and links it to the current rule activation.
+            The fact will be automatically retracted if this activation is removed.
+            </summary>
+            <param name="key">Key for the linked fact. Must be unique for a given rule.</param>
+            <param name="fact">Fact to insert.</param>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.InsertAllLinked(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Object,System.Object}})">
+            <summary>
+            Inserts new facts and links them to the current rule activation.
+            The facts will be automatically retracted if this activation is removed.
+            </summary>
+            <param name="keyedFacts">Keyed facts to insert. Keys must be unique for a given rule.</param>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.UpdateLinked(System.Object,System.Object)">
+            <summary>
+            Updates existing fact that's linked to the current rule activation.
+            </summary>
+            <param name="key">Key for the linked fact. Must be unique for a given rule.</param>
+            <param name="fact">Fact to update.</param>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.UpdateAllLinked(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Object,System.Object}})">
+            <summary>
+            Updates existing facts that are linked to the current rule activation.
+            </summary>
+            <param name="keyedFacts">Keyed facts to update. Keys must be unique for a given rule.</param>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.RetractLinked(System.Object,System.Object)">
+            <summary>
+            Retracts existing fact that's linked to the current rule activation.
+            </summary>
+            <remarks>Linked facts are retracted automatically, when activation is deleted, but 
+            this method can be used in complex scenarios, when linked facts need to be retracted explicitly,
+            prior to activation getting deleted.
+            </remarks>
+            <param name="key">Key for the linked fact. Must be unique for a given rule.</param>
+            <param name="fact">Fact to retract.</param>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.RetractAllLinked(System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.Object,System.Object}})">
+            <summary>
+            Retracts existing facts that are linked to the current rule activation.
+            </summary>
+            <remarks>Linked facts are retracted automatically, when activation is deleted, but 
+            this method can be used in complex scenarios, when linked facts need to be retracted explicitly,
+            prior to activation getting deleted.
+            </remarks>
+            <param name="keyedFacts">Keyed facts to retract. Keys must be unique for a given rule.</param>
+        </member>
+        <member name="M:NRules.RuleModel.IContext.Resolve(System.Type)">
+            <summary>
+            Resolves a registered service (normally via an IoC container).
+            </summary>
+            <param name="serviceType">Type of service to resolve.</param>
+            <returns>Service instance.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.IFact">
+            <summary>
+            Fact in the engine's working memory.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IFact.Type">
+            <summary>
+            Fact runtime type.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IFact.Value">
+            <summary>
+            Fact value.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IFact.Source">
+            <summary>
+            Source of this fact, for synthetic facts, or <c>null</c>.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.IFactMatch">
+            <summary>
+            Represents a fact matched by a rule.
+            </summary>
+            <seealso cref="T:NRules.RuleModel.IFact"/>
+        </member>
+        <member name="P:NRules.RuleModel.IFactMatch.Declaration">
+            <summary>
+            Variable declaration that corresponds to the fact.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.FactSourceType">
+            <summary>
+            Type of source that produced the fact.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.FactSourceType.Aggregate">
+            <summary>
+            Fact produced by an aggregation.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.FactSourceType.Linked">
+            <summary>
+            Fact produced as a linked fact from a rule action.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.IFactSource">
+            <summary>
+            Source of the fact, for synthetic facts.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IFactSource.SourceType">
+            <summary>
+            Type of source that produced this fact.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IFactSource.Facts">
+            <summary>
+            Facts that produced this fact.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.MatchTrigger">
+            <summary>
+            Event that triggered the match.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.MatchTrigger.None">
+            <summary>
+            Match is not active.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.MatchTrigger.Created">
+            <summary>
+            Match is triggered due to activation creation.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.MatchTrigger.Updated">
+            <summary>
+            Match is triggered due to activation update.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.MatchTrigger.Removed">
+            <summary>
+            Match is triggered due to activation removal.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.IMatch">
+            <summary>
+            Represents a match of all rule's conditions.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IMatch.Rule">
+            <summary>
+            Rule that matched the given facts.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IMatch.Facts">
+            <summary>
+            Facts matched by the rule.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IMatch.Trigger">
+            <summary>
+            Event that triggered the match.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.IRuleRepository">
+            <summary>
+            In-memory database of production rules arranged into rule sets.
+            <seealso cref="T:NRules.RuleModel.IRuleSet"/>
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.IRuleRepository.GetRuleSets">
+            <summary>
+            Retrieves all rule sets contained in the repository.
+            </summary>
+            <returns>Collection of rule sets.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.ITuple">
+            <summary>
+            Set of facts matched by the rules engine.
+            </summary>
+            <seealso cref="T:NRules.RuleModel.IFact"/>
+        </member>
+        <member name="P:NRules.RuleModel.ITuple.Facts">
+            <summary>
+            Facts in the tuple, representing a partial match in the engine's working memory.
+            </summary>
+            <remarks>Facts in the tuple are stored in the reverse order.</remarks>
+        </member>
+        <member name="P:NRules.RuleModel.ITuple.Count">
+            <summary>
+            Number of facts in the tuple.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.NamedExpressionElement">
+            <summary>
+            Expression with a name used by an aggregator.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.NamedExpressionElement.Name">
+            <summary>
+            Expression name.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.NotElement">
+            <summary>
+            Negative existential quantifier.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.NotElement.Source">
+            <summary>
+            Fact source of the not element.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.OrElement">
+            <summary>
+            Grouping element based on the logical OR condition.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.PatternElement">
+            <summary>
+            Rule element that represents a pattern that matches facts.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.PatternElement.Declaration">
+            <summary>
+            Declaration that references the pattern.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.PatternElement.Source">
+            <summary>
+            Optional pattern source element.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.PatternElement.ValueType">
+            <summary>
+            Type of the values that the pattern matches.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.PatternElement.Conditions">
+            <summary>
+            List of conditions the pattern checks.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.PatternSourceElement">
+            <summary>
+            Rule element that serves as a source to pattern elements.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.PatternSourceElement.ResultType">
+            <summary>
+            Type of the result that this rule element yields.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.PropertyMap">
+            <summary>
+            Readonly map of rule properties.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.PropertyMap.#ctor(System.Collections.Generic.IEnumerable{NRules.RuleModel.RuleProperty})">
+            <summary>
+            Creates new map of rule properties.
+            </summary>
+            <param name="properties">Rule properties to put in the map.</param>
+        </member>
+        <member name="P:NRules.RuleModel.PropertyMap.Count">
+            <summary>
+            Number of properties in the map.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.PropertyMap.Item(System.String)">
+            <summary>
+            Retrieves property by name.
+            </summary>
+            <param name="name">Property name.</param>
+            <returns>Matching property value.</returns>
+        </member>
+        <member name="M:NRules.RuleModel.PropertyMap.TryGetProperty(System.String,NRules.RuleModel.RuleProperty@)">
+            <summary>
+            Retrieves property by name if it exists.
+            </summary>
+            <param name="name">Property name.</param>
+            <param name="property">Matching property if found.</param>
+            <returns>If found <c>true</c>, otherwise <c>false</c>.</returns>
+        </member>
+        <member name="T:NRules.RuleModel.RuleRepeatability">
+            <summary>
+            Rule repeatability.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.RuleRepeatability.Repeatable">
+            <summary>
+            Rule will fire every time a matching set of facts is inserted or updated.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.RuleRepeatability.NonRepeatable">
+            <summary>
+            Rule will not fire with the same combination of facts, unless that combination was previously deactivated (i.e. through retraction).
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.IRuleDefinition">
+            <summary>
+            Production rule definition in the canonical rule model.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.Name">
+            <summary>
+            Rule name.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.Description">
+            <summary>
+            Rule description.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.Priority">
+            <summary>
+            Rule priority.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.Repeatability">
+            <summary>
+            Rule repeatability.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.Tags">
+            <summary>
+            Tags applied to the rule.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.Properties">
+            <summary>
+            Properties attached to the rule.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.DependencyGroup">
+            <summary>
+            Rule's dependencies.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.FilterGroup">
+            <summary>
+            Rule's filters, that determine whether rule's match triggers actions.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.LeftHandSide">
+            <summary>
+            Rule left-hand side (conditions).
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleDefinition.RightHandSide">
+            <summary>
+            Rule right-hand side (actions).
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.RuleElement">
+            <summary>
+            Base class for rule elements.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.RuleElementExtensions.Match(NRules.RuleModel.RuleElement,System.Action{NRules.RuleModel.PatternElement},System.Action{NRules.RuleModel.AggregateElement},System.Action{NRules.RuleModel.GroupElement},System.Action{NRules.RuleModel.ExistsElement},System.Action{NRules.RuleModel.NotElement},System.Action{NRules.RuleModel.ForAllElement})">
+            <summary>
+            Matches a rule element to an appropriate action based on the concrete type of the element.
+            Type-safe implementation of discriminated union for rule elements.
+            </summary>
+            <param name="element">Rule element to match.</param>
+            <param name="pattern">Action to invoke on the element if the element is a <see cref="T:NRules.RuleModel.PatternElement"/>.</param>
+            <param name="aggregate">Action to invoke on the element if the element is an <see cref="T:NRules.RuleModel.AggregateElement"/>.</param>
+            <param name="group">Action to invoke on the element if the element is a <see cref="T:NRules.RuleModel.GroupElement"/>.</param>
+            <param name="exists">Action to invoke on the element if the element is an <see cref="T:NRules.RuleModel.ExistsElement"/>.</param>
+            <param name="not">Action to invoke on the element if the element is a <see cref="T:NRules.RuleModel.NotElement"/>.</param>
+            <param name="forall">Action to invoke on the element if the element is a <see cref="T:NRules.RuleModel.ForAllElement"/>.</param>
+        </member>
+        <member name="M:NRules.RuleModel.RuleElementExtensions.Match(NRules.RuleModel.GroupElement,System.Action{NRules.RuleModel.AndElement},System.Action{NRules.RuleModel.OrElement})">
+            <summary>
+            Matches a group element to an appropriate action based on the concrete type of the element.
+            Type-safe implementation of discriminated union for group elements.
+            </summary>
+            <param name="element">Group element to match.</param>
+            <param name="and">Action to invoke on the element if the element is a <see cref="T:NRules.RuleModel.AndElement"/>.</param>
+            <param name="or">Action to invoke on the element if the element is a <see cref="T:NRules.RuleModel.OrElement"/>.</param>
+        </member>
+        <member name="T:NRules.RuleModel.RuleElementVisitor`1">
+            <summary>
+            Visitor to traverse rule definition (or its part).
+            </summary>
+            <typeparam name="TContext">Traversal context.</typeparam>
+        </member>
+        <member name="T:NRules.RuleModel.RuleLeftElement">
+            <summary>
+            Base class for rule elements on the left-hand side of the rule definition.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.RuleProperty">
+            <summary>
+            Arbitrary value associated with a rule.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.RuleProperty.#ctor(System.String,System.Object)">
+            <summary>
+            Creates a new rule property.
+            </summary>
+            <param name="name">Rule property name.</param>
+            <param name="value">Rule property value.</param>
+        </member>
+        <member name="P:NRules.RuleModel.RuleProperty.Name">
+            <summary>
+            Rule property name.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.RuleProperty.Value">
+            <summary>
+            Rule property value.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.RuleRightElement">
+            <summary>
+            Base class for rule elements on the right-hand side of the rule definition.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.IRuleSet">
+            <summary>
+            Represents a named set of rules.
+            </summary>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleSet.Name">
+            <summary>
+            Rule set name.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.IRuleSet.Add(System.Collections.Generic.IEnumerable{NRules.RuleModel.IRuleDefinition})">
+            <summary>
+            Adds rules to the rule set.
+            </summary>
+            <param name="ruleDefinitions">Rule definitions to add.</param>
+        </member>
+        <member name="P:NRules.RuleModel.IRuleSet.Rules">
+            <summary>
+            Rules in the rule set.
+            </summary>
+        </member>
+        <member name="T:NRules.RuleModel.RuleSet">
+            <summary>
+            Default implementation of a rule set.
+            </summary>
+        </member>
+        <member name="M:NRules.RuleModel.RuleSetExtensions.Add(NRules.RuleModel.IRuleSet,NRules.RuleModel.IRuleDefinition)">
+            <summary>
+            Adds a rule to the rule set.
+            </summary>
+            <param name="ruleSet">Rule set instance.</param>
+            <param name="ruleDefinition">Rule definition to add.</param>
+        </member>
+        <member name="T:NRules.RuleModel.SortDirection">
+            <summary>
+            Order that the sort should be performed in.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.SortDirection.Ascending">
+            <summary>
+            Sort in Ascending order.
+            </summary>
+        </member>
+        <member name="F:NRules.RuleModel.SortDirection.Descending">
+            <summary>
+            Sort in Descending order.
+            </summary>
+        </member>
+    </members>
+</doc>

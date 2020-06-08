@@ -3511,7 +3511,7 @@ GameObject:
   - component: {fileID: 374063557}
   - component: {fileID: 374063558}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3952,6 +3952,7 @@ GameObject:
   - component: {fileID: 470828504}
   - component: {fileID: 470828503}
   - component: {fileID: 470828502}
+  - component: {fileID: 470828505}
   m_Layer: 5
   m_Name: GetLevelBtn
   m_TagString: Untagged
@@ -4018,7 +4019,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 470828503}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 470828505}
+        m_MethodName: GetUserLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &470828503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4054,6 +4066,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470828500}
   m_CullTransparentMesh: 0
+--- !u!114 &470828505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 470828500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68841fc6ac47d0347853995eb96a67c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &482928281
 GameObject:
   m_ObjectHideFlags: 0
@@ -4297,7 +4321,7 @@ GameObject:
   - component: {fileID: 503083048}
   - component: {fileID: 503083049}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4939,7 +4963,7 @@ GameObject:
   - component: {fileID: 604966998}
   - component: {fileID: 604966999}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5253,7 +5277,7 @@ GameObject:
   - component: {fileID: 623746975}
   - component: {fileID: 623746976}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5933,6 +5957,83 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 684464535}
+  m_CullTransparentMesh: 0
+--- !u!1 &689006859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 689006860}
+  - component: {fileID: 689006862}
+  - component: {fileID: 689006861}
+  m_Layer: 5
+  m_Name: ErrorMessage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &689006860
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689006859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1680490433}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2295}
+  m_SizeDelta: {x: 632.6, y: 59.3}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &689006861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689006859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+    m_FontSize: 21
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 3
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: There are some unfilled fields. Please, answer all the questions.
+--- !u!222 &689006862
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689006859}
   m_CullTransparentMesh: 0
 --- !u!1 &691684444
 GameObject:
@@ -7098,8 +7199,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1190435667}
   m_HandleRect: {fileID: 1190435666}
   m_Direction: 2
-  m_Value: 0.9999999
-  m_Size: 0.111144334
+  m_Value: 1
+  m_Size: 0.11007587
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7150,7 +7251,7 @@ GameObject:
   - component: {fileID: 799321321}
   - component: {fileID: 799321322}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7309,7 +7410,7 @@ GameObject:
   - component: {fileID: 818320650}
   - component: {fileID: 818320651}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8676,7 +8777,7 @@ GameObject:
   - component: {fileID: 924303924}
   - component: {fileID: 924303925}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9462,7 +9563,7 @@ GameObject:
   - component: {fileID: 1036076190}
   - component: {fileID: 1036076191}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10138,7 +10239,7 @@ GameObject:
   - component: {fileID: 1103084892}
   - component: {fileID: 1103084893}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10374,7 +10475,7 @@ GameObject:
   - component: {fileID: 1130410120}
   - component: {fileID: 1130410121}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11194,7 +11295,7 @@ GameObject:
   - component: {fileID: 1232837972}
   - component: {fileID: 1232837973}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11817,7 +11918,7 @@ GameObject:
   - component: {fileID: 1297741734}
   - component: {fileID: 1297741735}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14475,8 +14576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 860.6, y: 519.1}
+  m_AnchoredPosition: {x: 0, y: 0.000016928}
+  m_SizeDelta: {x: 860.6, y: 510.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!111 &1577016288
 Animation:
@@ -15003,7 +15104,7 @@ GameObject:
   - component: {fileID: 1627269567}
   - component: {fileID: 1627269568}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15544,6 +15645,7 @@ RectTransform:
   - {fileID: 2043893894}
   - {fileID: 2057960247}
   - {fileID: 1133316102}
+  - {fileID: 689006860}
   m_Father: {fileID: 691684445}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16188,7 +16290,7 @@ GameObject:
   - component: {fileID: 1805150648}
   - component: {fileID: 1805150649}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17548,7 +17650,7 @@ GameObject:
   - component: {fileID: 1977810408}
   - component: {fileID: 1977810409}
   m_Layer: 5
-  m_Name: Answer1
+  m_Name: Yes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17630,7 +17732,7 @@ GameObject:
   - component: {fileID: 1978950170}
   - component: {fileID: 1978950171}
   m_Layer: 5
-  m_Name: Answer2
+  m_Name: No
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
