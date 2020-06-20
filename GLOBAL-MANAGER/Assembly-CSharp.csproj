@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{52256C60-694F-76D1-D534-800FF43C43EC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -23,7 +22,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>Temp\bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2018_4_22;UNITY_2018_4;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
+    <DefineConstants>DEBUG;TRACE;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_5_6_OR_NEWER;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2018_4_23;UNITY_2018_4;UNITY_2018;PLATFORM_ARCH_64;UNITY_64;UNITY_INCLUDE_TESTS;ENABLE_AUDIO;ENABLE_CACHING;ENABLE_CLOTH;ENABLE_DUCK_TYPING;ENABLE_MICROPHONE;ENABLE_MULTIPLE_DISPLAYS;ENABLE_PHYSICS;ENABLE_SPRITES;ENABLE_GRID;ENABLE_TILEMAP;ENABLE_TERRAIN;ENABLE_TEXTURE_STREAMING;ENABLE_DIRECTOR;ENABLE_UNET;ENABLE_LZMA;ENABLE_UNITYEVENTS;ENABLE_WEBCAM;ENABLE_WWW;ENABLE_CLOUD_SERVICES_COLLAB;ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS;ENABLE_CLOUD_SERVICES_ADS;ENABLE_CLOUD_HUB;ENABLE_CLOUD_PROJECT_ID;ENABLE_CLOUD_SERVICES_USE_WEBREQUEST;ENABLE_CLOUD_SERVICES_UNET;ENABLE_CLOUD_SERVICES_BUILD;ENABLE_CLOUD_LICENSE;ENABLE_EDITOR_HUB;ENABLE_EDITOR_HUB_LICENSE;ENABLE_WEBSOCKET_CLIENT;ENABLE_DIRECTOR_AUDIO;ENABLE_DIRECTOR_TEXTURE;ENABLE_TIMELINE;ENABLE_EDITOR_METRICS;ENABLE_EDITOR_METRICS_CACHING;ENABLE_MANAGED_JOBS;ENABLE_MANAGED_TRANSFORM_JOBS;ENABLE_MANAGED_ANIMATION_JOBS;INCLUDE_DYNAMIC_GI;INCLUDE_GI;ENABLE_MONO_BDWGC;PLATFORM_SUPPORTS_MONO;RENDER_SOFTWARE_CURSOR;INCLUDE_PUBNUB;ENABLE_VIDEO;ENABLE_CUSTOM_RENDER_TEXTURE;ENABLE_LOCALIZATION;PLATFORM_STANDALONE_WIN;PLATFORM_STANDALONE;UNITY_STANDALONE_WIN;UNITY_STANDALONE;ENABLE_SUBSTANCE;ENABLE_RUNTIME_GI;ENABLE_MOVIES;ENABLE_NETWORK;ENABLE_CRUNCH_TEXTURE_COMPRESSION;ENABLE_UNITYWEBREQUEST;ENABLE_CLOUD_SERVICES;ENABLE_CLOUD_SERVICES_ANALYTICS;ENABLE_CLOUD_SERVICES_PURCHASING;ENABLE_CLOUD_SERVICES_CRASH_REPORTING;ENABLE_OUT_OF_PROCESS_CRASH_HANDLER;ENABLE_EVENT_QUEUE;ENABLE_CLUSTER_SYNC;ENABLE_CLUSTERINPUT;ENABLE_VR;ENABLE_AR;ENABLE_WEBSOCKET_HOST;ENABLE_MONO;NET_STANDARD_2_0;ENABLE_PROFILER;UNITY_ASSERTIONS;UNITY_EDITOR;UNITY_EDITOR_64;UNITY_EDITOR_WIN;ENABLE_UNITY_COLLECTIONS_CHECKS;ENABLE_BURST_AOT;UNITY_TEAM_LICENSE;ENABLE_VSTU;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>0169</NoWarn>
@@ -50,7 +49,7 @@
     <UnityProjectGenerator>Unity/VSTU</UnityProjectGenerator>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
-    <UnityVersion>2018.4.22f1</UnityVersion>
+    <UnityVersion>2018.4.23f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
@@ -64,66 +63,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\src\ChallangeHandle.cs" />
-    <Compile Include="Assets\src\ChallengesOrderHandle.cs" />
-    <Compile Include="Assets\src\CommunicationButtonHandle.cs" />
-    <Compile Include="Assets\src\domain\User.cs" />
-    <Compile Include="Assets\src\rules\AdvancedUserRule.cs" />
-    <Compile Include="Assets\src\rules\BasicUserRule.cs" />
-    <Compile Include="Assets\src\rules\IntermediateUserRule.cs" />
-    <Compile Include="Assets\src\rules\No_KnowledgeUserRule.cs" />
-    <Compile Include="Assets\src\SiteSliderHandle.cs" />
-    <Compile Include="Assets\src\SiteSliderHandle2.cs" />
-    <Compile Include="Assets\src\SliderHandleAge.cs" />
-    <Compile Include="Assets\src\SurveyHandle.cs" />
-    <None Include="Assets\Packages\System.Globalization.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\NRules.RuleModel.0.9.0\lib\netstandard2.0\NRules.RuleModel.xml" />
-    <None Include="Assets\Packages\System.Text.Encoding.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\ThirdPartyNotices.txt" />
+    <Compile Include="Assets\Scripts\ChallangeHandle.cs" />
+    <Compile Include="Assets\Scripts\ChallengesOrderHandle.cs" />
+    <Compile Include="Assets\Scripts\CommunicationButtonHandle.cs" />
+    <Compile Include="Assets\Scripts\Control\User.cs" />
+    <Compile Include="Assets\Scripts\Control\UserControl.cs" />
+    <Compile Include="Assets\Scripts\Persistence\DBSingleton.cs" />
+    <Compile Include="Assets\Scripts\Persistence\DBUsers.cs" />
+    <Compile Include="Assets\Scripts\SiteSliderHandle.cs" />
+    <Compile Include="Assets\Scripts\SiteSliderHandle2.cs" />
+    <Compile Include="Assets\Scripts\SliderHandleAge.cs" />
+    <Compile Include="Assets\Scripts\SurveyHandle.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\Packages\System.Runtime.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\System.Reflection.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\Packages\System.Reflection.TypeExtensions.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.Diagnostics.Debug.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.IO.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\System.Threading.Tasks.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\NRules.Fluent.0.9.0\lib\netstandard2.0\NRules.Fluent.xml" />
-    <None Include="Assets\Packages\System.Globalization.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\NRules.Runtime.0.9.0\lib\netstandard2.0\NRules.xml" />
-    <None Include="Assets\Packages\System.Reflection.Primitives.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Targets.1.1.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\Packages\Microsoft.NETCore.Platforms.1.1.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.Reflection.Extensions.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\Packages\System.IO.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\Packages\System.Runtime.4.3.0\ThirdPartyNotices.txt" />
-    <None Include="Assets\Packages\System.Resources.ResourceManager.4.3.0\dotnet_library_license.txt" />
-    <None Include="Assets\Packages\System.Text.Encoding.4.3.0\ThirdPartyNotices.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\Packages\System.Reflection.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\Packages\System.Runtime.Extensions.4.3.0\dotnet_library_license.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -341,17 +308,8 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.22f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="NRules.Fluent">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/NRules.Fluent.0.9.0/lib/netstandard2.0/NRules.Fluent.dll</HintPath>
-    </Reference>
-    <Reference Include="NRules.RuleModel">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/NRules.RuleModel.0.9.0/lib/netstandard2.0/NRules.RuleModel.dll</HintPath>
-    </Reference>
-    <Reference Include="NRules">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/NRules.Runtime.0.9.0/lib/netstandard2.0/NRules.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Reflection.TypeExtensions">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Packages/System.Reflection.TypeExtensions.4.3.0/lib/netstandard1.5/System.Reflection.TypeExtensions.dll</HintPath>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>

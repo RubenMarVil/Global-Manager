@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_PixelRect:
     serializedVersion: 2
-    x: 1920
+    x: 0
     y: 43
     width: 1920
     height: 1007
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 2}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 548}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -112,10 +112,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 957
-  m_MinSize: {x: 683, y: 348}
-  m_MaxSize: {x: 12008, y: 8048}
+  m_MinSize: {x: 679, y: 498}
+  m_MaxSize: {x: 14002, y: 14048}
   vertical: 0
-  controlID: 29
+  controlID: 8802
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -135,12 +135,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1339
+    width: 1429
     height: 957
-  m_MinSize: {x: 406, y: 348}
-  m_MaxSize: {x: 8006, y: 8048}
+  m_MinSize: {x: 404, y: 498}
+  m_MaxSize: {x: 10002, y: 14048}
   vertical: 1
-  controlID: 30
+  controlID: 8803
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -160,12 +160,12 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 1339
-    height: 615
-  m_MinSize: {x: 406, y: 224}
-  m_MaxSize: {x: 8006, y: 4024}
+    width: 1429
+    height: 623
+  m_MinSize: {x: 404, y: 224}
+  m_MaxSize: {x: 8004, y: 4024}
   vertical: 0
-  controlID: 31
+  controlID: 8804
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,13 +183,13 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 0
-    width: 254
-    height: 615
+    width: 277
+    height: 623
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 13}
   m_Panes:
-  - {fileID: 14}
+  - {fileID: 13}
   m_Selected: 0
   m_LastSelected: 0
 --- !u!114 &9
@@ -207,17 +207,17 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 254
+    x: 277
     y: 0
-    width: 1085
-    height: 615
+    width: 1152
+    height: 623
   m_MinSize: {x: 204, y: 224}
   m_MaxSize: {x: 4004, y: 4024}
-  m_ActualView: {fileID: 15}
+  m_ActualView: {fileID: 14}
   m_Panes:
+  - {fileID: 14}
+  - {fileID: 12}
   - {fileID: 15}
-  - {fileID: 13}
-  - {fileID: 16}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &10
@@ -236,18 +236,18 @@ MonoBehaviour:
   m_Position:
     serializedVersion: 2
     x: 0
-    y: 615
-    width: 1339
-    height: 342
-  m_MinSize: {x: 102, y: 124}
-  m_MaxSize: {x: 4002, y: 4024}
-  m_ActualView: {fileID: 18}
+    y: 623
+    width: 1429
+    height: 334
+  m_MinSize: {x: 232, y: 274}
+  m_MaxSize: {x: 10002, y: 10024}
+  m_ActualView: {fileID: 16}
   m_Panes:
+  - {fileID: 16}
   - {fileID: 17}
   - {fileID: 18}
-  - {fileID: 19}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -263,348 +263,18 @@ MonoBehaviour:
   m_Children: []
   m_Position:
     serializedVersion: 2
-    x: 1339
+    x: 1429
     y: 0
-    width: 581
+    width: 491
     height: 957
-  m_MinSize: {x: 277, y: 74}
-  m_MaxSize: {x: 4002, y: 4024}
-  m_ActualView: {fileID: 20}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
+  m_ActualView: {fileID: 19}
   m_Panes:
-  - {fileID: 20}
-  - {fileID: 12}
+  - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &12
-MonoBehaviour:
-  m_ObjectHideFlags: 52
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 139222468, guid: 8dc1be91775c4bb469f6b74cef450eaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MinSize: {x: 100, y: 100}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_TitleContent:
-    m_Text: NuGet
-    m_Image: {fileID: 0}
-    m_Tooltip: 
-  m_Pos:
-    serializedVersion: 2
-    x: 3259
-    y: 73
-    width: 579
-    height: 937
-  m_PersistentViewDataDictionary: {fileID: 0}
-  hasRefreshed: 1
-  availablePackages:
-  - Id: NRules
-    Version: 0.9.0
-    Title: NRules, Rules Engine for .NET
-    Description: NRules is an open source rules engine for .NET that is based on the
-      Rete matching algorithm. NRules is an inference engine that, among other features,
-      supports forward chaining, negative, existential and universal quantifiers.
-      Rules are authored in C# using internal DSL.
-    Summary: NRules is an open source rules engine for .NET that is based on the Rete
-      matching algorithm with rules authored in C# using internal DSL.
-    ReleaseNotes: https://github.com/NRules/NRules/releases/v0.9.0
-    LicenseUrl: https://github.com/NRules/NRules/blob/master/LICENSE.txt
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules/0.9.0
-    DownloadCount: 302196
-    Authors: Sergiy Nikolayev
-    Icon: {fileID: 0}
-    ProjectUrl: http://nrules.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.Runtime
-    Version: 0.9.0
-    Title: NRules.Runtime, Execution Engine for NRules
-    Description: 'NRules is an open source rules engine for .NET that is based on
-      the Rete matching algorithm. NRules is an inference engine that, among other
-      features, supports forward chaining, negative, existential and universal quantifiers.
-      Rules are authored in C# using internal DSL.
-
-
-      This package installs the execution engine (runtime) for the NRules rules engine.'
-    Summary: Execution engine (runtime) for the NRules rules engine.
-    ReleaseNotes: https://github.com/NRules/NRules/releases/v0.9.0
-    LicenseUrl: https://github.com/NRules/NRules/blob/master/LICENSE.txt
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.Runtime/0.9.0
-    DownloadCount: 258947
-    Authors: Sergiy Nikolayev
-    Icon: {fileID: 0}
-    ProjectUrl: http://nrules.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.Fluent
-    Version: 0.9.0
-    Title: NRules.Fluent, Fluent DSL for NRules
-    Description: 'NRules is an open source rules engine for .NET that is based on
-      the Rete matching algorithm. NRules is an inference engine that, among other
-      features, supports forward chaining, negative, existential and universal quantifiers.
-      Rules are authored in C# using internal DSL.
-
-
-      This package installs the fluent DSL for authoring rules in C# with NRules.
-      These rules can be then compiled to the canonical rules model, recognized by
-      the NRules rules engine.'
-    Summary: Fluent DSL for authoring rules in C# with the NRules rules engine.
-    ReleaseNotes: https://github.com/NRules/NRules/releases/v0.9.0
-    LicenseUrl: https://github.com/NRules/NRules/blob/master/LICENSE.txt
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.Fluent/0.9.0
-    DownloadCount: 261565
-    Authors: Sergiy Nikolayev
-    Icon: {fileID: 0}
-    ProjectUrl: http://nrules.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.RuleModel
-    Version: 0.9.0
-    Title: NRules.RuleModel, Canonical Rules Model for NRules
-    Description: 'NRules is an open source rules engine for .NET that is based on
-      the Rete matching algorithm. NRules is an inference engine that, among other
-      features, supports forward chaining, negative, existential and universal quantifiers.
-      Rules are authored in C# using internal DSL.
-
-
-      This package installs the canonical rules model to define rules that can be
-      compiled into executable model used by the NRules rules engine.'
-    Summary: Canonical rules model to define rules for the NRules rules engine.
-    ReleaseNotes: https://github.com/NRules/NRules/releases/v0.9.0
-    LicenseUrl: https://github.com/NRules/NRules/blob/master/LICENSE.txt
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.RuleModel/0.9.0
-    DownloadCount: 266957
-    Authors: Sergiy Nikolayev
-    Icon: {fileID: 0}
-    ProjectUrl: http://nrules.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.Integration.Autofac
-    Version: 0.9.0
-    Title: NRules Autofac Integration
-    Description: Autofac IoC container integration for NRules.
-    Summary: 
-    ReleaseNotes: https://github.com/NRules/NRules/releases/v0.9.0
-    LicenseUrl: https://github.com/NRules/NRules/blob/master/LICENSE.txt
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.Integration.Autofac/0.9.0
-    DownloadCount: 17765
-    Authors: Sergiy Nikolayev
-    Icon: {fileID: 0}
-    ProjectUrl: http://nrules.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.RuleSharp
-    Version: 0.0.5
-    Title: NRules.RuleSharp, Business Rules Language for NRules
-    Description: NRules is an open source rules engine for .NET that is based on the
-      Rete matching algorithm. Rule# (Rule Sharp) is a business rules language for
-      the NRules rules engine.
-    Summary: Business rules language for the NRules rules engine.
-    ReleaseNotes: https://github.com/NRules/NRules.Language/releases/v0.0.5
-    LicenseUrl: https://www.nuget.org/packages/NRules.RuleSharp/0.0.5/license
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.RuleSharp/0.0.5
-    DownloadCount: 9576
-    Authors: Sergiy Nikolayev
-    Icon: {fileID: 0}
-    ProjectUrl: http://nrules.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.Integration.Windsor
-    Version: 1.2.0
-    Title: NRules.Integration.Windsor
-    Description: Integration support for Castle Windsor in to NRules.
-    Summary: 
-    ReleaseNotes: 
-    LicenseUrl: https://github.com/keithbo/NRules.Integration.Windsor/blob/master/LICENSE.md
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.Integration.Windsor/1.2.0
-    DownloadCount: 2077
-    Authors: Keith Bosacker
-    Icon: {fileID: 0}
-    ProjectUrl: https://github.com/keithbo/NRules.Integration.Windsor
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.WinRT.Fluent
-    Version: 1.0.0.0
-    Title: NRules.WinRT.Fluent
-    Description: Internal DSL for NRules
-    Summary: 
-    ReleaseNotes: 
-    LicenseUrl: 
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.WinRT.Fluent/1.0.0
-    DownloadCount: 765
-    Authors: NRules
-    Icon: {fileID: 0}
-    ProjectUrl: 
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.Integration.Ninject
-    Version: 1.0.0
-    Title: NRules.Integration.Ninject
-    Description: Integration support for Ninject in to NRules.
-    Summary: 
-    ReleaseNotes: 
-    LicenseUrl: https://github.com/alfonsovgs/NRules.Integration.Ninject/blob/master/LICENSE
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.Integration.Ninject/1.0.0
-    DownloadCount: 233
-    Authors: Alfonso Vargas
-    Icon: {fileID: 0}
-    ProjectUrl: https://github.com/alfonsovgs/NRules.Integration.Ninject
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.Integration.AspNetCore
-    Version: 1.0.5
-    Title: NRules.Integration.AspNetCore
-    Description: Integration support for Asp .Net Core in to NRules.
-    Summary: 
-    ReleaseNotes: 
-    LicenseUrl: 
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.Integration.AspNetCore/1.0.5
-    DownloadCount: 2932
-    Authors: Claudio Steppe
-    Icon: {fileID: 0}
-    ProjectUrl: https://github.com/cloudb0x/NRules.Integration.AspNetCore
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: NRules.WinRT
-    Version: 1.0
-    Title: NRules Library ported for WinRT
-    Description: Description
-    Summary: 
-    ReleaseNotes: 
-    LicenseUrl: 
-    DownloadUrl: https://www.nuget.org/api/v2/package/NRules.WinRT/1.0.0
-    DownloadCount: 783
-    Authors: Ahmed Fouad
-    Icon: {fileID: 0}
-    ProjectUrl: 
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  updatePackages:
-  - Id: Microsoft.NETCore.Platforms
-    Version: 3.1.1
-    Title: Microsoft.NETCore.Platforms
-    Description: "Provides runtime information required to resolve target framework,
-      platform, and runtime specific implementations of .NETCore packages. \nWhen
-      using NuGet 3.x this package requires at least version 3.4."
-    Summary: 
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    LicenseUrl: https://licenses.nuget.org/MIT
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.NETCore.Platforms/3.1.1
-    DownloadCount: 307945557
-    Authors: Microsoft
-    Icon: {fileID: 0}
-    ProjectUrl: https://github.com/dotnet/corefx
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: Microsoft.NETCore.Targets
-    Version: 3.1.0
-    Title: Microsoft.NETCore.Targets
-    Description: "Provides supporting infrastructure for portable projects: support
-      identifiers that define framework and runtime for support targets and packages
-      that reference the minimum supported package versions when targeting these.
-      \nWhen using NuGet 3.x this package requires at least version 3.4."
-    Summary: 
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    LicenseUrl: https://licenses.nuget.org/MIT
-    DownloadUrl: https://www.nuget.org/api/v2/package/Microsoft.NETCore.Targets/3.1.0
-    DownloadCount: 169991153
-    Authors: Microsoft
-    Icon: {fileID: 0}
-    ProjectUrl: https://github.com/dotnet/corefx
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: System.Reflection.TypeExtensions
-    Version: 4.7.0
-    Title: System.Reflection.TypeExtensions
-    Description: "Provides extensions methods for System.Type that are designed to
-      be source-compatible with older framework reflection-based APIs.\n\nCommonly
-      Used Types:\nSystem.Reflection.TypeExtensions\nSystem.Reflection.BindingFlags\n
-      \nWhen using NuGet 3.x this package requires at least version 3.4."
-    Summary: 
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    LicenseUrl: https://licenses.nuget.org/MIT
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Reflection.TypeExtensions/4.7.0
-    DownloadCount: 167128165
-    Authors: Microsoft
-    Icon: {fileID: 0}
-    ProjectUrl: https://github.com/dotnet/corefx
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: System.Runtime
-    Version: 4.3.1
-    Title: System.Runtime
-    Description: "Provides the fundamental primitives, classes and base classes that
-      define commonly-used value and reference data types, events and event handlers,
-      interfaces, attributes, and exceptions. This packages represents the core package,
-      and provides the minimal set of types required to build a managed application.\n\nCommonly
-      Used Types:\nSystem.Object\nSystem.Exception\nSystem.Int16\nSystem.Int32\nSystem.Int64\nSystem.Enum\nSystem.String\nSystem.Char\nSystem.Boolean\nSystem.SByte\nSystem.Byte\nSystem.DateTime\nSystem.DateTimeOffset\nSystem.Single\nSystem.Double\nSystem.UInt16\nSystem.UInt32\nSystem.UInt64\nSystem.IDisposable\nSystem.Uri\n
-      \nWhen using NuGet 3.x this package requires at least version 3.4."
-    Summary: 
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    LicenseUrl: http://go.microsoft.com/fwlink/?LinkId=329770
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Runtime/4.3.1
-    DownloadCount: 154897501
-    Authors: Microsoft
-    Icon: {fileID: 0}
-    ProjectUrl: https://dot.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  - Id: System.Runtime.Extensions
-    Version: 4.3.1
-    Title: System.Runtime.Extensions
-    Description: "Provides commonly-used classes for performing mathematical functions,
-      conversions, string comparisons and querying environment information.\n\nCommonly
-      Used Types:\nSystem.Math\nSystem.Environment\nSystem.Random\nSystem.Progress<T>\nSystem.Convert\nSystem.Diagnostics.Stopwatch\nSystem.Runtime.Versioning.FrameworkName\nSystem.StringComparer\nSystem.IO.Path\n
-      \nWhen using NuGet 3.x this package requires at least version 3.4."
-    Summary: 
-    ReleaseNotes: https://go.microsoft.com/fwlink/?LinkID=799421
-    LicenseUrl: http://go.microsoft.com/fwlink/?LinkId=329770
-    DownloadUrl: https://www.nuget.org/api/v2/package/System.Runtime.Extensions/4.3.1
-    DownloadCount: 144877952
-    Authors: Microsoft
-    Icon: {fileID: 0}
-    ProjectUrl: https://dot.net/
-    RepositoryUrl: 
-    RepositoryType: 0
-    RepositoryBranch: 
-    RepositoryCommit: 
-  numberToSkip: 0
-  defaultIcon: {fileID: 2800000, guid: eec19781926cd2248b7c9abfde8db555, type: 3}
---- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -625,25 +295,25 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2174
+    x: 277
     y: 73
-    width: 1081
-    height: 595
+    width: 1148
+    height: 603
   m_PersistentViewDataDictionary: {fileID: 0}
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 05000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
     m_VRangeLocked: 0
     hZoomLockedByDefault: 0
     vZoomLockedByDefault: 0
-    m_HBaseRangeMin: -514
-    m_HBaseRangeMax: 514
-    m_VBaseRangeMin: -289
-    m_VBaseRangeMax: 289
+    m_HBaseRangeMin: -574
+    m_HBaseRangeMax: 574
+    m_VBaseRangeMin: -293
+    m_VBaseRangeMax: 293
     m_HAllowExceedBaseRangeMin: 1
     m_HAllowExceedBaseRangeMax: 1
     m_VAllowExceedBaseRangeMin: 1
@@ -652,7 +322,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 0
+    m_EnableMouseInput: 1
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -661,30 +331,30 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 17
-      width: 1081
-      height: 578
+      width: 1148
+      height: 586
     m_Scale: {x: 1, y: 1}
-    m_Translation: {x: 540.5, y: 289}
+    m_Translation: {x: 574, y: 293}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -540.5
-      y: -289
-      width: 1081
-      height: 578
+      x: -574
+      y: -293
+      width: 1148
+      height: 586
     m_MinimalGUI: 1
   m_defaultScale: 1
   m_TargetTexture: {fileID: 0}
   m_CurrentColorSpace: 0
-  m_LastWindowPixelSize: {x: 1081, y: 595}
+  m_LastWindowPixelSize: {x: 1148, y: 603}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000100000100
   m_XRRenderMode: 0
---- !u!114 &14
+--- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -705,17 +375,17 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
+    x: 0
     y: 73
-    width: 252
-    height: 595
+    width: 275
+    height: 603
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: d02b0000
-      m_LastClickedID: 11216
-      m_ExpandedIDs: 98fbffff122c00008e2c0000682d0000602e000084300000
+      m_SelectedIDs: 262b0000
+      m_LastClickedID: 11046
+      m_ExpandedIDs: 2cf9ffffbcfbffff682b0000622f0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -739,7 +409,7 @@ MonoBehaviour:
       m_IsLocked: 0
     m_CurrentSortingName: TransformSorting
   m_WindowGUID: 46b7a0fefa812c44ca6fda42b4d7b176
---- !u!114 &15
+--- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -759,10 +429,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 2174
+    x: 277
     y: 73
-    width: 1081
-    height: 595
+    width: 1148
+    height: 603
   m_PersistentViewDataDictionary: {fileID: 0}
   m_WindowGUID: d69a67902db7f994ca099bec79d22ce1
   m_SceneLighting: 0
@@ -770,9 +440,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -8.159856, y: 1.9976454, z: 90.046875}
+    m_Target: {x: -3.5160084, y: -0.034556866, z: 119.8125}
     speed: 2
-    m_Value: {x: -8.159856, y: 1.9976454, z: 90.046875}
+    m_Value: {x: -3.5160084, y: -0.034556866, z: 119.8125}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -804,9 +474,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: -1}
   m_Size:
-    m_Target: 126.78665
+    m_Target: 126.17348
     speed: 2
-    m_Value: 126.78665
+    m_Value: 126.17348
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -818,7 +488,7 @@ MonoBehaviour:
   m_ReplacementString: 
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
---- !u!114 &16
+--- !u!114 &15
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -844,7 +514,7 @@ MonoBehaviour:
     width: 1160
     height: 593
   m_PersistentViewDataDictionary: {fileID: 0}
---- !u!114 &17
+--- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -865,10 +535,10 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
-    y: 683
-    width: 1337
-    height: 327
+    x: 0
+    y: 696
+    width: 1427
+    height: 314
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SearchFilter:
     m_NameFilter: 
@@ -882,20 +552,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/src
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/src
+  - Assets
   m_LastFoldersGridSize: 96
   m_LastProjectPath: "C:\\Users\\RubenMa\\OneDrive\\4\xBACURSO\\TRABAJO FIN DE GRADO\\Global-Manager_TFG\\GLOBAL-MANAGER"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 36}
-    m_SelectedIDs: 920a0000
-    m_LastClickedID: 2706
-    m_ExpandedIDs: 00000000ec090000680a0000920a0000e80b0000fe0b00005e0c0000023200000432000006320000083200000a3200000c3200000e32000010320000123200001432000016320000183200001a3200001c3200001e320000203200002232000024320000263200002832000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: e2090000
+    m_LastClickedID: 2530
+    m_ExpandedIDs: 00000000e2090000640a00008c0b00007a0c0000583100005a3100005c3100005e31000060310000623100006431000066310000683100006a3100006c3100006e31000070310000723100007431000076310000783100007a3100007c3100007e31000080310000823100008431000086310000883100008a3100008c3100008e31000090310000923100009431000096310000983100009a3100009c3100009e310000a0310000a2310000a4310000a6310000a8310000aa310000ac310000ae31000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -923,7 +593,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000ec090000680a0000920a0000e80b0000fe0b00005e0c0000023200000432000006320000083200000a3200000c3200000e32000010320000123200001432000016320000183200001a3200001c3200001e3200002032000022320000243200002632000028320000
+    m_ExpandedIDs: 00000000e2090000640a00008c0b00007a0c0000583100005a3100005c3100005e31000060310000623100006431000066310000683100006a3100006c3100006e31000070310000723100007431000076310000783100007a3100007c3100007e31000080310000823100008431000086310000883100008a3100008c3100008e31000090310000923100009431000096310000983100009a3100009c3100009e310000a0310000a2310000a4310000a6310000a8310000aa310000ac310000ae31000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -948,10 +618,10 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: d02b0000
-    m_LastClickedInstanceID: 11216
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c6230000c8280000f252000000000000
+    m_ExpandedInstanceIDs: c6230000c8280000f252000000000000640c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -978,7 +648,7 @@ MonoBehaviour:
     m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 96
   m_DirectoriesAreaWidth: 199
---- !u!114 &18
+--- !u!114 &17
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -999,12 +669,12 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 1920
-    y: 688
-    width: 1337
-    height: 322
+    x: 0
+    y: 696
+    width: 1427
+    height: 314
   m_PersistentViewDataDictionary: {fileID: 0}
---- !u!114 &19
+--- !u!114 &18
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1032,8 +702,8 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 11216
---- !u!114 &20
+  m_LastSelectedObjectID: -7076
+--- !u!114 &19
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1054,9 +724,9 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 3259
+    x: 1429
     y: 73
-    width: 579
+    width: 489
     height: 937
   m_PersistentViewDataDictionary: {fileID: 0}
   m_ObjectsLockedBeforeSerialization: []
@@ -1064,7 +734,7 @@ MonoBehaviour:
   m_LockTracker:
     m_IsLocked: 0
   m_PreviewResizer:
-    m_CachedPref: 296
+    m_CachedPref: 182
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
