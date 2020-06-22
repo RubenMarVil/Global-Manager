@@ -16,9 +16,9 @@ El actual proyecto está compuesto por una serie de requisitos específicos func
 \begin{itemize}
 	\item \textbf{REF1.} El JS diferenciará un total de tres niveles distintos de jugador. Estos niveles se calcularán utilizando técnicas de \emph{inteligencia artificial} (IA), en función de los conocimientos del jugador en la gestión de proyectos y en el modelo de desarrollo de software DGS. Los niveles de usuarios que dispondrá el juego serán:
 	\begin{itemize}
-		\item[-] \textsc{Nivel bajo:} Se corresponderá a aquellos jugadores que posean bajos o nulos conocimientos en la gestión de proyectos o en el DGS, además de no tener una gran experiencia en el desarrollo de software. Son aquellas personas que necesitarán un aprendizaje mucho más lento y prolongado para adquirir todos los conocimientos necesarios para la gestión de proyectos DGS.
-		\item[-] \textsc{Nivel medio:} Se corresponderá a aquellos jugadores que posean ciertos conocimientos en la gestión de proyectos o en el DGS, o incluso poseer cierta experiencia en dichos campos. Estas personas necesitarán de un aprendizaje mucho más rápido, debido a que ya conocerán ciertos aspectos de la materia y les costará menos acostumbrarse al juego.
-		\item[-] \textsc{Nivel alto:} Se corresponderá a aquellos jugadores que posean grandes conocimientos en la gestión de proyectos o en el DGS, además de haber trabajado en numerosas ocasiones en alguno de estos campos. En este último nivel, los jugadores no necesitarán tanto adquirir conocimientos, sino reforzarlos y entrenarse para mejorar su capacidad de gestionar proyectos DGS satisfactoriamente.
+		\item[-] \textsc{Nivel básico:} Se corresponderá a aquellos jugadores que posean bajos o nulos conocimientos en la gestión de proyectos o en el DGS, además de no tener una gran experiencia en el desarrollo de software. Son aquellas personas que necesitarán un aprendizaje mucho más lento y prolongado para adquirir todos los conocimientos necesarios para la gestión de proyectos DGS.
+		\item[-] \textsc{Nivel intermedio:} Se corresponderá a aquellos jugadores que posean ciertos conocimientos en la gestión de proyectos o en el DGS, o incluso poseer cierta experiencia en dichos campos. Estas personas necesitarán de un aprendizaje mucho más rápido, debido a que ya conocerán ciertos aspectos de la materia y les costará menos acostumbrarse al juego.
+		\item[-] \textsc{Nivel avanzado:} Se corresponderá a aquellos jugadores que posean grandes conocimientos en la gestión de proyectos o en el DGS, además de haber trabajado en numerosas ocasiones en alguno de estos campos. En este último nivel, los jugadores no necesitarán tanto adquirir conocimientos, sino reforzarlos y entrenarse para mejorar su capacidad de gestionar proyectos DGS satisfactoriamente.
 	\end{itemize}
 	
 	\item \textbf{REF2.} El JS dispondrá de un \emph{modelo de estudiante} dinámico, es decir, se creará a cada jugador un proceso de aprendizaje en función del nivel de jugador que se le haya definido al principio. Por lo tanto, las partidas que juegue dicho jugador se crearán automáticamente personalizadas a sus conocimientos.
@@ -42,32 +42,33 @@ Una vez definidos cuales serán los REFs del proyecto en la Sección \ref{sec:Ob
 	\item \textbf{RENF3.} La gestión de los datos asociados al proyecto (características de los eventos, modelo del estudiante y dominio) se llevará a cabo utilizando el sistema de gestión de bases de datos relacional \emph{SQLite}\footnote{https://sqlite.org/index.html}, junto con el componente \emph{LINQ}\footnote{https://docs.microsoft.com/es-es/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries} (Language Integrated Query) de Microsoft .NET para las consultas a datos de manera nativa a los lenguajes .NET, como C\#.
 \end{itemize}
 
-\begin{table}[thb]
-	\centering
-	\setlength{\arrayrulewidth}{0.3mm}
-	\arrayrulecolor{black}
-	\resizebox{\textwidth}{!}{
-	\begin{tabular}{|l|p{15cm}|}
-		\hline
-		\rowcolor[HTML]{EFEFEF} 
-		\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{000000} \textit{\textbf{Código Objetivo}}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{000000} \textit{\textbf{Descripción}}}}                                                                                                                                                                                                                                           \\ \hline
-		\rowcolor[HTML]{9AFF99} 
-		{\color[HTML]{000000} \textbf{OP}}                                                                     & {\color[HTML]{000000} Diseño y desarrollo de un JS en 2.5D, que ayude a sus jugadores a adquirir ciertas soft skills y a entrenarse en la correcta gestión de proyectos DGS.}                                                                                                                                                               \\ \hline
-		\rowcolor[HTML]{FFCE93} 
-		{\color[HTML]{000000} \textbf{REF1}}                                                                   & {\color[HTML]{000000} Diferenciación de tres niveles de jugador (bajo, medio y alto) para crear asi diferentes procesos de aprendizaje, en función de los conocimientos del jugador en la mataria.}                                                                                                                                         \\ \hline
-		\rowcolor[HTML]{FFCE93} 
-		{\color[HTML]{000000} \textbf{REF2}}                                                                   & {\color[HTML]{000000} Creación de un modelo de estudiante dinámico para la creación de partidas personalizadas.}                                                                                                                                                                                                                            \\ \hline
-		\rowcolor[HTML]{FFCE93} 
-		{\color[HTML]{000000} \textbf{REF3}}                                                                   & {\color[HTML]{000000} Primera fase del juego: Implementación de una interfaz grafica, en donde el jugador deberá configurar un conjunto de parametros iniciales del proyecto DGS. Además del calculo, en tiempo real, de un conjunto de fáctores de éxito y el nivel de dificultad del proyecto.}                                           \\ \hline
-		\rowcolor[HTML]{FFCE93} 
-		{\color[HTML]{000000} \textbf{REF4}}                                                                   & {\color[HTML]{000000} Segunda fase del juego: Implementación de la simulación del proyecto en función de la configuración inicial definida, el jugador deberá gestionar dicho proyecto DGS haciendo frente a diferentes eventos (positivos y negativos) relacionados con la comunicación, coordinación y control del proyecto.}             \\ \hline
-		\rowcolor[HTML]{CBCEFB} 
-		{\color[HTML]{000000} \textbf{RENF1}}                                                                   & {\color[HTML]{000000} Cálculo del nivel del jugador mediante un formulario, el cual se implementará utilizandológica borrosa, tras realizar una adquisición de conocimientos mediante una entrevista a un experto sobre cuales son los aspectos más importantes para conocer las nociones sobre gestión de proyectos y DGS de una persona.} \\ \hline
-		\rowcolor[HTML]{CBCEFB} 
-		{\color[HTML]{000000} \textbf{RENF2}}                                                                   & {\color[HTML]{000000} Desarrollo del JS utilizando Microsoft .NET, junto con el lenguaje de programación C\#.}                                                                                                                                                                                                                              \\ \hline
-		\rowcolor[HTML]{CBCEFB} 
-		{\color[HTML]{000000} \textbf{RENF3}}                                                                   & {\color[HTML]{000000} Gestión de los datos asociados al proyecto mediante el sistema de gestión de bases de datos relacionales SQLite, junto con el componente LINQ de Microsoft .NET.}                                                                                                                                                     \\ \hline
-	\end{tabular}}
-	\caption{Objetivos principal y específicos del presente TFG}
-	\label{tab:ResumenObjetivos}
-\end{table}
+\clearpage
+
+\begin{table}[!th]
+		\setlength{\arrayrulewidth}{0.3mm}
+		\arrayrulecolor{black}
+		\resizebox{\textwidth}{!}{
+		\begin{tabular}{|l|p{15cm}|}
+			\hline
+			\rowcolor[HTML]{EFEFEF} 
+			\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{000000} \textit{\textbf{Código Objetivo}}}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{000000} \textit{\textbf{Descripción}}}}                                                                                                                                                                                                                                           \\ \hline
+			\rowcolor[HTML]{9AFF99} 
+			{\color[HTML]{000000} \textbf{OP}}                                                                     & {\color[HTML]{000000} Diseño y desarrollo de un JS en 2.5D, que ayude a sus jugadores a adquirir ciertas soft skills y a entrenarse en la correcta gestión de proyectos DGS.}                                                                                                                                                               \\ \hline
+			\rowcolor[HTML]{FFCE93} 
+			{\color[HTML]{000000} \textbf{REF1}}                                                                   & {\color[HTML]{000000} Diferenciación de tres niveles de jugador (bajo, medio y alto) para crear asi diferentes procesos de aprendizaje, en función de los conocimientos del jugador en la mataria.}                                                                                                                                         \\ \hline
+			\rowcolor[HTML]{FFCE93} 
+			{\color[HTML]{000000} \textbf{REF2}}                                                                   & {\color[HTML]{000000} Creación de un modelo de estudiante dinámico para la creación de partidas personalizadas.}                                                                                                                                                                                                                            \\ \hline
+			\rowcolor[HTML]{FFCE93} 
+			{\color[HTML]{000000} \textbf{REF3}}                                                                   & {\color[HTML]{000000} Primera fase del juego: Implementación de una interfaz grafica, en donde el jugador deberá configurar un conjunto de parametros iniciales del proyecto DGS. Además del calculo, en tiempo real, de un conjunto de fáctores de éxito y el nivel de dificultad del proyecto.}                                           \\ \hline
+			\rowcolor[HTML]{FFCE93} 
+			{\color[HTML]{000000} \textbf{REF4}}                                                                   & {\color[HTML]{000000} Segunda fase del juego: Implementación de la simulación del proyecto en función de la configuración inicial definida, el jugador deberá gestionar dicho proyecto DGS haciendo frente a diferentes eventos (positivos y negativos) relacionados con la comunicación, coordinación y control del proyecto.}             \\ \hline
+			\rowcolor[HTML]{CBCEFB} 
+			{\color[HTML]{000000} \textbf{RENF1}}                                                                   & {\color[HTML]{000000} Cálculo del nivel del jugador mediante un formulario, el cual se implementará utilizandológica borrosa, tras realizar una adquisición de conocimientos mediante una entrevista a un experto sobre cuales son los aspectos más importantes para conocer las nociones sobre gestión de proyectos y DGS de una persona.} \\ \hline
+			\rowcolor[HTML]{CBCEFB} 
+			{\color[HTML]{000000} \textbf{RENF2}}                                                                   & {\color[HTML]{000000} Desarrollo del JS utilizando Microsoft .NET, junto con el lenguaje de programación C\#.}                                                                                                                                                                                                                              \\ \hline
+			\rowcolor[HTML]{CBCEFB} 
+			{\color[HTML]{000000} \textbf{RENF3}}                                                                   & {\color[HTML]{000000} Gestión de los datos asociados al proyecto mediante el sistema de gestión de bases de datos relacionales SQLite, junto con el componente LINQ de Microsoft .NET.}                                                                                                                                                     \\ \hline
+		\end{tabular}}
+		\caption{Objetivos principal y específicos del presente TFG}
+		\label{tab:ResumenObjetivos}
+	\end{table}

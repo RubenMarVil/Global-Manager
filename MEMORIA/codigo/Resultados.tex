@@ -27,7 +27,29 @@ Los beneficios que conlleva la utilización de esta herramienta consisten en el 
 El desarrollo del proyecto se ha dividido en tres versiones diferentes, las cuales serán definidas a continuación:
 
 \begin{itemize}
-	\item \textbf{Versión 1.} Esta primera versión se corresponderá con la redacción y definición de los requisitos iniciales del futuro JS. Además, se diseñaran los bocetos de las diferentes ventanas y vistas que poseerá la aplicación mediante la plataforma Balsamiq Mockup. Por otro lado, se llevará a cabo el estudio y aprendizaje de la herramienta para el desarrollo de videojuegos Unity.
+	\item \textbf{Versión 1.} Esta primera versión se corresponderá con la redacción y definición de los requisitos iniciales del futuro JS. Además, se diseñaran los bocetos de las diferentes ventanas y vistas que poseerá la aplicación mediante la plataforma Balsamiq Mockup. Por otro lado, se llevará a cabo el estudio y aprendizaje de la herramienta para el desarrollo de videojuegos, Unity.
 	\item \textbf{Versión 2.} Esta versión intermedia se centrará en el diseño de las diferentes interfaces gráficas de usuario de las cuales estará compuesta el juego, junto con el desarrollo del sistema para llevar a cabo una partida. Para ello se implementarán aspectos de gamificación y jugabilidad en el juego. Obtendremos como resultado una aplicación que nos permita jugar diferentes partidas al juego.
 	\item \textbf{Versión 3.} Versión final de la aplicación la cual se centrará en la introducción de diferentes aspectos inteligentes sobre el juego, así como un sistema para la asignación de niveles y para poder llevar a cabo una enseñanza acorde con los conocimientos previos de cada usuario.
+\end{itemize}
+
+\section{Arquitectura}
+\label{sec:Arquitectura}
+
+A continuación, se detallará la arquitectura tecnológica que se ha diseñado para conseguir el desarrollo de Global-Manager, además, de las librerías adicionales utilizadas. 
+
+En la figura \ref{fig:ArquitecturaTecnologica} se puede observar la arquitectura tecnológica del JS.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[width=0.95\linewidth]{ArquitecturaTecnologica}
+	\caption[Arquitectura tecnológica de Global-Manager]{Arquitectura tecnológica de Global-Manager}
+	\label{fig:ArquitecturaTecnologica}
+\end{figure}
+
+Dicha arquitectura posee tres capas:
+
+\begin{itemize}
+	\item \textbf{Capa de usuario.} Representa el entorno sobre el cual se podrá ejecutar la aplicación. En nuestro caso, el JS consistirá en una aplicación de escritorio, la cual se podrá ejecutar en los sistemas operativos \emph{Windows}, \emph{Linux} y \emph{Mac OS}.
+	\item \textbf{Capa de aplicación.} Consiste en la capa que hace referencia al JS, el cual consistirá en un proyecto \emph{.NET Framework}, en el cual se utiliza el motor de videojuegos y físicas, \emph{Unity} junto con diferentes \emph{scripts} escritos en el lenguaje de programación C\#.  
+	\item \textbf{Capa de persistencia.} Esta última capa hace referencia a la base de datos o modelo de datos, donde se almacenará toda la información relevante tanto de la aplicación como de los usuarios. Para ello, se ha optado por utilizar como motor de base de datos \emph{SQLite}, de esta manera existirá una base de datos SQLite en local y se llevará a cabo el intercambio de información mediante sentencias SQL.
 \end{itemize}
