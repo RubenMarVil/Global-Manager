@@ -63,6 +63,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ExternalTools\Animations\IdleMotion\DemoScene\idle_mocap_follow_player.cs" />
+    <Compile Include="Assets\ExternalTools\Animations\MoveMotionPack\SampleScene\Scripts\PlayManager.cs" />
+    <Compile Include="Assets\ExternalTools\Environment\OfficeProps\About\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ChallangeHandle.cs" />
     <Compile Include="Assets\Scripts\ChallengesOrderHandle.cs" />
     <Compile Include="Assets\Scripts\CommunicationButtonHandle.cs" />
@@ -74,24 +77,43 @@
     <Compile Include="Assets\Scripts\SiteSliderHandle2.cs" />
     <Compile Include="Assets\Scripts\SliderHandleAge.cs" />
     <Compile Include="Assets\Scripts\SurveyHandle.cs" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
-    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
-    <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\ExternalTools\Animations\MoveMotionPack\SampleScene\Shaders\ReflectiveDiffuseSpecTransp.shader" />
+    <None Include="Assets\ExternalTools\Animations\MoveMotionPack\SampleScene\Shaders\DiffuseReflectiveShader.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\ExternalTools\Animations\MoveMotionPack\SampleScene\Shaders\ReflectiveDiffuseSpec.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\ExternalTools\Animations\IdleMotion\Idle Package Description.txt" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
+    <None Include="Assets\ExternalTools\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+    <Reference Include="Unity.ProGrids">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.Editor">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProGrids.Editor">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
@@ -100,6 +122,9 @@
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ProBuilder.AddOns.Editor">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
