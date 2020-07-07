@@ -9,8 +9,8 @@ public class SiteSliderHandle2 : MonoBehaviour
 
     void Start()
     {
-        contentDimensionsCommunication = new[] { new Vector2(0, 566), new Vector2(0, 1062),
-            new Vector2(0, 1735), new Vector2(0, 2567), new Vector2(0, 3574), new Vector2(0, 4738)};
+        contentDimensionsCommunication = new[] { new Vector2(0, 228), new Vector2(0, 560),
+            new Vector2(0, 1060), new Vector2(0, 1726), new Vector2(0, 2559), new Vector2(0, 3561)};
     }
 
     public void OnSliderValueChanged(float numSites)

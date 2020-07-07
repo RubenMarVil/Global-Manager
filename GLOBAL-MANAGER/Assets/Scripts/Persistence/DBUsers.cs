@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using UnityEngine;
-using Assets.src.domain;
+using Assets.Scripts.Control;
 using System.Data;
 
 public class DBUsers
@@ -36,8 +36,6 @@ public class DBUsers
             Debug.Log($"[DATABASE - ERROR] SQLiteException to get users with the code #{e}.");
         }
 
-        DBSingleton.CloseDB();
-
         return users;
     }
 
@@ -47,8 +45,8 @@ public class DBUsers
 
         try
         {
-            string sqlQuery = "INSERT INTO Players(Username, Age, UserLevel, Score) VALUES ('" + newUser.Name + "', " + 
-                newUser.Age.ToString() + ", '" + newUser.UserLevel.ToString() + "', " + newUser.Score.ToString() + ");";
+            string sqlQuery = "INSERT INTO PLAYER(Username, Age, UserLevel, Score, NumProjects) VALUES ('" + newUser.Name + "', " + 
+                newUser.Age.ToString() + ", '" + newUser.UserLevel.ToString() + "', " + newUser.Score.ToString() + ", " + newUser.NumProjects + ");";
             Debug.Log($"[DBUsers - INFO] SQL QUERY = {sqlQuery}");
 
             result = DBSingleton.GetInstance().Insert(sqlQuery);
@@ -57,8 +55,6 @@ public class DBUsers
         {
             Debug.Log($"[DATABASE - ERROR] SQLiteException to insert user with the code #{e}.;");
         }
-
-        DBSingleton.CloseDB();
 
         return result;
     }

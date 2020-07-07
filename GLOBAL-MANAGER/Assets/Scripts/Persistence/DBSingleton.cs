@@ -63,8 +63,6 @@ public class DBSingleton
 
         IDataReader result = dbCommand.ExecuteReader();
 
-        CloseDB();
-
         return result;
     }
 
@@ -76,7 +74,7 @@ public class DBSingleton
 
         int result = dbCommand.ExecuteNonQuery();
 
-        CloseDB();
+        //CloseDB();
 
         return result;
     }

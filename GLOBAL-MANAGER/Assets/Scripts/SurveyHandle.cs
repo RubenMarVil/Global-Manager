@@ -2,7 +2,9 @@
 using UnityEngine.UI;
 using System.Linq;
 using System;
-using Assets.src.domain;
+using Assets.Scripts.Control;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class SurveyHandle : MonoBehaviour
 {
@@ -153,7 +155,7 @@ public class SurveyHandle : MonoBehaviour
         }
     }
 
-    public void GetUserLevel()
+    public void CreateUser()
     {
         if(String.IsNullOrWhiteSpace(userName.text) || !colocalized_globalKnowledgeAny || !languageKnowledgeAny || 
             !timeKnowledgeAny || !culturalKnowledgeAny || !siteAnswerAny || !followTheSunAnswerAny || !offshoringAnswerAny 
@@ -279,6 +281,11 @@ public class SurveyHandle : MonoBehaviour
 
             ShowResult(inserted, user);
         }
+    }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     private void ShowResult(bool inserted, User newUser)

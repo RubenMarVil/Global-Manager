@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.src.domain
+namespace Assets.Scripts.Control
 {
     public enum UserLevels
     {
@@ -35,6 +35,7 @@ namespace Assets.src.domain
         public int Age { get; set; }
         public UserLevels UserLevel { get; set; }
         public int Score { get; set; }
+        public int NumProjects { get; set; }
         public KnowledgeLevels Colocalized_Global { get; set; }
         public KnowledgeLevels CulturalKnowledge { get; set; }
         public KnowledgeLevels LanguageKnowledge { get; set; }
@@ -53,6 +54,7 @@ namespace Assets.src.domain
             Name = name;
             Age = age;
             Score = 0;
+            NumProjects = 0;
 
             BasicLevel.min = 0;         BasicLevel.max = 6;
             IntermediateLevel.min = 6;  IntermediateLevel.max = 15;

@@ -1,9 +1,9 @@
-﻿using Assets.src.domain;
+﻿using Assets.Scripts.Control;
 using UnityEngine;
 
-class UserControl
+public class UserControl
 {
-    // public static User actualUser;
+    public static User actualUser;
 
     public static bool CreateNewUser(User newUser)
     {
@@ -18,6 +18,7 @@ class UserControl
         } 
         else if(result == 1) {
             Debug.Log($"[CONTROL USER - ERROR] New user '{newUser.Name}' inserted into the database.");
+            actualUser = newUser;
         }
 
         return inserted;
