@@ -42,5 +42,12 @@ namespace Assets.Scripts.Control
                     break;
             }
         }
+
+        public SiteConfiguration(string country, int teamSize, CommonLanguageLevels languageLevel)
+        {
+            Country = country;
+            TeamSize = teamSize;
+            LevelCommonLanguage = languageLevel;
+        }
     }
 }

@@ -30,4 +30,26 @@ public class DBLanguage
 
         return languagesList;
     }
+
+    public List<Language> getLanguagesOfCountry(string country)
+    {
+        List<Language> languagesList = new List<Language>();
+
+        try
+        {
+            string sqlQuery = "SELECT Language, Official FROM Speak WHERE Country = '" + country + "';";
+
+            IDataReader data = DBSingleton.GetInstance().Read(sqlQuery);
+            while (data.Read())
+            {
+                languagesList.Add(new Language(data["Language"].ToString(), Convert.ToInt32(data["Official"].ToString())));
+            }
+        }
+        catch (SqliteException e)
+        {
+            Debug.Log($"[DATABASE - ERROR] SQLiteException to get users with the code #{e}.");
+        }
+
+        return languagesList;
+    }
 }

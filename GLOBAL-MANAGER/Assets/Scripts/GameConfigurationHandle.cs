@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Control;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,27 +68,53 @@ public class GameConfigurationHandle : MonoBehaviour
 
     void Update()
     {
+        string[] sitesCountryName = new string[Convert.ToInt32(siteNumberSlider.value)];
+        string[] sitesLanguageLevelToggleNameSelected = new string[Convert.ToInt32(siteNumberSlider.value)];
+        int mainSiteNum;
+        
         try
         {
             mainSiteToggleSelected = mainSiteToggleGroup.ActiveToggles().ElementAt<Toggle>(0);
+            mainSiteNum = Convert.ToInt32(mainSiteToggleSelected.name);
             mainSiteAny = true;
         }
         catch (ArgumentOutOfRangeException)
         {
             mainSiteAny = false;
+            mainSiteNum = 0;
         }
 
-        for(int i = 0; i < sitesLanguageLevelToggleGroup.Length; i++)
+        for (int i = 0; i < siteNumberSlider.value; i++)
         {
             try
             {
                 sitesLanguageLevelToggleSelected[i] = sitesLanguageLevelToggleGroup[i].ActiveToggles().ElementAt<Toggle>(0);
+                sitesLanguageLevelToggleNameSelected[i] = sitesLanguageLevelToggleSelected[i].name;
                 sitesLanguageLevelAny[i] = true;
             } 
             catch (ArgumentOutOfRangeException)
             {
                 sitesLanguageLevelAny[i] = false;
             }
+
+            sitesCountryName[i] = sitesCountryDropdown[i].options[sitesCountryDropdown[i].value].text;
+
+        }
+
+        ProjectCharacteristicLevels[] projectCharacteristicsActual = GameConfigurationControl.CalculateProjectCharacteristics(Convert.ToInt32(siteNumberSlider.value), 
+            sitesCountryName, sitesLanguageLevelToggleNameSelected, commonLanguageDropdown.options[commonLanguageDropdown.value].text,
+            clientCountryDropdown.options[clientCountryDropdown.value].text, mainSiteNum);
+        SetProjectCharacteristics(projectCharacteristicsActual);
+
+        ProjectDifficultyLevels projectDifficultyActual = GameConfigurationControl.CalculateProjectDifficulty(projectCharacteristicsActual);
+        projectDifficulty.GetComponent<ProjectDifficultyHandle>().SetValue(projectDifficultyActual);
+    }
+
+    private void SetProjectCharacteristics(ProjectCharacteristicLevels[] projectCharacteristicsActual)
+    {
+        for(int i = 0; i < projectCharacteristics.Length; i++)
+        {
+            projectCharacteristics[i].transform.GetChild(2).gameObject.GetComponent<ProjectCharacteristicHandle>().SetValue(projectCharacteristicsActual[i]);
         }
     }
 
@@ -181,5 +208,20 @@ public class GameConfigurationHandle : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void RecommendConfigurationBtn()
+    {
+        GameConfiguration configuration = RecommendConfiguration.GetRecommendation();
+
+        siteNumberSlider.value = configuration.NumSites;
+        clientCountryDropdown.value = clientCountryDropdown.options.FindIndex(a => a.text == configuration.ClientCountry);
+        commonLanguageDropdown.value = commonLanguageDropdown.options.FindIndex(a => a.text == configuration.CommonLanguage);
+
+        for(int i = 0; i < configuration.NumSites; i++)
+        {
+            sitesCountryDropdown[i].value = sitesCountryDropdown[i].options.FindIndex(a => a.text == configuration.SitesList[i].Country);
+            sitesTeamSizeSlider[i].value = configuration.SitesList[i].TeamSize;
+        }
     }
 }

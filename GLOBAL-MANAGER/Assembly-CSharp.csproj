@@ -71,9 +71,13 @@
     <Compile Include="Assets\Scripts\CommunicationButtonHandle.cs" />
     <Compile Include="Assets\Scripts\CommunicationHandle.cs" />
     <Compile Include="Assets\Scripts\Control\CommunicationConfiguration.cs" />
+    <Compile Include="Assets\Scripts\Control\Country.cs" />
     <Compile Include="Assets\Scripts\Control\GameConfiguration.cs" />
     <Compile Include="Assets\Scripts\Control\GameConfigurationControl.cs" />
+    <Compile Include="Assets\Scripts\Control\Language.cs" />
     <Compile Include="Assets\Scripts\Control\ProjectCharacteristic.cs" />
+    <Compile Include="Assets\Scripts\Control\RecommendConfiguration.cs" />
+    <Compile Include="Assets\Scripts\Control\RecommendConfigurationVariables.cs" />
     <Compile Include="Assets\Scripts\Control\SiteConfiguration.cs" />
     <Compile Include="Assets\Scripts\Control\User.cs" />
     <Compile Include="Assets\Scripts\Control\UserControl.cs" />
@@ -88,6 +92,8 @@
     <Compile Include="Assets\Scripts\Persistence\DBSingleton.cs" />
     <Compile Include="Assets\Scripts\Persistence\DBSite.cs" />
     <Compile Include="Assets\Scripts\Persistence\DBUsers.cs" />
+    <Compile Include="Assets\Scripts\ProjectCharacteristicHandle.cs" />
+    <Compile Include="Assets\Scripts\ProjectDifficultyHandle.cs" />
     <Compile Include="Assets\Scripts\SiteSliderHandle.cs" />
     <Compile Include="Assets\Scripts\SiteSliderHandle2.cs" />
     <Compile Include="Assets\Scripts\SliderHandleAge.cs" />
