@@ -266,14 +266,6 @@ ModelImporter:
         value: {x: 0, y: 0, z: 0}
         length: 0
         modified: 0
-    - boneName: jaw
-      humanName: Jaw
-      limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
-        value: {x: 0, y: 0, z: 0}
-        length: 0
-        modified: 0
     - boneName: thumb_01_l
       humanName: Left Thumb Proximal
       limit:
@@ -911,7 +903,7 @@ ModelImporter:
     - name: lowerleg_l
       parentName: upperleg_l
       position: {x: 0.4201304, y: -1.0702549e-15, z: 0}
-      rotation: {x: -0.00006203026, y: -0.0029335397, z: -0.04810759, w: -0.9988378}
+      rotation: {x: -0.00006203027, y: -0.0029335397, z: -0.048107594, w: -0.9988378}
       scale: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
     - name: foot_l
       parentName: lowerleg_l

@@ -68,6 +68,7 @@
     <Compile Include="Assets\ExternalTools\Environment\OfficeProps\About\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ChallangeHandle.cs" />
     <Compile Include="Assets\Scripts\ChallengesOrderHandle.cs" />
+    <Compile Include="Assets\Scripts\ClickEvent.cs" />
     <Compile Include="Assets\Scripts\CommunicationButtonHandle.cs" />
     <Compile Include="Assets\Scripts\CommunicationHandle.cs" />
     <Compile Include="Assets\Scripts\Control\CommunicationConfiguration.cs" />
@@ -84,6 +85,10 @@
     <Compile Include="Assets\Scripts\DropdownCountry.cs" />
     <Compile Include="Assets\Scripts\DropdownLanguage.cs" />
     <Compile Include="Assets\Scripts\GameConfigurationHandle.cs" />
+    <Compile Include="Assets\Scripts\GameHandle.cs" />
+    <Compile Include="Assets\Scripts\GreenLoupeHandle.cs" />
+    <Compile Include="Assets\Scripts\GreenPositHandle.cs" />
+    <Compile Include="Assets\Scripts\GreenTelephoneHandle.cs" />
     <Compile Include="Assets\Scripts\Persistence\DBCharacteristics.cs" />
     <Compile Include="Assets\Scripts\Persistence\DBCommunication.cs" />
     <Compile Include="Assets\Scripts\Persistence\DBCountry.cs" />
@@ -94,6 +99,9 @@
     <Compile Include="Assets\Scripts\Persistence\DBUsers.cs" />
     <Compile Include="Assets\Scripts\ProjectCharacteristicHandle.cs" />
     <Compile Include="Assets\Scripts\ProjectDifficultyHandle.cs" />
+    <Compile Include="Assets\Scripts\RedLoupeHandle.cs" />
+    <Compile Include="Assets\Scripts\RedPositHandle.cs" />
+    <Compile Include="Assets\Scripts\RedTelephoneHandle.cs" />
     <Compile Include="Assets\Scripts\SiteSliderHandle.cs" />
     <Compile Include="Assets\Scripts\SiteSliderHandle2.cs" />
     <Compile Include="Assets\Scripts\SliderHandleAge.cs" />

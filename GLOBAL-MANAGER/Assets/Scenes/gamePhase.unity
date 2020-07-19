@@ -1124,6 +1124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 893682254}
   - component: {fileID: 893682253}
+  - component: {fileID: 893682255}
   - component: {fileID: 893682252}
   m_Layer: 0
   m_Name: Camera
@@ -1150,7 +1151,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -1196,6 +1197,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 18.913, y: -159.30801, z: 0.53900003}
+--- !u!114 &893682255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 893682251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e16e5dbd11d02a4eadfd6b5921357aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &933205327 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400014, guid: 66a8a9f80374d2f4dbb0b1530def02ad,
@@ -1587,6 +1600,7 @@ GameObject:
   - component: {fileID: 1398102515}
   - component: {fileID: 1398102514}
   - component: {fileID: 1398102513}
+  - component: {fileID: 1398102516}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1642,6 +1656,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1398102516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398102512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59738ed4c1bcc8041ae4be52783333f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  typesEvents:
+  - {fileID: 8064841680021965177, guid: 04f4a2ee6f19fd84a9bd6f010a2f3c4c, type: 3}
+  - {fileID: 7015864109771622665, guid: 54efef2359f66f64cbf0a430281c4908, type: 3}
+  - {fileID: 2400817317416641336, guid: 2a4f17c84af32e240a542a2416444b44, type: 3}
+  - {fileID: 8346613825733830144, guid: c681700d4ce06294bb8da650cc58395a, type: 3}
+  - {fileID: 6729115121792897879, guid: a5b029bb33f086b41815788f8a1b7afd, type: 3}
+  - {fileID: 342278084518833647, guid: b3864c55c828fbf42be7a8212cf5720f, type: 3}
+  TimeVelocity: 300
 --- !u!4 &1410563170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4836093174739976, guid: 247e5b33a1b1dba43a82e14ad7191756,
