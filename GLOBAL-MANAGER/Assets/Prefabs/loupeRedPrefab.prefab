@@ -91,6 +91,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &811378539589716049
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6729115121792897879}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.10731527, y: 0.021245524, z: 0.2447086}
+  m_Center: {x: -0.00043442845, y: -0.00004761899, z: 0.007801514}
 --- !u!114 &114407242473189084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +127,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: loupeRedPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
+      propertyPath: m_TagString
+      value: RedControl
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.75
@@ -128,19 +145,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.61757845
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.782644
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.042652544
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.06516195
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_RootOrder
@@ -148,15 +165,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -8.468
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 182.85799
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 76.342
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
       propertyPath: m_LocalScale.x
@@ -170,6 +187,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 766597b75dfb3824ba4d0807400a80fc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 249eb11879f01214981d9092b62a03e1, type: 3}
 --- !u!1 &6729115121792897879 stripped

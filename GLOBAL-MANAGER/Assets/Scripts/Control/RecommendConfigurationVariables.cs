@@ -7,9 +7,9 @@ using UnityEngine;
 
 public class RecommendConfigurationVariables
 {
-    public static int[] fuzz_basic = { 0, 0, 4, 6 };
-    public static int[] fuzz_inter = { 4, 6, 13, 15 };
-    public static int[] fuzz_advan = { 13, 15, 19, 19 };
+    public static int[] fuzz_basic = { 0, 0, 3, 7 };
+    public static int[] fuzz_inter = { 3, 7, 12, 16 };
+    public static int[] fuzz_advan = { 12, 16, 19, 19 };
 
     public static Dictionary<object, object> problemBasic = new Dictionary<object, object>
     {
@@ -69,11 +69,11 @@ public class RecommendConfigurationVariables
         result["InstabilityCountries"] = CalculateValue(basicLevel, intermediateLevel, advancedLevel, "InstabilityCountries");
         result["TeamSize"] = CalculateValue(basicLevel, intermediateLevel, advancedLevel, "TeamSize");
 
-        if(basicLevel >= intermediateLevel)
+        if(basicLevel > intermediateLevel)
         {
             result["CommonLanguage"] = problemBasic["CommonLanguage"];
         }
-        else if(intermediateLevel >= basicLevel && intermediateLevel >= advancedLevel)
+        else if(intermediateLevel >= basicLevel && intermediateLevel > advancedLevel)
         {
             result["CommonLanguage"] = problemIntermediate["CommonLanguage"];
         }

@@ -54,13 +54,70 @@
 \usepackage[T1]{fontenc}	% Codificación de salida
 \usepackage{microtype}		% Mejoras de mircrotipografía en la obtención del PDF
 
-% ## Graficos y tablas
+% ## Graficos, tablas y código
 \usepackage{multirow}
 \usepackage{graphicx}			% Inclusión de figuras
 \graphicspath{{../figuras/}}	% Path de búsqueda de ficheros gráficos
 \DeclareGraphicsExtensions{.pdf,.png,.jpg,.jpeg}	% Precedencia de extensiones
 \usepackage{tabularx,booktabs}
 \usepackage[margin=10pt,font=small,labelfont=bf]{subcaption}	% Inclusión de subfiguras
+\usepackage{listings} % Inclusión de listados de código
+
+\lstset{ % Estilo por defecto
+	belowcaptionskip=5pt, % Espacio bajo el título
+	basicstyle={\footnotesize\ttfamily}, % Estilo básico para el texto
+	%stringstyle=\textsl,        % Estilo para las cadenas
+	stringstyle={\color{Red1}\ttfamily\bfseries},
+	commentstyle={\color{Green4}\sffamily\bfseries},% Estilo para los comentarios
+	keywordstyle={\color{Blue1}\bfseries},% Estilo para las palabras clave
+	%	keywordstyle=[1]\textbf,    % Posibilidad de particularizar el estilo 
+	%	keywordstyle=[2]\textbf,    %
+	%	keywordstyle=[3]\textbf,    %
+	%	keywordstyle=[4]\textbf,    %
+	%	deletekeywords={}, 			% Quita keywords separadas por comas
+	captionpos=t,               % Ajusta la posición de títulos 
+	numbers=left,               % Posición de números de línea
+	numberstyle={\color{DarkSlateGray}\tiny\sffamily\bfseries},          % Tamaño del número de línea
+	numberfirstline=false,
+	firstnumber=1, 				%  Nº de la primera línea
+	stepnumber=1,               % Paso de línea numerada
+	numbersep=10pt,             % Separación del texto al número de línea
+	tabsize=2,                  % Tamaño del tabulador
+	extendedchars=true,         % Gestiona en empleo de caracteres 	
+	%	extendedchars=\true,        % Gestiona en empleo de caracteres extendidos utf8 % Hack-
+	texcl=true,				    % Necesario para unicode en los comentarios
+	breaklines=true,            % Ajusta división automática de líneas
+	breakatwhitespace=true,     % Indica si la división automática sólo ocurre en los espacios en blanco
+	frame=single,               % none, leftline, topline, bottomline, lines, single, shadowbox 
+	frameround=tttt, 			% Redondea los bordes del frame
+	rulecolor={\color{DarkSlateGray}},    % Color del frame
+	showspaces=false,           % Muestra espacios en blanco
+	showtabs=false,             % Muestra tabuladores
+	showstringspaces=true,      % Muestra espacios en blanco en las cadenas        
+	xleftmargin=1cm,xrightmargin=1cm,
+	breaklines=true,
+	postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}, % Flecha al saltar de linea
+	prebreak=\mbox{\textcolor{red}{$\hookleftarrow$}\space}, % Flecha al saltar de linea	%	framexleftmargin=17pt
+	%	framexrightmargin=5pt,
+	%	framexbottommargin=4pt,
+%	backgroundcolor={\color{Lavender}} % Color del fondo
+	backgroundcolor={\color{FloralWhite}} % Color del fondo
+}
+
+\lstdefinestyle{consola}{%
+	basicstyle={\color{White}\scriptsize\bf\ttfamily},
+	backgroundcolor={\color{Black}},
+	frame=none,
+	showspaces=true
+}
+
+\lstdefinestyle{SQL-color}{%
+	basicstyle=\scriptsize,
+	language=SQL,
+  	keywordstyle=\color{blue},
+  	commentstyle=\color{DarkGreen},
+  	stringstyle=\color{DarkOrchid}
+}
 
 % ## Personalización de títulos de figuras y tablas
 \usepackage[		% Personalización de títulos de figuras y tablas

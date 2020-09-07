@@ -3,7 +3,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameConfigurationHandle : MonoBehaviour
@@ -71,6 +73,9 @@ public class GameConfigurationHandle : MonoBehaviour
         string[] sitesCountryName = new string[Convert.ToInt32(siteNumberSlider.value)];
         string[] sitesLanguageLevelToggleNameSelected = new string[Convert.ToInt32(siteNumberSlider.value)];
         int mainSiteNum;
+
+        int totalWorkers = 0;
+        float salaryPerHour = 0.0f;
         
         try
         {
@@ -99,6 +104,11 @@ public class GameConfigurationHandle : MonoBehaviour
 
             sitesCountryName[i] = sitesCountryDropdown[i].options[sitesCountryDropdown[i].value].text;
 
+            int workers = (int)sitesTeamSizeSlider[i].value;
+            totalWorkers += workers;
+
+            Country country = GameConfigurationControl.GetAllDataOfCountry(sitesCountryName[i]);
+            salaryPerHour += workers * country.Salary;
         }
 
         ProjectCharacteristicLevels[] projectCharacteristicsActual = GameConfigurationControl.CalculateProjectCharacteristics(Convert.ToInt32(siteNumberSlider.value), 
@@ -108,6 +118,13 @@ public class GameConfigurationHandle : MonoBehaviour
 
         ProjectDifficultyLevels projectDifficultyActual = GameConfigurationControl.CalculateProjectDifficulty(projectCharacteristicsActual);
         projectDifficulty.GetComponent<ProjectDifficultyHandle>().SetValue(projectDifficultyActual);
+
+        float timeToProgress = 100 / (totalWorkers * 0.0075f);
+
+        decimal initialBudgetWithoutRound = new decimal((timeToProgress + (int)projectDifficultyActual) * salaryPerHour * 8);
+        decimal initialDurationWithoutRound = new decimal((timeToProgress + (int)projectDifficultyActual) / 365);
+        initialBudgetInputField.text = Convert.ToSingle(Math.Round(initialBudgetWithoutRound / 100) * 100).ToString();
+        initialDurationInputField.text = Convert.ToSingle(Math.Round(initialDurationWithoutRound * 100) / 100).ToString();
     }
 
     private void SetProjectCharacteristics(ProjectCharacteristicLevels[] projectCharacteristicsActual)
@@ -164,6 +181,8 @@ public class GameConfigurationHandle : MonoBehaviour
             if(GameConfigurationControl.SaveGameConfiguration())
             {
                 Debug.Log("[GAME CONFIGURATION - INFO] Game saved in the database");
+                GameObject.Find("ProjectDifficulty/GetAdviceBtn").GetComponent<Button>().interactable = true;
+                SceneManager.LoadScene(3, LoadSceneMode.Single);
             }
             else
             {
@@ -223,5 +242,7 @@ public class GameConfigurationHandle : MonoBehaviour
             sitesCountryDropdown[i].value = sitesCountryDropdown[i].options.FindIndex(a => a.text == configuration.SitesList[i].Country);
             sitesTeamSizeSlider[i].value = configuration.SitesList[i].TeamSize;
         }
+
+        GameObject.Find("ProjectDifficulty/GetAdviceBtn").GetComponent<Button>().interactable = false;
     }
 }

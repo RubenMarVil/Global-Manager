@@ -1,0 +1,42 @@
+tree("Root")
+	repeat
+		mute
+			fallback
+				tree("Stress")
+				tree("BudgetDuration")
+				tree("NegativeEvent")
+
+tree("Stress")
+	fallback
+		sequence
+			IsPlayerBasic()
+			Wait(10.0)
+		sequence
+			IsPlayerIntermediate()
+			Wait(5.0)
+				
+tree("BudgetDuration")
+	fallback
+		sequence
+			IsPlayerBasic()
+			CreatePositiveEvent()
+			CreatePositiveEvent()
+		sequence
+			IsPlayerIntermediate()
+			CreatePositiveEvent()
+		sequence
+			IsPlayerAdvanced()
+			CreatePositiveEvent()
+			CreateNegativeEvent()
+			
+tree("NegativeEvent")
+	fallback
+		sequence
+			IsCommunicationLowest()
+			CreateNegativeCommunicationEvent()
+		sequence
+			IsCoordinationLowest()
+			CreateNegativeCoordinationEvent()
+		sequence
+			IsControlLowest()
+			CreateNegativeControlEvent()

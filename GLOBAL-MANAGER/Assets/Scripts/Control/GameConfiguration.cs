@@ -8,11 +8,11 @@ namespace Assets.Scripts.Control
 {
     public enum ProjectDifficultyLevels
     {
-        VERY_LOW,
-        LOW,
-        MEDIUM,
-        HIGH,
-        VERY_HIGH
+        VERY_LOW = 10,
+        LOW = 5,
+        MEDIUM = 3,
+        HIGH = 0,
+        VERY_HIGH = -2
     }
 
     public class GameConfiguration
@@ -28,6 +28,12 @@ namespace Assets.Scripts.Control
         public List<SiteConfiguration> SitesList { get; set; }
         public List<CommunicationConfiguration> CommunicationsList { get; set; }
         public List<ProjectCharacteristic> ProjectCharacteristicsList { get; set; }
+        public float StressValue { get; set; }
+        public float ProgressValue { get; set; }
+        public float BudgetValue { get; set; }
+        public float DurationValue { get; set; }
+        public int TotalNegativeEvents { get; set; }
+        public int CorrectNegativeEvents { get; set; }
 
         public void setProjectDifficulty(string difficulty)
         {

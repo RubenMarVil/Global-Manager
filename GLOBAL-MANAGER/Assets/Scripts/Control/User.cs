@@ -4,9 +4,9 @@ namespace Assets.Scripts.Control
 {
     public enum UserLevels
     {
-        BASIC,
-        INTERMEDIATE,
-        ADVANCED,
+        BASIC = 10,
+        INTERMEDIATE = 15,
+        ADVANCED = 20,
         NO_LEVEL
     }
 
@@ -36,6 +36,7 @@ namespace Assets.Scripts.Control
         public UserLevels UserLevel { get; set; }
         public int Score { get; set; }
         public int NumProjects { get; set; }
+        public bool IsMan { get; set; }
         public KnowledgeLevels Colocalized_Global { get; set; }
         public KnowledgeLevels CulturalKnowledge { get; set; }
         public KnowledgeLevels LanguageKnowledge { get; set; }
@@ -45,9 +46,19 @@ namespace Assets.Scripts.Control
         public AnswersToQuestions OffshoringQuestion { get; set; }
         public AnswersToQuestions OutsourcingQuestion { get; set; }
 
-        private Level BasicLevel;
-        private Level IntermediateLevel;
-        private Level AdvancedLevel;
+        private Level BasicLevel = new Level() { min = 0, max = 6 };
+        private Level IntermediateLevel = new Level() { min = 6, max = 15 };
+        private Level AdvancedLevel = new Level() { min = 15, max = 19 };
+
+        private int[,] BasicUpdateLevel = { {-2, -1, +1},
+                                            {-1,  0, +1},
+                                            { 0, +1, +2} };
+        private int[,] IntermediateUpdateLevel = { {-4, -3,  0},
+                                                   {-2,  0, +2},
+                                                   {+1, +2, +3} };
+        private int[,] AdvancedUpdateLevel = { {-3, -2, -1},
+                                               {-2,  0, +1},
+                                               {-1, +1, +2} };
 
         public User(string name, int age)
         {
@@ -55,13 +66,31 @@ namespace Assets.Scripts.Control
             Age = age;
             Score = 0;
             NumProjects = 0;
-
-            BasicLevel.min = 0;         BasicLevel.max = 6;
-            IntermediateLevel.min = 6;  IntermediateLevel.max = 15;
-            AdvancedLevel.min = 15;     AdvancedLevel.max = 19;
         }
 
         public User() { }
+
+        public void SetSex(string sex)
+        {
+            if(sex == "Man")
+            {
+                IsMan = true;
+            }
+            else if(sex == "Woman")
+            {
+                IsMan = false;
+            }
+        }
+
+        public void SetUserLevel(string userLevel)
+        {
+            switch(userLevel)
+            {
+                case "BASIC": UserLevel = UserLevels.BASIC; break;
+                case "INTERMEDIATE": UserLevel = UserLevels.INTERMEDIATE; break;
+                case "ADVANCED": UserLevel = UserLevels.ADVANCED; break;
+            }
+        }
 
         public void CalculateScore()
         {
@@ -90,11 +119,11 @@ namespace Assets.Scripts.Control
 
         private void CalculateLevelUser()
         {
-            if(BasicLevel.min <= Score && Score <= BasicLevel.max)
+            if(BasicLevel.min <= Score && Score < BasicLevel.max)
             {
                 UserLevel = UserLevels.BASIC;
             }
-            else if(IntermediateLevel.min < Score && Score <= IntermediateLevel.max)
+            else if(IntermediateLevel.min <= Score && Score <= IntermediateLevel.max)
             {
                 UserLevel = UserLevels.INTERMEDIATE;
             }
@@ -106,6 +135,41 @@ namespace Assets.Scripts.Control
             {
                 UserLevel = UserLevels.NO_LEVEL;
             }
+        }
+
+        public int UpdateScoreLevel(int performance, int resilience)
+        {
+            int change = 0;
+
+            switch(UserLevel)
+            {
+                case UserLevels.BASIC: 
+                    change = BasicUpdateLevel[resilience, performance]; 
+                    break;
+                case UserLevels.INTERMEDIATE: 
+                    change = IntermediateUpdateLevel[resilience, performance]; 
+                    break;
+                case UserLevels.ADVANCED: 
+                    change = AdvancedUpdateLevel[resilience, performance]; 
+                    break;
+            }
+
+            Score += change;
+
+            if(Score < BasicLevel.min)
+            {
+                Score = BasicLevel.min;
+            }
+            else if(Score > AdvancedLevel.max)
+            {
+                Score = AdvancedLevel.max;
+            }
+
+            NumProjects++;
+
+            CalculateLevelUser();
+
+            return change;
         }
     }
 }

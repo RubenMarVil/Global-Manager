@@ -11,7 +11,7 @@ public class CommunicationButtonHandle : MonoBehaviour
 
     void Start()
     {
-        selected = false;
+        selected = true;
     }
 
     void Update()

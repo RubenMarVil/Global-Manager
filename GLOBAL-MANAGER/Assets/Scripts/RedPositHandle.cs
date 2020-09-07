@@ -12,6 +12,9 @@ public class RedPositHandle : MonoBehaviour
     private float z = 0.16f;
     private bool falling;
 
+    private GameObject windowEvent;
+    private int maxNumEvent = 2;
+
     void Start()
     {
         Debug.Log("Red Posit Event Created!");
@@ -23,6 +26,9 @@ public class RedPositHandle : MonoBehaviour
         transform.position = new Vector3(x, yStart, z);
 
         falling = true;
+
+        string eventName = "CoordinationRed" + rnd.Next(1, maxNumEvent);
+        windowEvent = GameObject.Find(eventName);
     }
 
     void Update()
@@ -45,5 +51,15 @@ public class RedPositHandle : MonoBehaviour
         var result = (rnd.NextDouble() * (maxValue - (double)minValue)) + minValue;
 
         return (float)result;
+    }
+
+    public void ShowEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void DeleteEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

@@ -17,5 +17,9 @@ public class DropdownLanguage : MonoBehaviour
         {
             m_Dropdown.options.Add(new Dropdown.OptionData(language));
         }
+
+        System.Random rnd = new System.Random();
+
+        m_Dropdown.value = rnd.Next(0, languagesList.Count - 1);
     }
 }

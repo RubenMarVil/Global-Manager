@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 using Assets.Scripts.Control;
-using UnityEditor.SceneManagement;
 using UnityEngine.SceneManagement;
 
 public class SurveyHandle : MonoBehaviour
@@ -21,6 +20,7 @@ public class SurveyHandle : MonoBehaviour
     private ToggleGroup followTheSunAnswerGroup;
     private ToggleGroup offshoringAnswerGroup;
     private ToggleGroup outsourcingAnswerGroup;
+    private ToggleGroup sexGroup;
 
     private Toggle colocalized_globalKnowledge;
     private Toggle culturalKnowledge;
@@ -30,6 +30,7 @@ public class SurveyHandle : MonoBehaviour
     private Toggle followTheSunAnswer;
     private Toggle offshoringAnswer;
     private Toggle outsourcingAnswer;
+    private Toggle sex;
 
     private bool colocalized_globalKnowledgeAny;
     private bool culturalKnowledgeAny;
@@ -39,6 +40,7 @@ public class SurveyHandle : MonoBehaviour
     private bool followTheSunAnswerAny;
     private bool offshoringAnswerAny;
     private bool outsourcingAnswerAny;
+    private bool sexAnswerAny;
 
     public GameObject panelResult;
     public GameObject usernameText;
@@ -48,7 +50,7 @@ public class SurveyHandle : MonoBehaviour
 
     void Start()
     {
-        ErrorMessage = GameObject.Find("GetLevelBtn/ErrorMessage");
+        ErrorMessage = GameObject.Find("/Canvas/GetLevelBtn/ErrorMessage");
 
         userName = GameObject.Find("ScrollView/Viewport/Content/Q1/Answer").GetComponent<InputField>();
         age = GameObject.Find("ScrollView/Viewport/Content/Q2/SliderAge").GetComponent<Slider>();
@@ -61,6 +63,7 @@ public class SurveyHandle : MonoBehaviour
         followTheSunAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q9/RadioButtonGroup").GetComponent<ToggleGroup>();
         offshoringAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q10/RadioButtonGroup").GetComponent<ToggleGroup>();
         outsourcingAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q11/RadioButtonGroup").GetComponent<ToggleGroup>();
+        sexGroup = GameObject.Find("ScrollView/Viewport/Content/Q1/Sex").GetComponent<ToggleGroup>();
 
         colocalized_globalKnowledgeAny = false;
         culturalKnowledgeAny = false;
@@ -70,6 +73,7 @@ public class SurveyHandle : MonoBehaviour
         followTheSunAnswerAny = false;
         offshoringAnswerAny = false;
         outsourcingAnswerAny = false;
+        sexAnswerAny = false;
 }
 
     void Update()
@@ -152,6 +156,16 @@ public class SurveyHandle : MonoBehaviour
         catch (ArgumentOutOfRangeException)
         {
             outsourcingAnswerAny = false;
+        }
+
+        try
+        {
+            sex = sexGroup.ActiveToggles().ElementAt<Toggle>(0);
+            sexAnswerAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            sexAnswerAny = false;
         }
     }
 
@@ -275,6 +289,8 @@ public class SurveyHandle : MonoBehaviour
                     break;
             }
 
+            user.SetSex(sex.name);
+
             Debug.Log("[SurveyHandle - INFO] Creating new user...");
             user.CalculateScore();
             bool inserted = UserControl.CreateNewUser(user);
@@ -285,7 +301,12 @@ public class SurveyHandle : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
+    public void BackMainMenu()
+    {
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     private void ShowResult(bool inserted, User newUser)
@@ -294,10 +315,16 @@ public class SurveyHandle : MonoBehaviour
         {
             panelResult.SetActive(true);
 
+            string userLevel;
+
+            if (newUser.Score == 5) { userLevel = "INTERMEDIATE-"; }
+            else if (newUser.Score == 13) { userLevel = "INTERMEDIATE+"; }
+            else { userLevel = newUser.UserLevel.ToString(); }
+
             usernameText.GetComponent<Text>().text = newUser.Name;
             ageText.GetComponent<Text>().text = newUser.Age.ToString();
             scoreText.GetComponent<Text>().text = newUser.Score.ToString();
-            userLevelText.GetComponent<Text>().text = newUser.UserLevel.ToString();
+            userLevelText.GetComponent<Text>().text = userLevel;
         }
         else
         {

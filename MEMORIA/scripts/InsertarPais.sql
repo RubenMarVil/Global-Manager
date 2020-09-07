@@ -1,0 +1,2 @@
+INSERT INTO "COUNTRY" ("Name", "PowerDistance", "Individualism", "Masculinity", "UncertantyAvoidance", "LongTermOrientation", "Indulgence", "TimeZone", "Salary", "Instability", "Latitude", "Longitude") 
+VALUES ('Spain', '57', '51', '42', '86', '48', '44', '1.0', '19.05', '0', '40.0', '-4.0');

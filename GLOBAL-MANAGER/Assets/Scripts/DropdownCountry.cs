@@ -18,6 +18,8 @@ public class DropdownCountry : MonoBehaviour
             m_Dropdown.options.Add(new Dropdown.OptionData(country));
         }
 
-        
+        System.Random rnd = new System.Random();
+
+        m_Dropdown.value = rnd.Next(0, countriesList.Count - 1);
     }
 }

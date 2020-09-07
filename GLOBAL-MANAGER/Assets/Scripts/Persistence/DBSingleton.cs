@@ -15,17 +15,12 @@ public class DBSingleton
 
     private DBSingleton()
     {
-        if(File.Exists(dbPath))
-        {
-            created = true;
-        }
-
         dbConnection = new SqliteConnection(dbConnectionString);
         dbConnection.Open();
 
         Debug.Log($"[DBSingleton - INFO] Database connection into the path: {dbPath}");
 
-        GenerateDatabase();
+        //GenerateDatabase();
     }
 
     public static DBSingleton GetInstance()
@@ -43,6 +38,13 @@ public class DBSingleton
         if (!created)
         {
             string sqlQuery = File.ReadAllText(@".\Assets\Scripts\Persistence\CreateDB.sql");
+            Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
+
+            dbCommand = dbConnection.CreateCommand();
+            dbCommand.CommandText = sqlQuery;
+            dbCommand.ExecuteNonQuery();
+
+            sqlQuery = File.ReadAllText(@".\Assets\Scripts\Persistence\Prueba.sql");
             Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
 
             dbCommand = dbConnection.CreateCommand();

@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class RedLoupeHandle : MonoBehaviour
 {
-    private float[] xMargin = { -4.4f, -3.52f };
+    private float[] xMargin = { -4.3f, -3.48f };
     private float yStart = 3.5f;
-    private float yEnd = 0.57f;
-    private float[] zMargin = { 1.53f, 2f };
+    private float yEnd = 0.52f;
+    private float[] zMargin = { 1.4f, 1.64f };
     private float[] rotationMargin = { 100f, 220f };
     private bool falling;
+
+    private GameObject windowEvent;
+    private int maxNumEvent = 1;
 
     void Start()
     {
@@ -25,6 +28,9 @@ public class RedLoupeHandle : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, rotation, 0));
 
         falling = true;
+
+        string eventName = "ControlRed" + rnd.Next(1, maxNumEvent);
+        windowEvent = GameObject.Find(eventName);
     }
 
     void Update()
@@ -47,5 +53,15 @@ public class RedLoupeHandle : MonoBehaviour
         var result = (rnd.NextDouble() * (maxValue - (double)minValue)) + minValue;
 
         return (float)result;
+    }
+
+    public void ShowEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void DeleteEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

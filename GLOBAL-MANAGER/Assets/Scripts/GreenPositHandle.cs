@@ -11,6 +11,9 @@ public class GreenPositHandle : MonoBehaviour
     private float z = 0.16f;
     private bool falling;
 
+    private GameObject windowEvent;
+    private int maxNumEvent = 1;
+
     void Start()
     {
         Debug.Log("Green Posit Event Created!");
@@ -22,6 +25,9 @@ public class GreenPositHandle : MonoBehaviour
         transform.position = new Vector3(x, yStart, z);
 
         falling = true;
+
+        string eventName = "CoordinationGreen" + rnd.Next(1, maxNumEvent);
+        windowEvent = GameObject.Find(eventName);
     }
 
     void Update()
@@ -44,5 +50,15 @@ public class GreenPositHandle : MonoBehaviour
         var result = (rnd.NextDouble() * (maxValue - (double)minValue)) + minValue;
 
         return (float)result;
+    }
+
+    public void ShowEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void DeleteEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

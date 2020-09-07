@@ -11,14 +11,22 @@ public class RecommendConfiguration
     {
         User player = UserControl.actualUser;
 
-        float basicLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_basic, 14);
-        float intermediateLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_inter, 14);
-        float advancedLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_advan, 14);
+        float basicLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_basic, player.Score);
+        float intermediateLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_inter, player.Score);
+        float advancedLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_advan, player.Score);
 
         Debug.Log("[RECOMMEND CONFIGURATION - INFO]\n\t- BASIC = " + basicLevel + 
             "\n\t- INTERMEDIATE = " + intermediateLevel + "\n\t- ADVANCED = " + advancedLevel);
 
         Dictionary<object, object> problemAdapted = RecommendConfigurationVariables.AdaptProblem(basicLevel, intermediateLevel, advancedLevel);
+
+        Debug.Log(problemAdapted["SitesNumber"]);
+        Debug.Log(problemAdapted["Countries"]);
+        Debug.Log(problemAdapted["ClientMainSite"]);
+        Debug.Log(problemAdapted["CommonLanguage"]);
+        Debug.Log(problemAdapted["MaxTimeDifference"]);
+        Debug.Log(problemAdapted["InstabilityCountries"]);
+        Debug.Log(problemAdapted["TeamSize"]);
 
         return GenerateGameConfiguration(problemAdapted); ;
     }
@@ -42,6 +50,11 @@ public class RecommendConfiguration
         else if((group[2] <= x) && (x <= group[3]))
         {
             result = (group[3] - x) / (float)(group[3] - group[2]);
+        }
+
+        if(Single.IsNaN(result))
+        {
+            result = 1;
         }
 
         return result;
@@ -173,6 +186,7 @@ public class RecommendConfiguration
 
     private static string GetCommonLanguageMajority(List<Country> countriesList, int[] countriesIndexSelected)
     {
+        string projectLanguage = "";
         Dictionary<string, int> languages = new Dictionary<string, int>();
 
         foreach(int countryIndex in countriesIndexSelected)
@@ -198,7 +212,15 @@ public class RecommendConfiguration
             }
         }
 
-        return languages.Keys.ElementAt(languages.Values.Max());
+        try
+        {
+            projectLanguage = languages.Keys.ElementAt(languages.Values.Max());
+        } catch(ArgumentOutOfRangeException)
+        {
+            projectLanguage = languages.Keys.ElementAt(0);
+        }
+
+        return projectLanguage;
     }
 
     private static string GetCommonLanguageRandom(List<Country> countriesList, int[] countriesIndexSelected)

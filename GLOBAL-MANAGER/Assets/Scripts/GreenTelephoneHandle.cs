@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class GreenTelephoneHandle : MonoBehaviour
 {
-    private float[] xMargin = { 0.76f, 1.2f };
-    private float yStart = 3.5f;
-    private float yEnd = 0.907f;
-    private float[] zMargin = { 0f, 1.6f };
+    private float[] xMargin = { 0.68f, 0.95f };
+    private float yStart = 3.907f;
+    private float yEnd = 1.0f;
+    private float[] zMargin = { 0f, 1.52f };
     private float[] rotationMargin = { -60f, 14f };
     private bool falling;
+
+    private GameObject windowEvent;
+    private int maxNumEvent = 1;
 
     void Start()
     {
@@ -25,6 +28,9 @@ public class GreenTelephoneHandle : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, rotation, 0));
 
         falling = true;
+
+        string eventName = "CommunicationGreen" + rnd.Next(1, maxNumEvent);
+        windowEvent = GameObject.Find(eventName);
     }
 
     void Update()
@@ -47,5 +53,15 @@ public class GreenTelephoneHandle : MonoBehaviour
         var result = (rnd.NextDouble() * (maxValue - (double)minValue)) + minValue;
 
         return (float)result;
+    }
+
+    public void ShowEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void DeleteEvent()
+    {
+        windowEvent.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

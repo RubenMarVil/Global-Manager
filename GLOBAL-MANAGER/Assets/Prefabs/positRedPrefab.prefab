@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &8168386532016311515
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400817317416641336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5679572, y: 1.1953772, z: 0.75135183}
+  m_Center: {x: 0.27104273, y: -0.14384061, z: -0.32594302}
+--- !u!95 &95098154427896838
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2400817317416641336}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 32a58273ff9fc5d479904f2c083efdf9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114391012911020568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22,6 +54,10 @@ PrefabInstance:
     - target: {fileID: 100006, guid: 875449faffcdb4242bb791bddc9d5173, type: 3}
       propertyPath: m_Name
       value: positRedPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 875449faffcdb4242bb791bddc9d5173, type: 3}
+      propertyPath: m_TagString
+      value: RedCoordination
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 875449faffcdb4242bb791bddc9d5173, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1,0 +1,46 @@
+tree("Root")
+	repeat
+		mute
+			fallback
+				tree("Stress")
+				tree("Event")
+
+tree("Stress")
+	sequence
+		CheckStress
+		fallback
+			sequence
+				IsPlayerBasic
+				Wait(10.0)
+			sequence
+				IsPlayerIntermediate
+				Wait(5.0)
+
+tree("Event")
+	sequence
+		CanDropEvent
+		fallback
+			sequence
+				NegativeEvent
+				fallback
+					sequence
+						CommunicationNegativeEvent
+						CreateNegativeCommunicationEvent
+					sequence
+						CoordinationNegativeEvent
+						CreateNegativeCoordinationEvent
+					sequence
+						ControlNegativeEvent
+						CreateNegativeControlEvent
+					CreateNegativeEvent
+			fallback
+				sequence
+					CommunicationPositiveEvent
+					CreatePositiveCommunicationEvent
+				sequence
+					CoordinationPositiveEvent
+					CreatePositiveCoordinationEvent
+				sequence
+					ControlPositiveEvent
+					CreatePositiveControlEvent
+				CreatePositiveEvent

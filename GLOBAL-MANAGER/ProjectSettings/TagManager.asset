@@ -3,7 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Players
+  - CameraTraker
+  - RedCommunication
+  - GreenCommunication
+  - RedCoordination
+  - GreenCoordination
+  - RedControl
+  - GreenControl
+  - Menu
+  - MainMenu
+  - Info
+  - StartGameBtn
+  - FinishEndUI
   layers:
   - Default
   - TransparentFX
@@ -14,8 +27,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 
-  - 
+  - Players
+  - CameraTraker
   - 
   - 
   - 

@@ -126,6 +126,13 @@ public class GameConfigurationControl
         return dbCountry.getAllCountries();
     }
 
+    public static Country GetAllDataOfCountry(string countryName)
+    {
+        DBCountry dbCountry = new DBCountry();
+
+        return dbCountry.getAllDataOfCountry(countryName);
+    }
+
     public static List<string> GetLanguages()
     {
         DBLanguage dbLanguage = new DBLanguage();
@@ -296,7 +303,7 @@ public class GameConfigurationControl
     private static ProjectCharacteristicLevels CalculateWorkingTimeOverlap(List<Country> countryList, int numSites)
     {
         float overlapingHours = 0f;
-        float maxOverlaping = numSites * 8f;
+        int count = 0;
 
         for(int i = 0; i < numSites; i++)
         {
@@ -305,26 +312,27 @@ public class GameConfigurationControl
                 float overlaping = (Math.Min(countryList[i].TimeZone, countryList[j].TimeZone) + 7.0f) - Math.Max(countryList[i].TimeZone, countryList[j].TimeZone) + 1;
 
                 overlapingHours += (overlaping > 0) ? overlaping : 0;
+                count++;
             }
         }
 
-        if(0 <= overlapingHours && overlapingHours < numSites*0.5f)
+        if(0 <= overlapingHours && overlapingHours < count * 0.5f)
         {
             return ProjectCharacteristicLevels.VERY_LOW;
         }
-        else if(numSites * 0.5f <= overlapingHours && overlapingHours < numSites * 2f)
+        else if(count * 0.5f <= overlapingHours && overlapingHours < count * 2f)
         {
             return ProjectCharacteristicLevels.LOW;
         }
-        else if(numSites * 2f <= overlapingHours && overlapingHours < numSites * 4f)
+        else if(count * 2f <= overlapingHours && overlapingHours < numSites * 4f)
         {
             return ProjectCharacteristicLevels.NORMAL;
         }
-        else if(numSites * 4f <= overlapingHours && overlapingHours < numSites * 7f)
+        else if(count * 4f <= overlapingHours && overlapingHours < count * 7f)
         {
             return ProjectCharacteristicLevels.HIGH;
         }
-        else if(numSites * 7f <= overlapingHours && overlapingHours <= maxOverlaping)
+        else if(count * 7f <= overlapingHours && overlapingHours <= count * 8f)
         {
             return ProjectCharacteristicLevels.VERY_HIGH;
         }
@@ -359,11 +367,11 @@ public class GameConfigurationControl
 
         if ((languageLevel < 0) || (0 <= languageLevel && languageLevel < numSites * 0.5))
         {
-            return ProjectCharacteristicLevels.VERY_LOW;
+            return ProjectCharacteristicLevels.VERY_HIGH;
         }
         else if (numSites * 0.5 <= languageLevel && languageLevel < numSites * 1)
         {
-            return ProjectCharacteristicLevels.LOW;
+            return ProjectCharacteristicLevels.HIGH;
         }
         else if (numSites * 1 <= languageLevel && languageLevel < numSites * 2)
         {
@@ -371,11 +379,11 @@ public class GameConfigurationControl
         }
         else if (numSites * 2 <= languageLevel && languageLevel < numSites * 2.5)
         {
-            return ProjectCharacteristicLevels.HIGH;
+            return ProjectCharacteristicLevels.LOW;
         }
         else if (numSites * 2.5 <= languageLevel && languageLevel <= maxLanguageLevel)
         {
-            return ProjectCharacteristicLevels.VERY_HIGH;
+            return ProjectCharacteristicLevels.VERY_LOW;
         }
 
         return ProjectCharacteristicLevels.NORMAL;
@@ -384,8 +392,8 @@ public class GameConfigurationControl
     private static ProjectCharacteristicLevels CalculateCulturalDifference(List<Country> countryList, int numSites)
     {
         int culturalLevel = 0;
-        int minCulturalDifference = numSites * 17;
-        int maxCulturalDifference = numSites * 298;
+
+        int count = 0;
 
         for (int i = 0; i < numSites; i++)
         {
@@ -394,26 +402,30 @@ public class GameConfigurationControl
                 culturalLevel += Math.Abs(countryList[i].PowerDistance - countryList[j].PowerDistance) + Math.Abs(countryList[i].Individualism - countryList[j].Individualism) +
                     Math.Abs(countryList[i].Masculinity - countryList[j].Masculinity) + Math.Abs(countryList[i].UncertantyAvoidance - countryList[j].UncertantyAvoidance) +
                     Math.Abs(countryList[i].LongTermOrientation - countryList[j].LongTermOrientation) + Math.Abs(countryList[i].Indulgence - countryList[j].Indulgence);
+
+                count++;
             }
         }
 
-        if (minCulturalDifference <= culturalLevel && culturalLevel < numSites * 50)
+        int maxCulturalDifference = count * 298;
+
+        if (0 <= culturalLevel && culturalLevel < count * 50)
         {
             return ProjectCharacteristicLevels.VERY_LOW;
         }
-        else if (numSites * 50 <= culturalLevel && culturalLevel < numSites * 90)
+        else if (count * 50 <= culturalLevel && culturalLevel < count * 90)
         {
             return ProjectCharacteristicLevels.LOW;
         }
-        else if (numSites * 90 <= culturalLevel && culturalLevel < numSites * 170)
+        else if (count * 90 <= culturalLevel && culturalLevel < count * 170)
         {
             return ProjectCharacteristicLevels.NORMAL;
         }
-        else if (numSites * 170 <= culturalLevel && culturalLevel < numSites * 240)
+        else if (count * 170 <= culturalLevel && culturalLevel < count * 240)
         {
             return ProjectCharacteristicLevels.HIGH;
         }
-        else if (numSites * 240 <= culturalLevel && culturalLevel <= maxCulturalDifference)
+        else if (count * 240 <= culturalLevel && culturalLevel <= maxCulturalDifference)
         {
             return ProjectCharacteristicLevels.VERY_HIGH;
         }
@@ -558,125 +570,153 @@ public class GameConfigurationControl
         switch(projectCharacteristicsActual[0])
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                workingTimeOverlapValue = 1; break;
+                workingTimeOverlapValue = 5; break;
             case ProjectCharacteristicLevels.LOW:
-                workingTimeOverlapValue = 2; break;
+                workingTimeOverlapValue = 4; break;
             case ProjectCharacteristicLevels.NORMAL:
                 workingTimeOverlapValue = 3; break;
             case ProjectCharacteristicLevels.HIGH:
-                workingTimeOverlapValue = 4; break;
+                workingTimeOverlapValue = 2; break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                workingTimeOverlapValue = 5; break;
+                workingTimeOverlapValue = 1; break;
         }
 
         switch (projectCharacteristicsActual[1])
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                languageDifferenceValue = 5; break;
+                languageDifferenceValue = 1; break;
             case ProjectCharacteristicLevels.LOW:
-                languageDifferenceValue = 4; break;
+                languageDifferenceValue = 2; break;
             case ProjectCharacteristicLevels.NORMAL:
                 languageDifferenceValue = 3; break;
             case ProjectCharacteristicLevels.HIGH:
-                languageDifferenceValue = 2; break;
+                languageDifferenceValue = 4; break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                languageDifferenceValue = 1; break;
+                languageDifferenceValue = 5; break;
         }
 
         switch (projectCharacteristicsActual[2])
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                culturalDifferenceValue = 5; break;
+                culturalDifferenceValue = 1; break;
             case ProjectCharacteristicLevels.LOW:
-                culturalDifferenceValue = 4; break;
+                culturalDifferenceValue = 2; break;
             case ProjectCharacteristicLevels.NORMAL:
                 culturalDifferenceValue = 3; break;
             case ProjectCharacteristicLevels.HIGH:
-                culturalDifferenceValue = 2; break;
+                culturalDifferenceValue = 4; break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                culturalDifferenceValue = 1; break;
+                culturalDifferenceValue = 5; break;
         }
 
         switch (projectCharacteristicsActual[3])
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                instabilityValue = 5; break;
+                instabilityValue = 1; break;
             case ProjectCharacteristicLevels.LOW:
-                instabilityValue = 4; break;
+                instabilityValue = 2; break;
             case ProjectCharacteristicLevels.NORMAL:
                 instabilityValue = 3; break;
             case ProjectCharacteristicLevels.HIGH:
-                instabilityValue = 2; break;
+                instabilityValue = 4; break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                instabilityValue = 1; break;
+                instabilityValue = 5; break;
         }
 
         switch (projectCharacteristicsActual[4])
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                costumerProximityValue = 5; break;
+                costumerProximityValue = 1; break;
             case ProjectCharacteristicLevels.LOW:
-                costumerProximityValue = 4; break;
+                costumerProximityValue = 2; break;
             case ProjectCharacteristicLevels.NORMAL:
                 costumerProximityValue = 3; break;
             case ProjectCharacteristicLevels.HIGH:
-                costumerProximityValue = 2; break;
+                costumerProximityValue = 4; break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                costumerProximityValue = 1; break;
+                costumerProximityValue = 5; break;
         }
 
         switch (projectCharacteristicsActual[5])
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                communicationValue = 1; break;
+                communicationValue = 5; break;
             case ProjectCharacteristicLevels.LOW:
-                communicationValue = 2; break;
+                communicationValue = 4; break;
             case ProjectCharacteristicLevels.NORMAL:
                 communicationValue = 3; break;
             case ProjectCharacteristicLevels.HIGH:
-                communicationValue = 4; break;
+                communicationValue = 2; break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                communicationValue = 5; break;
+                communicationValue = 1; break;
         }
 
         switch (projectCharacteristicsActual[6])
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                sitesNumberValue = 5; break;
+                sitesNumberValue = 1; break;
             case ProjectCharacteristicLevels.LOW:
-                sitesNumberValue = 4; break;
+                sitesNumberValue = 2; break;
             case ProjectCharacteristicLevels.NORMAL:
                 sitesNumberValue = 3; break;
             case ProjectCharacteristicLevels.HIGH:
-                sitesNumberValue = 2; break;
+                sitesNumberValue = 4; break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                sitesNumberValue = 1; break;
+                sitesNumberValue = 5; break;
         }
 
         double difficultyValue = 0.11 * workingTimeOverlapValue + 0.11 * languageDifferenceValue + 0.13 * culturalDifferenceValue + 0.11 * instabilityValue + 
             0.17 * costumerProximityValue + 0.23 * communicationValue + 0.14 * sitesNumberValue;
 
-        if (0 <= difficultyValue && difficultyValue < 1)
+        if (0.5 <= difficultyValue && difficultyValue < 1.5)
         {
             return ProjectDifficultyLevels.VERY_LOW;
         }
-        else if (1 <= difficultyValue && difficultyValue < 2)
+        else if (1.5 <= difficultyValue && difficultyValue < 2.5)
         {
             return ProjectDifficultyLevels.LOW;
         }
-        else if (2 <= difficultyValue && difficultyValue < 3)
+        else if (2.5 <= difficultyValue && difficultyValue < 3.5)
         {
             return ProjectDifficultyLevels.MEDIUM;
         }
-        else if (3 <= difficultyValue && difficultyValue < 4)
+        else if (3.5 <= difficultyValue && difficultyValue < 4.5)
         {
             return ProjectDifficultyLevels.HIGH;
         }
-        else if (4 <= difficultyValue && difficultyValue <= 5)
+        else if (4.5 <= difficultyValue && difficultyValue <= 5.5)
         {
             return ProjectDifficultyLevels.VERY_HIGH;
         }
 
         return ProjectDifficultyLevels.MEDIUM;
+    }
+
+    public static bool InsertResultGame(float stressValue, float progressValue, float budgetValue, float durationValue, int totalNegativeEvents, int correctNegativeEvents)
+    {
+        bool inserted = true;
+        DBGameConfiguration dbGameConfiguration = new DBGameConfiguration();
+        int result = dbGameConfiguration.InsertResultGame(actualGameConfiguration.CodGame, stressValue, progressValue, budgetValue, durationValue, totalNegativeEvents, correctNegativeEvents);
+
+        if (result == -1)
+        {
+            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] Result game {actualGameConfiguration.CodGame} did not inserted into the database.");
+            inserted = false;
+        }
+        else if (result == 1)
+        {
+            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Result game '{actualGameConfiguration.CodGame}' inserted into the database.");
+        }
+
+        return inserted;
+    }
+
+    public static List<GameConfiguration> GetAllGamesOfPlayer(string username)
+    {
+        List<GameConfiguration> listGames;
+        DBGameConfiguration dbGameConfiguration = new DBGameConfiguration();
+        listGames = dbGameConfiguration.GetAllGamesOfPlayer(username);
+
+        return listGames;
     }
 }
