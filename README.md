@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/RubenMarVil/Global-Manager_TFG">
-    <img src="GLOBAL-MANAGER/Assets/GUIResources/ICONO.png" alt="Logo" width="200" height="200">
+    <img src="GLOBAL-MANAGER/Assets/GUIResources/ICONO.png" alt="Logo" width="400" height="400">
   </a>
 
   <h3 align="center">GLOBAL-MANAGER</h3>
