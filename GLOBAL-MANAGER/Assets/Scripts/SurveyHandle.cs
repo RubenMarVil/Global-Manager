@@ -317,8 +317,8 @@ public class SurveyHandle : MonoBehaviour
 
             string userLevel;
 
-            if (newUser.Score == 5) { userLevel = "INTERMEDIATE-"; }
-            else if (newUser.Score == 13) { userLevel = "INTERMEDIATE+"; }
+            if (newUser.Score >= 4 && newUser.Score <= 6) { userLevel = "INTERMEDIATE-"; }
+            else if (newUser.Score >= 13 && newUser.Score <= 15) { userLevel = "INTERMEDIATE+"; }
             else { userLevel = newUser.UserLevel.ToString(); }
 
             usernameText.GetComponent<Text>().text = newUser.Name;

@@ -55,8 +55,8 @@ public class GameHandle : MonoBehaviour
     void Start()
     {
         NegativeWeight = 1.0f;
-        NegativeEventsWeights = new[] { 0.33f, 0.33f, 0.33f };
-        PositiveEventsWeights = new[] { 0.33f, 0.33f, 0.33f };
+        NegativeEventsWeights = new[] { 0.33f, 0.66f, 1.00f };
+        PositiveEventsWeights = new[] { 0.33f, 0.66f, 1.00f };
 
         negativeCommunicationEvents = 0;
         negativeCoordinationEvents = 0;
@@ -106,6 +106,7 @@ public class GameHandle : MonoBehaviour
     {
         if(Time.time >= TimeForNextDay)
         {
+            StressBar.AddValueConst(-0.0005f);
             DurationBar.AddValueConst(-1);
             BudgetBar.AddValueConst(-salaryPerDay);
             ProgressBar.AddValueConst(workers * 0.0075f);
@@ -228,7 +229,7 @@ public class GameHandle : MonoBehaviour
     {
         GenerateNegativeEvent(0);
         Task.current.Succeed();
-
+        /*
         float changeNumber = UnityEngine.Random.Range(0.0f, negativeCommunicationEvents - correctNegativeCommunicationEvents) / 10;
         if(changeNumber + NegativeEventsWeights[0] > 1.0f)
         {
@@ -240,6 +241,7 @@ public class GameHandle : MonoBehaviour
         NegativeEventsWeights[2] -= changeNumber / 2;
 
         Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
+        */
     }
 
     [Task]
@@ -248,6 +250,7 @@ public class GameHandle : MonoBehaviour
         GenerateNegativeEvent(1);
         Task.current.Succeed();
 
+        /*
         float changeNumber = UnityEngine.Random.Range(0.0f, negativeCoordinationEvents - correctNegativeCoordinationEvents) / 10;
         if (changeNumber + NegativeEventsWeights[1] > 1.0f)
         {
@@ -259,6 +262,7 @@ public class GameHandle : MonoBehaviour
         NegativeEventsWeights[2] -= changeNumber / 2;
 
         Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
+        */
     }
 
     [Task]
@@ -267,6 +271,7 @@ public class GameHandle : MonoBehaviour
         GenerateNegativeEvent(2);
         Task.current.Succeed();
 
+        /*
         float changeNumber = UnityEngine.Random.Range(0.0f, negativeControlEvents - correctNegativeControlEvents) / 10;
         if (changeNumber + NegativeEventsWeights[2] > 1.0f)
         {
@@ -278,6 +283,7 @@ public class GameHandle : MonoBehaviour
         NegativeEventsWeights[1] -= changeNumber / 2;
 
         Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
+        */
     }
 
     [Task]
@@ -343,7 +349,7 @@ public class GameHandle : MonoBehaviour
     [Task]
     void CheckStress()
     {
-        if(StressBar.GetPercentageValue() >= 80.0f)
+        if(StressBar.GetPercentageValue() >= 70.0f)
         {
             Task.current.Succeed();
         }
@@ -415,7 +421,7 @@ public class GameHandle : MonoBehaviour
             case 2: negativeControlEvents++; break;
         }
 
-        StressBar.AddValue(NumEventsActive * 0.75f);
+        StressBar.AddValue(NumEventsActive * 0.5f);
     }
 
     private void GeneratePositiveEvent(int type)

@@ -603,8 +603,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.3, y: -347}
-  m_SizeDelta: {x: 803.6467, y: 78.66567}
+  m_AnchoredPosition: {x: 491.5, y: -347}
+  m_SizeDelta: {x: 828.0327, y: 78.66567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &22175885
 MonoBehaviour:
@@ -6579,7 +6579,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42, y: -84}
+  m_AnchoredPosition: {x: -84, y: -90.45}
   m_SizeDelta: {x: 527.55743, y: 103.91565}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &689006861
@@ -7945,8 +7945,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 39.8, y: -101.2}
-  m_SizeDelta: {x: 43.620728, y: 115.32579}
+  m_AnchoredPosition: {x: 64.3, y: -101.2}
+  m_SizeDelta: {x: 92.618835, y: 115.32579}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &810966601
 MonoBehaviour:
@@ -14732,8 +14732,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 478.6, y: -349}
-  m_SizeDelta: {x: 802.2683, y: 89.376686}
+  m_AnchoredPosition: {x: 486.5, y: -349}
+  m_SizeDelta: {x: 818.04736, y: 89.376686}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1507130479
 MonoBehaviour:
@@ -15691,7 +15691,7 @@ Animation:
   m_GameObject: {fileID: 1577016286}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 04e68a3899aaf76498b29d7d8ece4a92, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 04e68a3899aaf76498b29d7d8ece4a92, type: 2}
   m_WrapMode: 0
@@ -15801,7 +15801,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: What is the follow-the-sun strategy used in some global projects?
+  m_Text: What is the follow-the-sun strategy used in some projects?
 --- !u!222 &1586151457
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18780,8 +18780,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 455.3, y: -597}
-  m_SizeDelta: {x: 755.6155, y: 132.32217}
+  m_AnchoredPosition: {x: 469.2, y: -597}
+  m_SizeDelta: {x: 783.50146, y: 132.32217}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1954186220
 MonoBehaviour:
@@ -19383,8 +19383,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.6765137, y: -124.2}
-  m_SizeDelta: {x: -61.35327, y: 162.48364}
+  m_AnchoredPosition: {x: 27.1, y: -124.2}
+  m_SizeDelta: {x: -5.7337646, y: 162.48364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1998698563
 MonoBehaviour:

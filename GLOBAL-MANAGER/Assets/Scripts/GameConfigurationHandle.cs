@@ -243,6 +243,6 @@ public class GameConfigurationHandle : MonoBehaviour
             sitesTeamSizeSlider[i].value = configuration.SitesList[i].TeamSize;
         }
 
-        GameObject.Find("ProjectDifficulty/GetAdviceBtn").GetComponent<Button>().interactable = false;
+        //GameObject.Find("ProjectDifficulty/GetAdviceBtn").GetComponent<Button>().interactable = false;
     }
 }

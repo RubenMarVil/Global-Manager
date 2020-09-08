@@ -24,8 +24,8 @@ public class PlayerBtnHandle : MonoBehaviour
         string userLevel;
         string sex;
 
-        if(user.Score == 5) { userLevel = "INTERMEDIATE-"; }
-        else if(user.Score == 13) { userLevel = "INTERMEDIATE+"; }
+        if(user.Score >= 4 && user.Score <= 6) { userLevel = "INTERMEDIATE-"; }
+        else if(user.Score >= 13 && user.Score <= 15) { userLevel = "INTERMEDIATE+"; }
         else { userLevel = user.UserLevel.ToString(); }
 
         if(user.IsMan)

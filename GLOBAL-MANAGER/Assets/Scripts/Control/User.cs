@@ -46,9 +46,9 @@ namespace Assets.Scripts.Control
         public AnswersToQuestions OffshoringQuestion { get; set; }
         public AnswersToQuestions OutsourcingQuestion { get; set; }
 
-        private Level BasicLevel = new Level() { min = 0, max = 6 };
-        private Level IntermediateLevel = new Level() { min = 6, max = 15 };
-        private Level AdvancedLevel = new Level() { min = 15, max = 19 };
+        private Level BasicLevel = new Level() { min = 0, max = 5 };
+        private Level IntermediateLevel = new Level() { min = 5, max = 14 };
+        private Level AdvancedLevel = new Level() { min = 14, max = 19 };
 
         private int[,] BasicUpdateLevel = { {-2, -1, +1},
                                             {-1,  0, +1},
