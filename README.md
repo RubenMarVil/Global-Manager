@@ -42,7 +42,7 @@ For the development of the project a great number of software tools have been us
 * [SQLite](https://sqlite.org/index.html)
 
 ## ¿How to execute?
-* Download the folder [EXECUTABLE](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/RubenMarVil/Global-Manager_TFG/tree/master/EXECUTABLE)
+* Download the folder EXECUTABLE [(Download)](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/RubenMarVil/Global-Manager_TFG/tree/master/EXECUTABLE)
 * Run the file [GLOBAL-MANAGER.exe](./EXECUTABLE/GLOBAL-MANAGER.exe)
 
 ## Contact
