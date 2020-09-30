@@ -4,11 +4,10 @@ using System.Linq;
 using System;
 using Assets.Scripts.Control;
 using UnityEngine.SceneManagement;
+using Lean.Gui;
 
 public class SurveyHandle : MonoBehaviour
 {
-    private GameObject ErrorMessage;
-
     private InputField userName;
     private Slider age;
 
@@ -48,9 +47,15 @@ public class SurveyHandle : MonoBehaviour
     public GameObject scoreText;
     public GameObject userLevelText;
 
+    private GameObject ErrorModal;
+    private String ErrorMessage;
+
+    private GameObject PlayerModal;
+
     void Start()
     {
-        ErrorMessage = GameObject.Find("/Canvas/GetLevelBtn/ErrorMessage");
+        ErrorModal = GameObject.Find("/Canvas/ModalError/");
+        PlayerModal = GameObject.Find("/Canvas/ModalPlayerCreated/");
 
         userName = GameObject.Find("ScrollView/Viewport/Content/Q1/Answer").GetComponent<InputField>();
         age = GameObject.Find("ScrollView/Viewport/Content/Q2/SliderAge").GetComponent<Slider>();
@@ -78,84 +83,20 @@ public class SurveyHandle : MonoBehaviour
 
     void Update()
     {
-        try
-        {
-            colocalized_globalKnowledge = colocalized_globalKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
-            colocalized_globalKnowledgeAny = true;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            colocalized_globalKnowledgeAny = false;
-        }
+        bool intro = false;
+        ErrorMessage = "";
 
-        try
+        if(String.IsNullOrWhiteSpace(userName.text))
         {
-            culturalKnowledge = culturalKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
-            culturalKnowledgeAny = true;
-        } 
-        catch (ArgumentOutOfRangeException)
-        {
-            culturalKnowledgeAny = false;
-        }
-
-        try
-        {
-            languageKnowledge = languageKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
-            languageKnowledgeAny = true;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            languageKnowledgeAny = false;
-        }
-
-        try
-        {
-            timeKnowledge = timeKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
-            timeKnowledgeAny = true;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            timeKnowledgeAny = false;
-        }
-
-        try
-        {
-            siteAnswer = siteAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
-            siteAnswerAny = true;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            siteAnswerAny = false;
-        }
-
-        try
-        {
-            followTheSunAnswer = followTheSunAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
-            followTheSunAnswerAny = true;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            followTheSunAnswerAny = false;
-        }
-
-        try
-        {
-            offshoringAnswer = offshoringAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
-            offshoringAnswerAny = true;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            offshoringAnswerAny = false;
-        }
-
-        try
-        {
-            outsourcingAnswer = outsourcingAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
-            outsourcingAnswerAny = true;
-        }
-        catch (ArgumentOutOfRangeException)
-        {
-            outsourcingAnswerAny = false;
+            if (intro)
+            {
+                ErrorMessage += "-Question 1\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 1\t\t\t";
+            }
+            intro = !intro;
         }
 
         try
@@ -167,6 +108,158 @@ public class SurveyHandle : MonoBehaviour
         {
             sexAnswerAny = false;
         }
+
+        try
+        {
+            colocalized_globalKnowledge = colocalized_globalKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
+            colocalized_globalKnowledgeAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 4\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 4\t\t\t";
+            }
+            intro = !intro;
+            colocalized_globalKnowledgeAny = false;
+        }
+
+        try
+        {
+            culturalKnowledge = culturalKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
+            culturalKnowledgeAny = true;
+        } 
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 5\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 5\t\t\t";
+            }
+            intro = !intro;
+            culturalKnowledgeAny = false;
+        }
+
+        try
+        {
+            languageKnowledge = languageKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
+            languageKnowledgeAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 6\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 6\t\t\t";
+            }
+            intro = !intro;
+            languageKnowledgeAny = false;
+        }
+
+        try
+        {
+            timeKnowledge = timeKnowledgeGroup.ActiveToggles().ElementAt<Toggle>(0);
+            timeKnowledgeAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 7\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 7\t\t\t";
+            }
+            intro = !intro;
+            timeKnowledgeAny = false;
+        }
+
+        try
+        {
+            siteAnswer = siteAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
+            siteAnswerAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 8\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 8\t\t\t";
+            }
+            intro = !intro;
+            siteAnswerAny = false;
+        }
+
+        try
+        {
+            followTheSunAnswer = followTheSunAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
+            followTheSunAnswerAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 9\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 9\t\t\t";
+            }
+            intro = !intro;
+            followTheSunAnswerAny = false;
+        }
+
+        try
+        {
+            offshoringAnswer = offshoringAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
+            offshoringAnswerAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 10\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 10\t\t\t";
+            }
+            intro = !intro;
+            offshoringAnswerAny = false;
+        }
+
+        try
+        {
+            outsourcingAnswer = outsourcingAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
+            outsourcingAnswerAny = true;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            if (intro)
+            {
+                ErrorMessage += "-Question 11\n";
+            }
+            else
+            {
+                ErrorMessage += "-Question 11\t\t\t";
+            }
+            intro = !intro;
+            outsourcingAnswerAny = false;
+        }
     }
 
     public void CreateUser()
@@ -175,8 +268,8 @@ public class SurveyHandle : MonoBehaviour
             !timeKnowledgeAny || !culturalKnowledgeAny || !siteAnswerAny || !followTheSunAnswerAny || !offshoringAnswerAny 
             || !outsourcingAnswerAny)
         {
-            ErrorMessage.GetComponent<Text>().text = "There are some unfilled fields. Please, answer all the questions.";
-            ErrorMessage.SetActive(true);
+            ErrorModal.transform.GetChild(0).GetChild(1).GetChild(1).GetComponent<Text>().text = ErrorMessage;
+            ErrorModal.GetComponent<LeanWindow>().TurnOn();
         }
         else
         {
@@ -313,23 +406,24 @@ public class SurveyHandle : MonoBehaviour
     {
         if(inserted)
         {
-            panelResult.SetActive(true);
-
             string userLevel;
 
             if (newUser.Score >= 4 && newUser.Score <= 6) { userLevel = "INTERMEDIATE-"; }
             else if (newUser.Score >= 13 && newUser.Score <= 15) { userLevel = "INTERMEDIATE+"; }
             else { userLevel = newUser.UserLevel.ToString(); }
 
-            usernameText.GetComponent<Text>().text = newUser.Name;
-            ageText.GetComponent<Text>().text = newUser.Age.ToString();
-            scoreText.GetComponent<Text>().text = newUser.Score.ToString();
-            userLevelText.GetComponent<Text>().text = userLevel;
+            GameObject content = PlayerModal.transform.GetChild(0).GetChild(1).gameObject;
+            content.transform.GetChild(2).GetComponent<Text>().text = newUser.Name;
+            content.transform.GetChild(3).GetComponent<Text>().text = newUser.Age.ToString();
+            content.transform.GetChild(4).GetComponent<Text>().text = newUser.Score.ToString();
+            content.transform.GetChild(5).GetComponent<Text>().text = userLevel;
+            PlayerModal.GetComponent<LeanWindow>().TurnOn();
         }
         else
         {
-            ErrorMessage.GetComponent<Text>().text = "Unexpected error when adding the new user to the database.";
-            ErrorMessage.SetActive(true);
+            ErrorMessage = "Unexpected error when adding the new user to the database.";
+            ErrorModal.transform.GetChild(0).GetChild(1).GetChild(1).GetComponent<Text>().text = ErrorMessage;
+            ErrorModal.GetComponent<LeanWindow>().TurnOn();
         }
     }
 }

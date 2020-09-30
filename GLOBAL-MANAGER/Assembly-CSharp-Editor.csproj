@@ -722,6 +722,18 @@
       <Project>{52256C60-694F-76D1-D534-800FF43C43EC}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="LeanCommon.csproj">
+      <Project>{3B8BD6C3-C71A-72CF-7432-20FC2B06A851}</Project>
+      <Name>LeanCommon</Name>
+    </ProjectReference>
+    <ProjectReference Include="LeanTransition.csproj">
+      <Project>{C54514FE-8EDF-E08E-FF64-021E840859C1}</Project>
+      <Name>LeanTransition</Name>
+    </ProjectReference>
+    <ProjectReference Include="LeanGUI.csproj">
+      <Project>{DAC67F9C-49BC-5941-A8FC-24E73FEBF856}</Project>
+      <Name>LeanGUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -8,11 +8,6 @@ public class SliderHandleAge : MonoBehaviour
 {
     public Text dynamicTxtAge;
 
-    private void Start()
-    {
-        dynamicTxtAge = GetComponent<Text>();
-    }
-
     public void OnSliderValueChanged(float ageNumber)
     {
         dynamicTxtAge.text = ageNumber.ToString();

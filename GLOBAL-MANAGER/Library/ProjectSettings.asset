@@ -14,7 +14,7 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: RubenMa
   productName: GLOBAL-MANAGER
-  defaultCursor: {fileID: 2800000, guid: 815f9e89b95da67448ca0035a536c280, type: 3}
+  defaultCursor: {fileID: 2800000, guid: 855abaca447b3f7498664b26de6aecad, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
