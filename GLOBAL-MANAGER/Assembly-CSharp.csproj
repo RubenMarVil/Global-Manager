@@ -97,6 +97,11 @@
     <Compile Include="Assets\ExternalTools\Animations\RPG Character Animation Pack FREE\SuperCharacterController\SuperCharacterController\Math3d.cs" />
     <Compile Include="Assets\ExternalTools\Environment\OfficeProps\About\Scripts\Readme.cs" />
     <Compile Include="Assets\ExternalTools\GUI Kits\Modern_GUI_Skin\Demo_Assets\scripts\GUI_Demo.cs" />
+    <Compile Include="Assets\ExternalTools\SmartTimersManager\ScriptExamples\BlueLightFlicker.cs" />
+    <Compile Include="Assets\ExternalTools\SmartTimersManager\ScriptExamples\RedLightFlicker.cs" />
+    <Compile Include="Assets\ExternalTools\SmartTimersManager\TimerManager\GUI_TimersList.cs" />
+    <Compile Include="Assets\ExternalTools\SmartTimersManager\TimerManager\Timer.cs" />
+    <Compile Include="Assets\ExternalTools\SmartTimersManager\TimerManager\TimersManager.cs" />
     <Compile Include="Assets\PandaBehaviour\Core\PandaBehaviour.cs" />
     <Compile Include="Assets\PandaBehaviour\Examples\00_ChangeColor\Assets\MyCube.cs" />
     <Compile Include="Assets\PandaBehaviour\Examples\01_Move\Assets\Move.cs" />
@@ -140,6 +145,7 @@
     <Compile Include="Assets\Scripts\EventHandle.cs" />
     <Compile Include="Assets\Scripts\GameConfigurationHandle.cs" />
     <Compile Include="Assets\Scripts\GameHandle.cs" />
+    <Compile Include="Assets\Scripts\GradientEffect.cs" />
     <Compile Include="Assets\Scripts\GreenLoupeHandle.cs" />
     <Compile Include="Assets\Scripts\GreenPositHandle.cs" />
     <Compile Include="Assets\Scripts\GreenTelephoneHandle.cs" />
@@ -171,6 +177,8 @@
     <Compile Include="Assets\Scripts\SolveCommunicationRed3BtnHandle.cs" />
     <Compile Include="Assets\Scripts\StressBar.cs" />
     <Compile Include="Assets\Scripts\SurveyHandle.cs" />
+    <Compile Include="Assets\Scripts\TabButton.cs" />
+    <Compile Include="Assets\Scripts\TabGroup.cs" />
     <Compile Include="Assets\Scripts\TelephoneClick.cs" />
     <None Include="Assets\PandaBehaviour\Examples\03_Shooter\Assets\Patroller.BT.txt" />
     <None Include="Assets\ExternalTools\Animations\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />

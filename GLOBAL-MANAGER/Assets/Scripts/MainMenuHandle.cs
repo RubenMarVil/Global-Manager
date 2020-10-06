@@ -1,11 +1,18 @@
-﻿using System.Collections;
+﻿using Lean.Transition.Method;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuHandle : MonoBehaviour
 {
     private Animator animScrollView;
+
+    public GameObject StartGameBtn;
+
+    public GameObject PointerEnterTransition;
+    public GameObject PointerExitTransition;
 
     void Start()
     {
@@ -17,6 +24,22 @@ public class MainMenuHandle : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void StartProjectEnter()
+    {
+        if(StartGameBtn.GetComponent<Button>().interactable)
+        {
+            PointerEnterTransition.GetComponent<LeanTransformLocalScaleXY>().BeginThisTransition();
+        }
+    }
+
+    public void StartProjectExit()
+    {
+        if(StartGameBtn.GetComponent<Button>().interactable)
+        {
+            PointerExitTransition.GetComponent<LeanTransformLocalScaleXY>().BeginThisTransition();
+        }
     }
 
     public void StartProject()

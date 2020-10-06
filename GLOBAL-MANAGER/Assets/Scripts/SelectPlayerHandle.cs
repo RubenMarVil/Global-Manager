@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class SelectPlayerHandle : MonoBehaviour
 {
     private List<User> userList;
-    private float distanceBtwBtns = 125;
 
     public GameObject UserBtnPrefab;
 
@@ -26,8 +25,6 @@ public class SelectPlayerHandle : MonoBehaviour
             for (int i = 0; i < userList.Count; i++)
             {
                 GameObject newUserBtn = Instantiate(UserBtnPrefab, transform.GetChild(0).transform.GetChild(0));
-
-                newUserBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(newUserBtn.GetComponent<RectTransform>().anchoredPosition.x, distanceBtwBtns - distanceBtwBtns * i);
 
                 newUserBtn.GetComponent<Button>().onClick.AddListener(BackMainMenu);
                 newUserBtn.GetComponent<PlayerBtnHandle>().user = userList[i];
