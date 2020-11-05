@@ -8,6 +8,7 @@ namespace Assets.Scripts.Control
 {
     public enum ProjectCharacteristicLevels
     {
+        NULL,
         VERY_HIGH,
         HIGH,
         NORMAL,

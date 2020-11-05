@@ -11,36 +11,64 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
 
     public Image background;
 
+    public bool dissable;
+
     public void OnPointerClick(PointerEventData eventData)
     {
-        tabGroup.OnTabSelected(this);
+        if(!dissable)
+        {
+            tabGroup.OnTabSelected(this);
+        }
+        
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        tabGroup.OnTabEnter(this);
+        if(!dissable)
+        {
+            tabGroup.OnTabEnter(this);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tabGroup.OnTabExit(this);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        background = GetComponent<Image>();
-        tabGroup.Subscribe(this);
-
-        if(transform.GetChild(0).GetComponent<Text>().text == "General")
+        if(!dissable)
         {
-            tabGroup.OnTabSelected(this);
+            tabGroup.OnTabExit(this);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetDissable()
     {
-        
+        dissable = true;
+        tabGroup.SetDissable(this);
+    }
+
+    public void SetAble()
+    {
+        dissable = false;
+        tabGroup.SetAble(this);
+    }
+
+    public void SetActive()
+    {
+        tabGroup.OnTabSelected(this);
+    }
+
+    void Start()
+    {
+        background = GetComponent<Image>();
+
+        if (dissable)
+        {
+            tabGroup.SetDissable(this);
+        }
+
+        tabGroup.Subscribe(this);
+
+        if(transform.GetChild(0).GetComponent<Text>().text == "General" || transform.GetChild(0).GetComponent<Text>().text == "Site 1")
+        {
+            tabGroup.OnTabSelected(this);
+        }
     }
 }

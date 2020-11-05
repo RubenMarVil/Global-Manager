@@ -1893,7 +1893,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b798262da33ee41aa531f8dabe908e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dynamicTxtAge: {fileID: 170964443}
 --- !u!1 &175035624
 GameObject:
   m_ObjectHideFlags: 0
@@ -8303,7 +8302,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1190435666}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.08835286
+  m_Size: 0.088335
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameConfigurationHandle : MonoBehaviour
+public class GameConfigurationHandleObsolete : MonoBehaviour
 {
     public GameObject siteNumber;
     public GameObject clientCountry;
@@ -165,9 +165,9 @@ public class GameConfigurationHandle : MonoBehaviour
             {
                 for (int j = 0; j < i + 1; j++)
                 {
-                    GameConfigurationControl.SetCommunicationTools(communicationSites[i].transform.GetChild(j).gameObject.GetComponent<CommunicationHandle>().site1Num,
-                        communicationSites[i].transform.GetChild(j).gameObject.GetComponent<CommunicationHandle>().site2Num, 
-                        communicationSites[i].transform.GetChild(j).gameObject.GetComponent<CommunicationHandle>().communicationList);
+                    //GameConfigurationControl.SetCommunicationTools(communicationSites[i].transform.GetChild(j).gameObject.GetComponent<CommunicationHandle>().site1Num,
+                    //    communicationSites[i].transform.GetChild(j).gameObject.GetComponent<CommunicationHandle>().site2Num, 
+                    //    communicationSites[i].transform.GetChild(j).gameObject.GetComponent<CommunicationHandle>().communicationList);
                 }
             }
 

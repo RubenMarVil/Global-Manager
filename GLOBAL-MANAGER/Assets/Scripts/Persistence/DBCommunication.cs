@@ -12,21 +12,14 @@ public class DBCommunication
     public int AddCommunicate(GameConfiguration game)
     {
         int result = -1;
+        List<string> tools = game.CommunicationTools.Communication;
 
         try
         {
-            string sqlQuery;
+            string sqlQuery = "INSERT INTO Communicate(Game, Tool1, Tool2, Tool3) VALUES(" + game.CodGame + ", '" + tools[0] + "', '" +
+                tools[1] + "', '" + tools[2] + "');";
 
-            foreach(CommunicationConfiguration communicate in game.CommunicationsList)
-            {
-                foreach(CommunicationTool tool in communicate.Communication)
-                {
-                    sqlQuery = "INSERT INTO Communicate(Game, Site1, Site2, Communication) VALUES(" + game.CodGame + ", " + communicate.CodSite1 + ", " +
-                               communicate.CodSite2 + ", '" + tool + "');";
-
-                    result = DBSingleton.GetInstance().Insert(sqlQuery);
-                }
-            }
+            result = DBSingleton.GetInstance().Insert(sqlQuery);
         }
         catch (SqliteException e)
         {

@@ -58,7 +58,6 @@ public class GameConfigurationControl
             Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] List of sites of the game inserted into the database.");
 
             FillCodSites(dbSite);
-            FillCodSitesInCommunicate();
             inserted = AddGameSites(dbSite);
         }
 
@@ -70,15 +69,6 @@ public class GameConfigurationControl
         for(int i = 0; i < actualGameConfiguration.SitesList.Count; i++)
         {
             actualGameConfiguration.SitesList[i].CodSite = dbSite.GetCodSite(actualGameConfiguration.SitesList[i].Name);
-        }
-    }
-
-    private static void FillCodSitesInCommunicate()
-    {
-        foreach(CommunicationConfiguration communicate in actualGameConfiguration.CommunicationsList)
-        {
-            communicate.CodSite1 = actualGameConfiguration.SitesList[communicate.NumSite1 - 1].CodSite;
-            communicate.CodSite2 = actualGameConfiguration.SitesList[communicate.NumSite2 - 1].CodSite;
         }
     }
 
@@ -147,7 +137,6 @@ public class GameConfigurationControl
         actualGameConfiguration.CommonLanguage = commonLanguage;
 
         actualGameConfiguration.SitesList = new List<SiteConfiguration>();
-        actualGameConfiguration.CommunicationsList = new List<CommunicationConfiguration>();
         actualGameConfiguration.ProjectCharacteristicsList = new List<ProjectCharacteristic>();
 
         actualGameConfiguration.Player = UserControl.actualUser.Name;
@@ -163,9 +152,9 @@ public class GameConfigurationControl
         actualGameConfiguration.SitesList[mainSite - 1].MainSite = 1;
     }
 
-    public static void SetCommunicationTools(int numSite1, int numSite2, List<string> communicationsList)
+    public static void SetCommunicationTools(List<ToggleButton> communicationsList)
     {
-        actualGameConfiguration.CommunicationsList.Add(new CommunicationConfiguration(numSite1, numSite2, communicationsList));
+        actualGameConfiguration.CommunicationTools = new CommunicationConfiguration(communicationsList);
     }
 
     public static void SetProjectCharacteristic(string name, string value)
@@ -271,7 +260,7 @@ public class GameConfigurationControl
     */
 
     public static ProjectCharacteristicLevels[] CalculateProjectCharacteristics(int numSites, string[] sitesCountry, string[] sitesLanguageLevel, string commonLanguage,
-        string clientCountry, int mainSite)
+        string clientCountryName, int mainSite)
     {
         ProjectCharacteristicLevels[] projectCharacteristics = new ProjectCharacteristicLevels[7];
 
@@ -279,23 +268,66 @@ public class GameConfigurationControl
         DBLanguage dBLanguage = new DBLanguage();
 
         List<Country> countryList = new List<Country>();
+        Country clientCountry = null;
+
+        bool clientCountrySelected = true;
+        bool commonLanguageSelected = true;
+        bool sitesCountrySelected = true;
+        bool sitesLanguagesSelected = true;
+        bool mainSiteSelected = true;
+        
+        if(String.IsNullOrEmpty(clientCountryName)) { 
+            clientCountrySelected = false;
+        }
+        else
+        {
+            clientCountry = dbCountry.getAllDataOfCountry(clientCountryName);
+        }
+        if(String.IsNullOrEmpty(commonLanguage)) { commonLanguageSelected = false; }
+        if(mainSite == 0) { mainSiteSelected = false; }
+
         foreach(string countryName in sitesCountry)
         {
+            if(String.IsNullOrEmpty(countryName)) { sitesCountrySelected = false; break; }
             countryList.Add(dbCountry.getAllDataOfCountry(countryName));
         }
-        
-        foreach(Country country in countryList)
+
+        if (sitesCountrySelected)
         {
-            country.LanguagesSpeak = dBLanguage.getLanguagesOfCountry(country.Name);
+            foreach (Country country in countryList)
+            {
+                country.LanguagesSpeak = dBLanguage.getLanguagesOfCountry(country.Name);
+            }
         }
 
-        projectCharacteristics[0] = CalculateWorkingTimeOverlap(countryList, numSites);
-        projectCharacteristics[1] = CalculateLanguageDifference(countryList, numSites, sitesLanguageLevel, commonLanguage);
-        projectCharacteristics[2] = CalculateCulturalDifference(countryList, numSites);
-        projectCharacteristics[3] = CalculateInestability(countryList, numSites);
-        projectCharacteristics[4] = CalculateCostumerProximity(countryList, sitesCountry, mainSite, clientCountry);
+        foreach(string languageLevel in sitesLanguageLevel)
+        {
+            if(String.IsNullOrEmpty(languageLevel)) { sitesLanguagesSelected = false; break; }
+        }
+
+        if (sitesCountrySelected)
+        {
+            projectCharacteristics[0] = CalculateWorkingTimeOverlap(countryList, numSites);
+            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Working Time Overlap: {projectCharacteristics[0]}");
+            projectCharacteristics[2] = CalculateCulturalDifference(countryList, numSites);
+            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Cultural Difference: {projectCharacteristics[2]}");
+            projectCharacteristics[3] = CalculateInestability(countryList, numSites);
+            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Inestability of any Site: {projectCharacteristics[3]}");
+        }
+        if (sitesCountrySelected && sitesLanguagesSelected && commonLanguageSelected)
+        {
+            projectCharacteristics[1] = CalculateLanguageDifference(countryList, numSites, sitesLanguageLevel, commonLanguage);
+            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Language Difference: {projectCharacteristics[1]}");
+        }
+        if (sitesCountrySelected && mainSiteSelected && clientCountrySelected)
+        {
+            projectCharacteristics[4] = CalculateCostumerProximity(countryList, sitesCountry, mainSite, clientCountry);
+            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Costumer Proximity: {projectCharacteristics[4]}");
+        }
         projectCharacteristics[5] = CalculateCommunication();
+        Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Communication: {projectCharacteristics[5]}");
         projectCharacteristics[6] = CalculateSitesNumber(numSites);
+        Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Sites Number: {projectCharacteristics[6]}");
 
         return projectCharacteristics;
     }
@@ -466,23 +498,17 @@ public class GameConfigurationControl
         return ProjectCharacteristicLevels.NORMAL;
     }
 
-    private static ProjectCharacteristicLevels CalculateCostumerProximity(List<Country> countryList, string[] sitesCountry, int mainSite, string clientCountryName)
+    private static ProjectCharacteristicLevels CalculateCostumerProximity(List<Country> countryList, string[] sitesCountry, int mainSite, Country clientCountry)
     {
         if (mainSite != 0)
         {
             Country mainSiteCountry = null;
-            Country clientCountry = null;
 
             foreach (Country country in countryList)
             {
                 if (country.Name == sitesCountry[mainSite - 1])
                 {
                     mainSiteCountry = country;
-                }
-
-                if (country.Name == clientCountryName)
-                {
-                    clientCountry = country;
                 }
             }
 

@@ -9,6 +9,7 @@ public class TabGroup : MonoBehaviour
     public Sprite tabIdle;
     public Sprite tabHover;
     public Sprite tabActive;
+    public Sprite tabDissable;
     public TabButton selectedTab;
     public List<GameObject> objectsToSwap;
     
@@ -55,12 +56,30 @@ public class TabGroup : MonoBehaviour
         }
     }
 
+    public void SetDissable(TabButton button)
+    {
+        button.background.sprite = tabDissable;
+    }
+
+    public void SetAble(TabButton button)
+    {
+        button.background.sprite = tabIdle;
+    }
+
     public void ResetTabs()
     {
         foreach(TabButton button in tabButtons)
         {
             if (selectedTab != null && selectedTab == button) { continue; }
-            button.background.sprite = tabIdle;
+            if(button.dissable)
+            {
+                button.background.sprite = tabDissable;
+            }
+            else
+            {
+                button.background.sprite = tabIdle;
+            }
+            
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Assets.Scripts.Control
         public float InitialBudget { get; set; }
         public float InitialDuration { get; set; }
         public List<SiteConfiguration> SitesList { get; set; }
-        public List<CommunicationConfiguration> CommunicationsList { get; set; }
+        public CommunicationConfiguration CommunicationTools { get; set; }
         public List<ProjectCharacteristic> ProjectCharacteristicsList { get; set; }
         public float StressValue { get; set; }
         public float ProgressValue { get; set; }
