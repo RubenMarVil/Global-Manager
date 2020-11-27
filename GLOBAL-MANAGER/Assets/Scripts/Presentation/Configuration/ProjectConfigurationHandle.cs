@@ -224,7 +224,7 @@ public class ProjectConfigurationHandle : MonoBehaviour
         if (GameConfigurationControl.SaveGameConfiguration())
         {
             Debug.Log("[GAME CONFIGURATION - INFO] Game saved in the database");
-            SceneManager.LoadScene(3, LoadSceneMode.Single);
+            SceneManager.LoadScene(4, LoadSceneMode.Single);
         }
         else
         {

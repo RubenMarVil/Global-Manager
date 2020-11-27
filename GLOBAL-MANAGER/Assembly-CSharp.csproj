@@ -184,6 +184,7 @@
     <Compile Include="Assets\Scripts\Presentation\MainMenu\MainMenuHandle.cs" />
     <Compile Include="Assets\Scripts\Presentation\MainMenu\PlayerBtnHandle.cs" />
     <Compile Include="Assets\Scripts\Presentation\MainMenu\SelectPlayerHandle.cs" />
+    <Compile Include="Assets\Scripts\Presentation\Mode\ModeBtnHandle.cs" />
     <Compile Include="Assets\Scripts\Presentation\Survey\ChallangeHandle.cs" />
     <Compile Include="Assets\Scripts\Presentation\Survey\ChallengesOrderHandle.cs" />
     <Compile Include="Assets\Scripts\Presentation\Survey\SurveyHandle.cs" />

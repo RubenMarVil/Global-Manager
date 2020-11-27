@@ -6,10 +6,6 @@ using UnityEngine.UI;
 public class TabGroup : MonoBehaviour
 {
     public List<TabButton> tabButtons;
-    public Sprite tabIdle;
-    public Sprite tabHover;
-    public Sprite tabActive;
-    public Sprite tabDissable;
     public TabButton selectedTab;
     public List<GameObject> objectsToSwap;
     
@@ -28,7 +24,7 @@ public class TabGroup : MonoBehaviour
         ResetTabs();
         if (selectedTab == null || button != selectedTab)
         {
-            button.background.sprite = tabHover;
+            button.background.sprite = button.tabHover;
         }
     }
 
@@ -41,7 +37,7 @@ public class TabGroup : MonoBehaviour
     {
         selectedTab = button;
         ResetTabs();
-        button.background.sprite = tabActive;
+        button.background.sprite = button.tabActive;
         int index = button.transform.GetSiblingIndex();
         for(int i = 0; i < objectsToSwap.Count; i++)
         {
@@ -58,12 +54,22 @@ public class TabGroup : MonoBehaviour
 
     public void SetDissable(TabButton button)
     {
-        button.background.sprite = tabDissable;
+        button.background.sprite = button.tabDissable;
+
+        if(button.site)
+        {
+            button.siteName.SetActive(false);
+        }
     }
 
     public void SetAble(TabButton button)
     {
-        button.background.sprite = tabIdle;
+        button.background.sprite = button.tabIdle;
+
+        if (button.site)
+        {
+            button.siteName.SetActive(true);
+        }
     }
 
     public void ResetTabs()
@@ -73,11 +79,21 @@ public class TabGroup : MonoBehaviour
             if (selectedTab != null && selectedTab == button) { continue; }
             if(button.dissable)
             {
-                button.background.sprite = tabDissable;
+                button.background.sprite = button.tabDissable;
+
+                if (button.site)
+                {
+                    button.siteName.SetActive(false);
+                }
             }
             else
             {
-                button.background.sprite = tabIdle;
+                button.background.sprite = button.tabIdle;
+
+                if (button.site)
+                {
+                    button.siteName.SetActive(true);
+                }
             }
             
         }

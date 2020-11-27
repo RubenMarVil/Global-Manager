@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CursorHandle : MonoBehaviour
 {
@@ -22,6 +23,9 @@ public class CursorHandle : MonoBehaviour
 
     public void SetHandCursor()
     {
-        Cursor.SetCursor(cursorHand, hotSpot, cursorMode);
+        if (GetComponent<Button>().interactable)
+        {
+            Cursor.SetCursor(cursorHand, hotSpot, cursorMode);
+        }
     }
 }
