@@ -307,15 +307,6 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="PandaBehaviour">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/PandaBehaviour/Core/PandaBehaviour.dll</HintPath>
-    </Reference>
-    <Reference Include="PandaBehaviourEditor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/PandaBehaviour/Core/Editor/PandaBehaviourEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Mono.Data.Sqlite">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor.Advertisements">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
@@ -330,6 +321,15 @@
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="PandaBehaviour">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/PandaBehaviour.dll</HintPath>
+    </Reference>
+    <Reference Include="PandaBehaviourEditor">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/Editor/PandaBehaviourEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Data.Sqlite">
+      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/Plugins/Mono.Data.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.Experimental.PlayerLoop;
 using UnityEngine.UI;
 
-public class DropDownCountry : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
+public class DropDownCountry : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Dropdown CountryDropdown;
     public Image background;
@@ -15,15 +15,24 @@ public class DropDownCountry : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     public string CountrySelected;
 
-    bool active;
-    public Sprite DropdownIdle;
-    public Sprite DropdownHover;
-    public Sprite DropdownActive;
-    
+    public bool Deployed;
+
+    public Sprite IdleNoSelected;
+    public Sprite HoverNoSelected;
+    public Sprite ActiveNoSelected;
+
+    public Sprite IdleDeployed;
+    public Sprite HoverDeployed;
+    public Sprite ActiveDeployed;
+
+    public Sprite IdleSelected;
+    public Sprite HoverSelected;
+    public Sprite ActiveSelected;
+
 
     void Start()
     {
-        active = false;
+        Deployed = false;
         CountryDropdown = GetComponent<Dropdown>();
         background = GetComponent<Image>();
 
@@ -39,19 +48,18 @@ public class DropDownCountry : MonoBehaviour, IPointerClickHandler, IPointerEnte
 
     void Update()
     {
-        if(GameObject.Find("ClientCountryDropdown/Dropdown List") == null)
+        if(GameObject.Find("ClientCountryDropdown/Dropdown List") == null && CountryDropdown.IsActive())
         {
-            background.sprite = DropdownIdle;
-            active = false;
-        }
-    }
-
-    public void FirstClick()
-    {
-        if(string.IsNullOrEmpty(CountrySelected))
-        {
-            CountryDropdown.transform.GetChild(0).gameObject.SetActive(false);
-            CountryDropdown.transform.GetChild(1).gameObject.SetActive(true);
+            if(string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
+            {
+                background.sprite = IdleNoSelected;
+                Deployed = false;
+            }
+            else if(!string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
+            {
+                background.sprite = IdleSelected;
+                Deployed = false;
+            }
         }
     }
 
@@ -59,33 +67,74 @@ public class DropDownCountry : MonoBehaviour, IPointerClickHandler, IPointerEnte
     {
         CountrySelected = CountryDropdown.options.ElementAt(value).text;
 
-        background.sprite = DropdownIdle;
-        active = false;
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        if(active)
-        {
-            background.sprite = DropdownIdle;
-            active = false;
-        }
-        else
-        {
-            background.sprite = DropdownActive;
-            active = true;
-        }
+        background.sprite = IdleSelected;
+        Deployed = false;
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(active)
+        if (string.IsNullOrWhiteSpace(CountrySelected) && !Deployed)
         {
-            background.sprite = DropdownHover;
+            background.sprite = HoverNoSelected;
         }
-        else
+        else if (!string.IsNullOrWhiteSpace(CountrySelected) && !Deployed)
         {
+            background.sprite = HoverSelected;
+        }
+        else if (Deployed)
+        {
+            background.sprite = HoverDeployed;
+        }
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (string.IsNullOrWhiteSpace(CountrySelected) && !Deployed)
+        {
+            background.sprite = IdleNoSelected;
+        }
+        else if (!string.IsNullOrWhiteSpace(CountrySelected) && !Deployed)
+        {
+            background.sprite = IdleSelected;
+        }
+        else if (Deployed)
+        {
+            background.sprite = IdleDeployed;
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (string.IsNullOrWhiteSpace(CountrySelected) && !Deployed)
+        {
+            background.sprite = ActiveNoSelected;
+        }
+        else if (!string.IsNullOrWhiteSpace(CountrySelected) && !Deployed)
+        {
+            background.sprite = ActiveSelected;
+        }
+        else if (Deployed)
+        {
+            background.sprite = ActiveDeployed;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (!Deployed)
+        {
+            background.sprite = IdleDeployed;
+            Deployed = true;
+        }
+        else if (string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
+        {
+            background.sprite = IdleNoSelected;
+            Deployed = false;
+        }
+        else if (!string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
+        {
+            background.sprite = IdleSelected;
+            Deployed = false;
         }
     }
 }
