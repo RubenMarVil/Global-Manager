@@ -69,37 +69,37 @@
     <Compile Include="Assets\ExternalTools\PandaBehaviour\Core\Editor\PandaBehaviourEditor.cs" />
     <None Include="Assets\ExternalTools\Environment\OfficeProps\Scripts\Editor\PackageChecker\PackageImportList.txt" />
     <Reference Include="Unity.ProGrids">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -338,29 +338,29 @@
     <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
       <HintPath>C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/16.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor.Advertisements">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/Editor/Unity.Analytics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/Editor/Unity.Analytics.Tracker.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEditor.Purchasing">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
-    </Reference>
     <Reference Include="PandaBehaviour">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/PandaBehaviour.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/PandaBehaviour.dll</HintPath>
     </Reference>
     <Reference Include="PandaBehaviourEditor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/Editor/PandaBehaviourEditor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/Editor/PandaBehaviourEditor.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/Plugins/Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Assets/ExternalTools/Plugins/Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Editor">
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/Editor/Unity.Analytics.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.Tracker">
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/Editor/Unity.Analytics.Tracker.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>

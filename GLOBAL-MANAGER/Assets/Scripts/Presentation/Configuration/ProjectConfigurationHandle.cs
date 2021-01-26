@@ -26,8 +26,12 @@ public class ProjectConfigurationHandle : MonoBehaviour
     public List<CharacteristicHandle> CharacteristicsList;
     public DifficultyHandle Difficulty;
 
+    public Animator transitionAnim;
+
     void Start()
     {
+        GameConfigurationControl.actualGameConfiguration = new GameConfiguration();
+
         MainSite.options.Clear();
         MainSite.options.AddRange(NameSitesList.options.GetRange(0, 3));
 
@@ -66,7 +70,7 @@ public class ProjectConfigurationHandle : MonoBehaviour
             }
         }
 
-        if(String.IsNullOrEmpty(MainSite.gameObject.transform.GetChild(1).GetComponent<Text>().text))
+        if(String.IsNullOrEmpty(MainSite.gameObject.transform.GetChild(0).GetComponent<Text>().text))
         {
             ok = false;
         }
@@ -108,10 +112,12 @@ public class ProjectConfigurationHandle : MonoBehaviour
         if(ok)
         {
             ContinueBtnList[5].interactable = true;
+            ContinueBtnList[5].transform.GetChild(0).GetComponent<Text>().text = "PLAY!";
         }
         else
         {
             ContinueBtnList[5].interactable = false;
+            ContinueBtnList[5].transform.GetChild(0).GetComponent<Text>().text = "";
         }
     }
 
@@ -162,17 +168,53 @@ public class ProjectConfigurationHandle : MonoBehaviour
 
         if (update)
         {
-            float timeToProgress = 100 / (totalWorkers * 0.0075f);
+            int numQuestions = RecommendConfiguration.GetRecommendQuestions();
+            int timeEV_EV = RecommendConfiguration.GetTimeEV_EVRecommend();
 
-            decimal budgetWithoutRound = new decimal((timeToProgress * salaryPerHour * 8));
-            decimal durationWithoutRound = new decimal((timeToProgress / 30));
+            float Xfactor = RecommendConfigurationVariables.GetXFactor(UpdateProjectCharacteristics());
+
+            int timeToProgress = numQuestions * timeEV_EV;
+            float workOfWorkerPerDay = (100 / Convert.ToSingle(totalWorkers)) / Convert.ToSingle(timeToProgress);
+            GameHandle.workOfWorkerPerDay = workOfWorkerPerDay;
+            GameHandle.TimePerEvent = timeEV_EV;
+            
+            decimal budgetWithoutRound = new decimal((timeToProgress * salaryPerHour * 8) * Xfactor);
+            decimal durationWithoutRound = new decimal((timeToProgress) * Xfactor);
 
             BudgetDuration.SetBudgetRecommendation(Convert.ToInt32(Math.Round(budgetWithoutRound)));
             BudgetDuration.SetDurationRecommendation(Convert.ToInt32(Math.Round(durationWithoutRound)));
         }
     }
 
-    public void UpdateProjectCharacteristics()
+    public void UpdateProjectInfo()
+    {
+        string[] sitesCountryName = new string[NumSites.NumSites];
+        string[] sitesLanguageLevel = new string[NumSites.NumSites];
+
+        for (int i = 0; i < NumSites.NumSites; i++)
+        {
+            sitesCountryName[i] = SitesList[i].Country;
+            sitesLanguageLevel[i] = SitesList[i].LanguageLevel;
+        }
+
+        List<string> communicationList = new List<string>();
+        foreach (ToggleButton tool in Communication.toolsActives)
+        {
+            communicationList.Add(tool.name);
+        }
+
+        ProjectCharacteristicLevels[] projectCharacteristicsActual = GameConfigurationControl.CalculateProjectCharacteristics(NumSites.NumSites,
+            sitesCountryName, sitesLanguageLevel, CommonLanguage.LanguageSelected, ClientCountry.CountrySelected, MainSite.value, communicationList);
+
+        for (int i = 0; i < projectCharacteristicsActual.Length; i++)
+        {
+            CharacteristicsList[i].SetValue(projectCharacteristicsActual[i]);
+        }
+
+        UpdateProjectDifficulty(projectCharacteristicsActual);
+    }
+
+    public ProjectDifficultyLevels UpdateProjectCharacteristics()
     {
         string[] sitesCountryName = new string[NumSites.NumSites];
         string[] sitesLanguageLevel = new string[NumSites.NumSites];
@@ -183,22 +225,30 @@ public class ProjectConfigurationHandle : MonoBehaviour
             sitesLanguageLevel[i] = SitesList[i].LanguageLevel;
         }
 
+        List<string> communicationList = new List<string>();
+        foreach(ToggleButton tool in Communication.toolsActives)
+        {
+            communicationList.Add(tool.name);
+        }
+
         ProjectCharacteristicLevels[] projectCharacteristicsActual = GameConfigurationControl.CalculateProjectCharacteristics(NumSites.NumSites,
-            sitesCountryName, sitesLanguageLevel, CommonLanguage.LanguageSelected, ClientCountry.CountrySelected, MainSite.value);
+            sitesCountryName, sitesLanguageLevel, CommonLanguage.LanguageSelected, ClientCountry.CountrySelected, MainSite.value, communicationList);
 
         for(int i = 0; i < projectCharacteristicsActual.Length; i++)
         {
             CharacteristicsList[i].SetValue(projectCharacteristicsActual[i]);
         }
 
-        UpdateProjectDifficulty(projectCharacteristicsActual);
+        return UpdateProjectDifficulty(projectCharacteristicsActual);
     }
 
-    public void UpdateProjectDifficulty(ProjectCharacteristicLevels[] projectCharacteristicsActual)
+    public ProjectDifficultyLevels UpdateProjectDifficulty(ProjectCharacteristicLevels[] projectCharacteristicsActual)
     {
         ProjectDifficultyLevels projectDifficultyActual = GameConfigurationControl.CalculateProjectDifficulty(projectCharacteristicsActual);
         Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Project Difficulty: {projectDifficultyActual}");
         Difficulty.SetValue(projectDifficultyActual);
+
+        return projectDifficultyActual;
     }
 
     public void StartGameButton()
@@ -216,19 +266,33 @@ public class ProjectConfigurationHandle : MonoBehaviour
 
         foreach (CharacteristicHandle projectCharacteristic in CharacteristicsList)
         {
-            GameConfigurationControl.SetProjectCharacteristic(projectCharacteristic.transform.parent.parent.name, projectCharacteristic.Text.text);
+            GameConfigurationControl.SetProjectCharacteristic(projectCharacteristic.transform.parent.name, projectCharacteristic.Value);
         }
 
-        GameConfigurationControl.SetFinalConfiguration(Difficulty.Text.text, BudgetDuration.BudgetValue, BudgetDuration.DurationValue);
+        GameConfigurationControl.SetFinalConfiguration(Difficulty.Value, BudgetDuration.BudgetValue, BudgetDuration.DurationValue);
 
         if (GameConfigurationControl.SaveGameConfiguration())
         {
             Debug.Log("[GAME CONFIGURATION - INFO] Game saved in the database");
-            SceneManager.LoadScene(4, LoadSceneMode.Single);
+            StartCoroutine(LoadScene(4));
+            //SceneManager.LoadScene(4, LoadSceneMode.Single);
         }
         else
         {
             Debug.Log("[GAME CONFIGURATION - ERROR] Problem occurred saving the game");
         }
+    }
+
+    public void BackMainMenu()
+    {
+        StartCoroutine(LoadScene(2));
+        //SceneManager.LoadScene(2, LoadSceneMode.Single);
+    }
+
+    IEnumerator LoadScene(int scene)
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }

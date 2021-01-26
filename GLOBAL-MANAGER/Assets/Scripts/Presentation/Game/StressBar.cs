@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lean.Gui;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +9,20 @@ public class StressBar : MonoBehaviour
     static Slider stressBar;
     Image fillBar;
 
-    public Color VeryLowColor;
-    public Color LowColor;
-    public Color MediumColor;
-    public Color HighColor;
-    public Color VeryHighColor;
+    public Color Color1;
+    public Color Color2;
+    public Color Color3;
+    public Color Color4;
+    public Color Color5;
+    public Color Color6;
+    public Color Color7;
+    public Color Color8;
+    public Color Color9;
+    public Color Color10;
 
     private static Animator anim;
+
+    public LeanWindow Finish;
 
     void Start()
     {
@@ -26,35 +34,50 @@ public class StressBar : MonoBehaviour
 
     void Update()
     {
-        if(stressBar.value <= stressBar.maxValue / 5)
+        if (stressBar.value <= stressBar.maxValue / 10)
         {
-            fillBar.color = VeryLowColor;
+            fillBar.color = Color1;
         }
-        else if(stressBar.value <= stressBar.maxValue * 2/5)
+        else if (stressBar.value <= stressBar.maxValue * 2 / 10)
         {
-            fillBar.color = LowColor;
+            fillBar.color = Color2;
         }
-        else if(stressBar.value <= stressBar.maxValue * 3/5)
+        else if (stressBar.value <= stressBar.maxValue * 3 / 10)
         {
-            fillBar.color = MediumColor;
+            fillBar.color = Color3;
         }
-        else if(stressBar.value <= stressBar.maxValue * 4/5)
+        else if (stressBar.value <= stressBar.maxValue * 4 / 10)
         {
-            fillBar.color = HighColor;
+            fillBar.color = Color4;
+        }
+        else if (stressBar.value <= stressBar.maxValue * 5 / 10)
+        {
+            fillBar.color = Color5;
+        }
+        else if (stressBar.value <= stressBar.maxValue * 6 / 10)
+        {
+            fillBar.color = Color6;
+        }
+        else if (stressBar.value <= stressBar.maxValue * 7 / 10)
+        {
+            fillBar.color = Color7;
+        }
+        else if (stressBar.value <= stressBar.maxValue * 8 / 10)
+        {
+            fillBar.color = Color8;
+        }
+        else if (stressBar.value <= stressBar.maxValue * 9 / 10)
+        {
+            fillBar.color = Color9;
         }
         else
         {
-            fillBar.color = VeryHighColor;
+            fillBar.color = Color10;
         }
 
-        if(stressBar.value == stressBar.maxValue)
+        if (stressBar.value == stressBar.maxValue)
         {
-            GameObject EndUI = GameObject.FindGameObjectWithTag("FinishEndUI").transform.GetChild(0).gameObject;
-            EndUI.SetActive(true);
-
-            EndUI.transform.GetChild(4).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeCommunicationEvents.ToString() + "/" + GameHandle.negativeCommunicationEvents.ToString();
-            EndUI.transform.GetChild(5).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeCoordinationEvents.ToString() + "/" + GameHandle.negativeCoordinationEvents.ToString();
-            EndUI.transform.GetChild(6).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeControlEvents.ToString() + "/" + GameHandle.negativeControlEvents.ToString();
+            Finish.TurnOn();
 
             GameHandle.PauseGame();
         }
@@ -71,7 +94,8 @@ public class StressBar : MonoBehaviour
             anim.SetTrigger("UpTrigger");
         }
 
-        stressBar.value += value;
+        AddValueConst(value);
+        // stressBar.value += value;
     }
 
     public static void AddValueConst(float value)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lean.Gui;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ public class RedTelephoneHandle : MonoBehaviour
     private bool falling;
 
     private GameObject windowEvent;
-    private int maxNumEvent = 3;
+    private int maxNumEvent = 11;
 
     void Start()
     {
@@ -31,7 +32,16 @@ public class RedTelephoneHandle : MonoBehaviour
 
         falling = true;
 
-        string eventName = "/CommunicationRed" + rnd.Next(1, maxNumEvent);
+        int eventNum = rnd.Next(1, maxNumEvent + 1);
+        /*while(GameHandle.communicationEvents.Contains(eventNum))
+        {
+            eventNum = rnd.Next(1, maxNumEvent + 1);
+        }*/
+
+        Debug.Log($"[RED TELEPHONE HANDLE - INFO] Creating communication event number {eventNum}");
+        GameHandle.communicationEvents.Add(eventNum);
+
+        string eventName = "/Questions/CommunicationRed" + eventNum;
         windowEvent = GameObject.Find(eventName);
     }
 
@@ -59,11 +69,13 @@ public class RedTelephoneHandle : MonoBehaviour
 
     public void ShowEvent()
     {
-        windowEvent.transform.GetChild(0).gameObject.SetActive(true);
+        windowEvent.GetComponent<LeanWindow>().TurnOn();
+        //windowEvent.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void DeleteEvent()
     {
-        windowEvent.transform.GetChild(0).gameObject.SetActive(false);
+        windowEvent.GetComponent<LeanWindow>().TurnOff();
+        //windowEvent.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

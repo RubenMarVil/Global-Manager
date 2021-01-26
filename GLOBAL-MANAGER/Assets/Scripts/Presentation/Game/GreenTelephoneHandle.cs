@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lean.Gui;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class GreenTelephoneHandle : MonoBehaviour
     private bool falling;
 
     private GameObject windowEvent;
-    private int maxNumEvent = 1;
+    private int maxNumEvent = 3;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class GreenTelephoneHandle : MonoBehaviour
 
         falling = true;
 
-        string eventName = "CommunicationGreen" + rnd.Next(1, maxNumEvent);
+        string eventName = "/Questions/CommunicationGreen" + rnd.Next(1, maxNumEvent + 1);
         windowEvent = GameObject.Find(eventName);
     }
 
@@ -57,11 +58,13 @@ public class GreenTelephoneHandle : MonoBehaviour
 
     public void ShowEvent()
     {
-        windowEvent.transform.GetChild(0).gameObject.SetActive(true);
+        windowEvent.GetComponent<LeanWindow>().TurnOn();
+        //windowEvent.transform.GetChild(0).gameObject.SetActive(true);
     }
 
     public void DeleteEvent()
     {
-        windowEvent.transform.GetChild(0).gameObject.SetActive(false);
+        windowEvent.GetComponent<LeanWindow>().TurnOff();
+        //windowEvent.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

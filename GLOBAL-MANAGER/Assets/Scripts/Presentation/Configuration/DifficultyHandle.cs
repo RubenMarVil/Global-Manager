@@ -7,21 +7,27 @@ using UnityEngine.UI;
 
 public class DifficultyHandle : MonoBehaviour
 {
-    public Color VeryLowColor;
-    public Color LowColor;
-    public Color MediumColor;
-    public Color HighColor;
-    public Color VeryHighColor;
+    public Sprite VeryLow;
+    public Sprite Low;
+    public Sprite Medium;
+    public Sprite High;
+    public Sprite VeryHigh;
 
-    public TextMeshProUGUI Text;
+    public string Value;
+    public Image Imagen;
 
-    public Slider DifficultySlider;
-    public Image Fill;
+    public Sprite VeryLowBar;
+    public Sprite LowBar;
+    public Sprite MediumBar;
+    public Sprite HighBar;
+    public Sprite VeryHighBar;
+
+    public Image DifficultyBar;
 
     void Start()
     {
-        Text = GetComponent<TextMeshProUGUI>();
-        Text.text = "";
+        Imagen = GetComponent<Image>();
+        Value = "";
     }
 
     public void SetValue(ProjectDifficultyLevels characteristicLevel)
@@ -29,39 +35,29 @@ public class DifficultyHandle : MonoBehaviour
         switch (characteristicLevel)
         {
             case ProjectDifficultyLevels.VERY_LOW:
-                DifficultySlider.value = 1;
-                Fill.gameObject.SetActive(true);
-                Fill.color = VeryLowColor;
-                Text.text = "VERY LOW";
-                Text.color = VeryLowColor;
+                DifficultyBar.sprite = VeryLowBar;
+                Value = "VERY LOW";
+                Imagen.sprite = VeryLow;
                 break;
             case ProjectDifficultyLevels.LOW:
-                DifficultySlider.value = 2;
-                Fill.gameObject.SetActive(true);
-                Fill.color = LowColor;
-                Text.text = "LOW";
-                Text.color = LowColor;
+                DifficultyBar.sprite = LowBar;
+                Value = "LOW";
+                Imagen.sprite = Low;
                 break;
             case ProjectDifficultyLevels.MEDIUM:
-                DifficultySlider.value = 3;
-                Fill.gameObject.SetActive(true);
-                Fill.color = MediumColor;
-                Text.text = "NORMAL";
-                Text.color = MediumColor;
+                DifficultyBar.sprite = MediumBar;
+                Value = "MEDIUM";
+                Imagen.sprite = Medium;
                 break;
             case ProjectDifficultyLevels.HIGH:
-                DifficultySlider.value = 4;
-                Fill.gameObject.SetActive(true);
-                Fill.color = HighColor;
-                Text.text = "HIGH";
-                Text.color = HighColor;
+                DifficultyBar.sprite = HighBar;
+                Value = "HIGH";
+                Imagen.sprite = High;
                 break;
             case ProjectDifficultyLevels.VERY_HIGH:
-                DifficultySlider.value = 5;
-                Fill.gameObject.SetActive(true);
-                Fill.color = VeryHighColor;
-                Text.text = "VERY HIGH";
-                Text.color = VeryHighColor;
+                DifficultyBar.sprite = VeryHighBar;
+                Value = "VERY HIGH";
+                Imagen.sprite = VeryHigh;
                 break;
         }
     }

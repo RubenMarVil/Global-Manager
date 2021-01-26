@@ -13,8 +13,6 @@ GameObject:
   - component: {fileID: 2426439696672307579}
   - component: {fileID: 6161265826989129779}
   - component: {fileID: 114150635007360168}
-  - component: {fileID: 5451452883201640790}
-  - component: {fileID: 8218398097296997782}
   m_Layer: 5
   m_Name: UserBtnPrefab
   m_TagString: Untagged
@@ -141,64 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ec52ab097586614a854e725388a05d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5451452883201640790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245377157397182864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5162846e8615dd14b8822205fc0c7691, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cursorPointer: {fileID: 2800000, guid: 855abaca447b3f7498664b26de6aecad, type: 3}
-  cursorHand: {fileID: 2800000, guid: a91d45a0da322634481a1a876e9bd064, type: 3}
---- !u!114 &8218398097296997782
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5245377157397182864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 0
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5451452883201640790}
-          m_MethodName: SetHandCursor
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventID: 1
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5451452883201640790}
-          m_MethodName: SetPointerCursor
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  delegates: []
 --- !u!1 &8795223460426990584
 GameObject:
   m_ObjectHideFlags: 0

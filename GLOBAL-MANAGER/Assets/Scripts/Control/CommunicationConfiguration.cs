@@ -19,5 +19,10 @@ namespace Assets.Scripts.Control
                 Communication.Add(tool.name);
             }
         }
+
+        public CommunicationConfiguration(List<string> communicationList)
+        {
+            Communication = communicationList;
+        }
     }
 }

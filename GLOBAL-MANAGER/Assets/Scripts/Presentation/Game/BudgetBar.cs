@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lean.Gui;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +9,20 @@ public class BudgetBar : MonoBehaviour
     static Slider budgetBar;
     Image fillBar;
 
-    public Color VeryHighColor;
-    public Color HighColor;
-    public Color MediumColor;
-    public Color LowColor;
-    public Color VeryLowColor;
+    public Color Color1;
+    public Color Color2;
+    public Color Color3;
+    public Color Color4;
+    public Color Color5;
+    public Color Color6;
+    public Color Color7;
+    public Color Color8;
+    public Color Color9;
+    public Color Color10;
 
     private static Animator anim;
+
+    public LeanWindow Finish;
 
     void Start()
     {
@@ -30,35 +38,50 @@ public class BudgetBar : MonoBehaviour
 
     void Update()
     {
-        if (budgetBar.value <= budgetBar.maxValue / 5)
+        if (budgetBar.value <= budgetBar.maxValue / 10)
         {
-            fillBar.color = VeryLowColor;
+            fillBar.color = Color1;
         }
-        else if (budgetBar.value <= budgetBar.maxValue * 2 / 5)
+        else if (budgetBar.value <= budgetBar.maxValue * 2 / 10)
         {
-            fillBar.color = LowColor;
+            fillBar.color = Color2;
         }
-        else if (budgetBar.value <= budgetBar.maxValue * 3 / 5)
+        else if (budgetBar.value <= budgetBar.maxValue * 3 / 10)
         {
-            fillBar.color = MediumColor;
+            fillBar.color = Color3;
         }
-        else if (budgetBar.value <= budgetBar.maxValue * 4 / 5)
+        else if (budgetBar.value <= budgetBar.maxValue * 4 / 10)
         {
-            fillBar.color = HighColor;
+            fillBar.color = Color4;
+        }
+        else if (budgetBar.value <= budgetBar.maxValue * 5 / 10)
+        {
+            fillBar.color = Color5;
+        }
+        else if (budgetBar.value <= budgetBar.maxValue * 6 / 10)
+        {
+            fillBar.color = Color6;
+        }
+        else if (budgetBar.value <= budgetBar.maxValue * 7 / 10)
+        {
+            fillBar.color = Color7;
+        }
+        else if (budgetBar.value <= budgetBar.maxValue * 8 / 10)
+        {
+            fillBar.color = Color8;
+        }
+        else if (budgetBar.value <= budgetBar.maxValue * 9 / 10)
+        {
+            fillBar.color = Color9;
         }
         else
         {
-            fillBar.color = VeryHighColor;
+            fillBar.color = Color10;
         }
 
-        if(budgetBar.value == budgetBar.minValue)
+        if (budgetBar.value == budgetBar.minValue)
         {
-            GameObject EndUI = GameObject.FindGameObjectWithTag("FinishEndUI").transform.GetChild(1).gameObject;
-            EndUI.SetActive(true);
-
-            EndUI.transform.GetChild(4).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeCommunicationEvents.ToString() + "/" + GameHandle.negativeCommunicationEvents.ToString();
-            EndUI.transform.GetChild(5).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeCoordinationEvents.ToString() + "/" + GameHandle.negativeCoordinationEvents.ToString();
-            EndUI.transform.GetChild(6).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeControlEvents.ToString() + "/" + GameHandle.negativeControlEvents.ToString();
+            Finish.TurnOn();
 
             GameHandle.PauseGame();
         }
@@ -75,7 +98,8 @@ public class BudgetBar : MonoBehaviour
             anim.SetTrigger("UpTrigger");
         }
 
-        budgetBar.value += value;
+        AddValueConst(value);
+        //budgetBar.value += value;
     }
 
     public static void AddValueConst(float value)

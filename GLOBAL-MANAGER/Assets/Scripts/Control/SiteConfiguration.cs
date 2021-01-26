@@ -43,8 +43,9 @@ namespace Assets.Scripts.Control
             }
         }
 
-        public SiteConfiguration(string country, int teamSize, CommonLanguageLevels languageLevel)
+        public SiteConfiguration(string name, string country, int teamSize, CommonLanguageLevels languageLevel)
         {
+            Name = name;
             Country = country;
             TeamSize = teamSize;
             LevelCommonLanguage = languageLevel;

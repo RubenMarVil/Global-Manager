@@ -18,12 +18,12 @@ public class GameConfigurationControl
 
         if (result == -1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] New game {actualGameConfiguration.CodGame} did not inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - ERROR] New game did not inserted into the database.");
             inserted = false;
         }
         else if (result == 1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] New game '{actualGameConfiguration.CodGame}' inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - INFO] New game inserted into the database.");
 
             actualGameConfiguration.CodGame = dbGameConfiguration.GetLastID();
 
@@ -50,12 +50,12 @@ public class GameConfigurationControl
 
         if (result == -1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] List of sites of the game did not inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - ERROR] List of sites of the game did not inserted into the database.");
             inserted = false;
         }
         else if (result == 1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] List of sites of the game inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - INFO] List of sites of the game inserted into the database.");
 
             FillCodSites(dbSite);
             inserted = AddGameSites(dbSite);
@@ -79,12 +79,12 @@ public class GameConfigurationControl
 
         if (result == -1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] Game-Sites did not inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - ERROR] Game-Sites did not inserted into the database.");
             inserted = false;
         }
         else if (result == 1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] Game-Sites inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - INFO] Game-Sites inserted into the database.");
         }
 
         return inserted;
@@ -98,12 +98,12 @@ public class GameConfigurationControl
 
         if (result == -1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] Game-Sites did not inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - ERROR] Communicate tools did not inserted into the database.");
             inserted = false;
         }
         else if (result == 1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] Game-Sites inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - INFO] Communicate tools inserted into the database.");
         }
 
         return inserted;
@@ -128,6 +128,18 @@ public class GameConfigurationControl
         DBLanguage dbLanguage = new DBLanguage();
 
         return dbLanguage.getAllLanguages();
+    }
+
+    public static string GetTypeCommunicatin(string tool)
+    {
+        DBCommunication dbCommunication = new DBCommunication();
+        return dbCommunication.getTypeCommunication(tool);
+    }
+
+    public static List<string> GetCommunicationTools(string type)
+    {
+        DBCommunication dbCommunication = new DBCommunication();
+        return dbCommunication.getCommunications(type);
     }
 
     public static void SetFirstConfiguration(int numSites, string clientCountry, string commonLanguage)
@@ -157,7 +169,17 @@ public class GameConfigurationControl
         actualGameConfiguration.CommunicationTools = new CommunicationConfiguration(communicationsList);
     }
 
+    public static void SetCommunicationTools(List<string> communicationList)
+    {
+        actualGameConfiguration.CommunicationTools = new CommunicationConfiguration(communicationList);
+    }
+
     public static void SetProjectCharacteristic(string name, string value)
+    {
+        actualGameConfiguration.ProjectCharacteristicsList.Add(new ProjectCharacteristic(name, value));
+    }
+
+    public static void SetProjectCharacteristic(string name, ProjectCharacteristicLevels value)
     {
         actualGameConfiguration.ProjectCharacteristicsList.Add(new ProjectCharacteristic(name, value));
     }
@@ -260,7 +282,7 @@ public class GameConfigurationControl
     */
 
     public static ProjectCharacteristicLevels[] CalculateProjectCharacteristics(int numSites, string[] sitesCountry, string[] sitesLanguageLevel, string commonLanguage,
-        string clientCountryName, int mainSite)
+        string clientCountryName, int mainSite, List<string> communicationTools)
     {
         ProjectCharacteristicLevels[] projectCharacteristics = new ProjectCharacteristicLevels[7];
 
@@ -275,6 +297,7 @@ public class GameConfigurationControl
         bool sitesCountrySelected = true;
         bool sitesLanguagesSelected = true;
         bool mainSiteSelected = true;
+        bool communicationToolsSelected = true;
         
         if(String.IsNullOrEmpty(clientCountryName)) { 
             clientCountrySelected = false;
@@ -305,29 +328,37 @@ public class GameConfigurationControl
             if(String.IsNullOrEmpty(languageLevel)) { sitesLanguagesSelected = false; break; }
         }
 
+        if (communicationTools.Count != 3)
+        {
+            communicationToolsSelected = false;
+        }
+
         if (sitesCountrySelected)
         {
             projectCharacteristics[0] = CalculateWorkingTimeOverlap(countryList, numSites);
-            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Working Time Overlap: {projectCharacteristics[0]}");
+            //Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Working Time Overlap: {projectCharacteristics[0]}");
             projectCharacteristics[2] = CalculateCulturalDifference(countryList, numSites);
-            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Cultural Difference: {projectCharacteristics[2]}");
+            //Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Cultural Difference: {projectCharacteristics[2]}");
             projectCharacteristics[3] = CalculateInestability(countryList, numSites);
-            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Inestability of any Site: {projectCharacteristics[3]}");
+            //Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Inestability of any Site: {projectCharacteristics[3]}");
         }
         if (sitesCountrySelected && sitesLanguagesSelected && commonLanguageSelected)
         {
             projectCharacteristics[1] = CalculateLanguageDifference(countryList, numSites, sitesLanguageLevel, commonLanguage);
-            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Language Difference: {projectCharacteristics[1]}");
+            //Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Language Difference: {projectCharacteristics[1]}");
         }
         if (sitesCountrySelected && mainSiteSelected && clientCountrySelected)
         {
             projectCharacteristics[4] = CalculateCostumerProximity(countryList, sitesCountry, mainSite, clientCountry);
-            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Costumer Proximity: {projectCharacteristics[4]}");
+            //Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Costumer Proximity: {projectCharacteristics[4]}");
         }
-        projectCharacteristics[5] = CalculateCommunication();
-        Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Communication: {projectCharacteristics[5]}");
+        if (sitesCountrySelected && communicationToolsSelected)
+        {
+            projectCharacteristics[5] = CalculateCommunication(projectCharacteristics[0], communicationTools);
+            //Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Communication: {projectCharacteristics[5]}");
+        }
         projectCharacteristics[6] = CalculateSitesNumber(numSites);
-        Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Sites Number: {projectCharacteristics[6]}");
+        //Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Sites Number: {projectCharacteristics[6]}");
 
         return projectCharacteristics;
     }
@@ -563,8 +594,60 @@ public class GameConfigurationControl
         return (Math.PI / 180) * angle;
     }
  
-    private static ProjectCharacteristicLevels CalculateCommunication()
+    private static ProjectCharacteristicLevels CalculateCommunication(ProjectCharacteristicLevels workingTimeOverlapValue, List<string> communicationTools)
     {
+        int asynchronousTools = 0;
+        int synchronousTools = 0;
+
+        int value = 0;
+
+        foreach(string tool in communicationTools)
+        {
+            if(GetTypeCommunicatin(tool) == "ASYNCHRONOUS")
+            {
+                asynchronousTools++;
+            }
+            else if(GetTypeCommunicatin(tool) == "SYNCHRONOUS")
+            {
+                synchronousTools++;
+            }
+        }
+
+        switch(workingTimeOverlapValue)
+        {
+            case ProjectCharacteristicLevels.VERY_LOW:
+                value = synchronousTools * -2 + asynchronousTools * 2; break;
+            case ProjectCharacteristicLevels.LOW:
+                value = synchronousTools * -1 + asynchronousTools * 1; break;
+            case ProjectCharacteristicLevels.NORMAL:
+                value = synchronousTools * 0 + asynchronousTools * 0; break;
+            case ProjectCharacteristicLevels.HIGH:
+                value = synchronousTools * 1 + asynchronousTools * 0; break;
+            case ProjectCharacteristicLevels.VERY_HIGH:
+                value = synchronousTools * 2 + asynchronousTools * -1; break;
+        }
+
+        if (-6 <= value && value < -3)
+        {
+            return ProjectCharacteristicLevels.VERY_LOW;
+        }
+        else if (-3 <= value && value < -1)
+        {
+            return ProjectCharacteristicLevels.LOW;
+        }
+        else if (-1 <= value && value < 1)
+        {
+            return ProjectCharacteristicLevels.NORMAL;
+        }
+        else if (1 <= value && value < 3)
+        {
+            return ProjectCharacteristicLevels.HIGH;
+        }
+        else if (3 <= value && value <= 6)
+        {
+            return ProjectCharacteristicLevels.VERY_HIGH;
+        }
+
         return ProjectCharacteristicLevels.NORMAL;
     }
 
@@ -726,12 +809,12 @@ public class GameConfigurationControl
 
         if (result == -1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - ERROR] Result game {actualGameConfiguration.CodGame} did not inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - ERROR] Result game {actualGameConfiguration.CodGame} did not inserted into the database.");
             inserted = false;
         }
         else if (result == 1)
         {
-            Debug.Log($"[CONTROL GAME CONFIGURATION - INFO] Result game '{actualGameConfiguration.CodGame}' inserted into the database.");
+            Debug.Log($"[GAME CONFIGURATION CONTROL - INFO] Result game '{actualGameConfiguration.CodGame}' inserted into the database.");
         }
 
         return inserted;
@@ -744,5 +827,21 @@ public class GameConfigurationControl
         listGames = dbGameConfiguration.GetAllGamesOfPlayer(username);
 
         return listGames;
+    }
+
+    public static bool RemoveGame()
+    {
+        bool removed = true;
+
+        DBSite dbSite = new DBSite();
+        DBCommunication dbCommunication = new DBCommunication();
+        DBGameConfiguration dBGameConfiguration = new DBGameConfiguration();
+
+        if(dbSite.DeleteSitesGame(actualGameConfiguration.CodGame) == -1 || dbCommunication.DeleteCommunicate(actualGameConfiguration.CodGame) == -1 || dBGameConfiguration.DeleteGameConfiguration(actualGameConfiguration.CodGame) == -1)
+        {
+            removed = false;
+        }
+
+        return removed;
     }
 }

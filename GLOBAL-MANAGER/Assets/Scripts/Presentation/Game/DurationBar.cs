@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lean.Gui;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -9,20 +10,27 @@ public class DurationBar : MonoBehaviour
     static Slider durationBar;
     Image fillBar;
 
-    public Color VeryHighColor;
-    public Color HighColor;
-    public Color MediumColor;
-    public Color LowColor;
-    public Color VeryLowColor;
+    public Color Color1;
+    public Color Color2;
+    public Color Color3;
+    public Color Color4;
+    public Color Color5;
+    public Color Color6;
+    public Color Color7;
+    public Color Color8;
+    public Color Color9;
+    public Color Color10;
 
     private static Animator anim;
+
+    public LeanWindow Finish;
 
     void Start()
     {
         durationBar = GetComponent<Slider>();
         fillBar = durationBar.transform.GetChild(1).gameObject.transform.GetChild(0).gameObject.GetComponent<Image>();
 
-        durationBar.maxValue = GameConfigurationControl.actualGameConfiguration.InitialDuration * 365;
+        durationBar.maxValue = GameConfigurationControl.actualGameConfiguration.InitialDuration;
 
         durationBar.value = durationBar.maxValue;
 
@@ -31,35 +39,50 @@ public class DurationBar : MonoBehaviour
 
     void Update()
     {
-        if (durationBar.value <= durationBar.maxValue / 5)
+        if (durationBar.value <= durationBar.maxValue / 10)
         {
-            fillBar.color = VeryLowColor;
+            fillBar.color = Color1;
         }
-        else if (durationBar.value <= durationBar.maxValue * 2 / 5)
+        else if (durationBar.value <= durationBar.maxValue * 2 / 10)
         {
-            fillBar.color = LowColor;
+            fillBar.color = Color2;
         }
-        else if (durationBar.value <= durationBar.maxValue * 3 / 5)
+        else if (durationBar.value <= durationBar.maxValue * 3 / 10)
         {
-            fillBar.color = MediumColor;
+            fillBar.color = Color3;
         }
-        else if (durationBar.value <= durationBar.maxValue * 4 / 5)
+        else if (durationBar.value <= durationBar.maxValue * 4 / 10)
         {
-            fillBar.color = HighColor;
+            fillBar.color = Color4;
+        }
+        else if (durationBar.value <= durationBar.maxValue * 5 / 10)
+        {
+            fillBar.color = Color5;
+        }
+        else if (durationBar.value <= durationBar.maxValue * 6 / 10)
+        {
+            fillBar.color = Color6;
+        }
+        else if (durationBar.value <= durationBar.maxValue * 7 / 10)
+        {
+            fillBar.color = Color7;
+        }
+        else if (durationBar.value <= durationBar.maxValue * 8 / 10)
+        {
+            fillBar.color = Color8;
+        }
+        else if (durationBar.value <= durationBar.maxValue * 9 / 10)
+        {
+            fillBar.color = Color9;
         }
         else
         {
-            fillBar.color = VeryHighColor;
+            fillBar.color = Color10;
         }
 
-        if(durationBar.value == durationBar.minValue)
+        if (durationBar.value == durationBar.minValue)
         {
-            GameObject EndUI = GameObject.FindGameObjectWithTag("FinishEndUI").transform.GetChild(2).gameObject;
-            EndUI.SetActive(true);
-
-            EndUI.transform.GetChild(4).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeCommunicationEvents.ToString() + "/" + GameHandle.negativeCommunicationEvents.ToString();
-            EndUI.transform.GetChild(5).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeCoordinationEvents.ToString() + "/" + GameHandle.negativeCoordinationEvents.ToString();
-            EndUI.transform.GetChild(6).gameObject.GetComponent<Text>().text = GameHandle.correctNegativeControlEvents.ToString() + "/" + GameHandle.negativeControlEvents.ToString();
+            Finish.TurnOn();
 
             GameHandle.PauseGame();
         }
@@ -76,7 +99,8 @@ public class DurationBar : MonoBehaviour
             anim.SetTrigger("UpTrigger");
         }
 
-        durationBar.value += value;
+        AddValueConst(value);
+        //durationBar.value += value;
     }
 
     public static void AddValueConst(float value)

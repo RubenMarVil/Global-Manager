@@ -3,21 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacteristicHandle : MonoBehaviour
 {
-    public Color VeryLowColor;
-    public Color LowColor;
-    public Color NormalColor;
-    public Color HighColor;
-    public Color VeryHighColor;
+    public Sprite VeryLow;
+    public Sprite Low;
+    public Sprite Normal;
+    public Sprite High;
+    public Sprite VeryHigh;
 
-    public TextMeshProUGUI Text;
+    public string Value;
+    public Image Imagen;
 
     void Start()
     {
-        Text = GetComponent<TextMeshProUGUI>();
-        Text.text = "";
+        Imagen = GetComponent<Image>();
+        Value = "";
     }
 
     public void SetValue(ProjectCharacteristicLevels characteristicLevel)
@@ -25,24 +27,24 @@ public class CharacteristicHandle : MonoBehaviour
         switch (characteristicLevel)
         {
             case ProjectCharacteristicLevels.VERY_LOW:
-                Text.text = "VERY LOW";
-                Text.color = VeryLowColor;
+                Value = "VERY LOW";
+                Imagen.sprite = VeryLow;
                 break;
             case ProjectCharacteristicLevels.LOW:
-                Text.text = "LOW";
-                Text.color = LowColor;
+                Value = "LOW";
+                Imagen.sprite = Low;
                 break;
             case ProjectCharacteristicLevels.NORMAL:
-                Text.text = "NORMAL";
-                Text.color = NormalColor;
+                Value = "NORMAL";
+                Imagen.sprite = Normal;
                 break;
             case ProjectCharacteristicLevels.HIGH:
-                Text.text = "HIGH";
-                Text.color = HighColor;
+                Value = "HIGH";
+                Imagen.sprite = High;
                 break;
             case ProjectCharacteristicLevels.VERY_HIGH:
-                Text.text = "VERY HIGH";
-                Text.color = VeryHighColor;
+                Value = "VERY HIGH";
+                Imagen.sprite = VeryHigh;
                 break;
         }
     }

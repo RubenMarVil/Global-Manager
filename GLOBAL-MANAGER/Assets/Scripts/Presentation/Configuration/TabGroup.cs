@@ -58,7 +58,7 @@ public class TabGroup : MonoBehaviour
 
         if(button.site)
         {
-            button.siteName.SetActive(false);
+            button.siteName.text = "";
         }
     }
 
@@ -68,7 +68,7 @@ public class TabGroup : MonoBehaviour
 
         if (button.site)
         {
-            button.siteName.SetActive(true);
+            button.siteName.text = button.name.Insert(4, " ");
         }
     }
 
@@ -83,7 +83,7 @@ public class TabGroup : MonoBehaviour
 
                 if (button.site)
                 {
-                    button.siteName.SetActive(false);
+                    button.siteName.text = "";
                 }
             }
             else
@@ -92,7 +92,7 @@ public class TabGroup : MonoBehaviour
 
                 if (button.site)
                 {
-                    button.siteName.SetActive(true);
+                    button.siteName.text = button.name.Insert(4, " ");
                 }
             }
             

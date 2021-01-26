@@ -14,6 +14,8 @@ public class MainMenuHandle : MonoBehaviour
     public GameObject PointerEnterTransition;
     public GameObject PointerExitTransition;
 
+    public Animator transitionAnim;
+
     void Start()
     {
         animScrollView = GameObject.FindGameObjectWithTag("Menu").GetComponent<Animator>();
@@ -44,7 +46,8 @@ public class MainMenuHandle : MonoBehaviour
 
     public void StartProject()
     {
-        SceneManager.LoadScene(2, LoadSceneMode.Single);
+        StartCoroutine(LoadScene(2));
+        //SceneManager.LoadScene(2, LoadSceneMode.Single);
     }
 
     public void SelectPlayerBtn()
@@ -59,11 +62,19 @@ public class MainMenuHandle : MonoBehaviour
 
     public void NewPlayer()
     {
-        SceneManager.LoadScene(1, LoadSceneMode.Single);
+        StartCoroutine(LoadScene(1));
+        //SceneManager.LoadScene(1, LoadSceneMode.Single);
     }
 
     public void ExitGame()
     {
         Application.Quit();
+    }
+
+    IEnumerator LoadScene(int scene)
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }

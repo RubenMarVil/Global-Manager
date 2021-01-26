@@ -20,15 +20,68 @@ public class RecommendConfiguration
 
         Dictionary<object, object> problemAdapted = RecommendConfigurationVariables.AdaptProblem(basicLevel, intermediateLevel, advancedLevel);
 
-        Debug.Log(problemAdapted["SitesNumber"]);
-        Debug.Log(problemAdapted["Countries"]);
-        Debug.Log(problemAdapted["ClientMainSite"]);
-        Debug.Log(problemAdapted["CommonLanguage"]);
-        Debug.Log(problemAdapted["MaxTimeDifference"]);
-        Debug.Log(problemAdapted["InstabilityCountries"]);
-        Debug.Log(problemAdapted["TeamSize"]);
+        Debug.Log($"[RECOMMEND CONFIGURATION - INFO]\n\t- Sites Number --> {problemAdapted["SitesNumber"]}" +
+            $"\n\t- Countries --> {problemAdapted["Countries"]} \n\t- Client Main Site --> {problemAdapted["ClientMainSite"]}" +
+            $"\n\t- Languages --> {problemAdapted["Languages"]} \n\t- Common Language --> {problemAdapted["CommonLanguage"]}" +
+            $"\n\t- Max Time Difference --> {problemAdapted["MaxTimeDifference"]} \n\t- Instability Countries --> {problemAdapted["InstabilityCountries"]}" +
+            $"\n\t- Team Size --> {problemAdapted["TeamSize"]} \n\t- Communication Synchronous --> {problemAdapted["CommunicationSynchronous"]}");
 
-        return GenerateGameConfiguration(problemAdapted); ;
+        return GenerateGameConfiguration(problemAdapted);
+    }
+
+    public static int GetRecommendQuestions()
+    {
+        User player = UserControl.actualUser;
+
+        float basicLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_basic, player.Score);
+        float intermediateLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_inter, player.Score);
+        float advancedLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_advan, player.Score);
+
+        return RecommendConfigurationVariables.GetNumQuestionsAdapted(basicLevel, intermediateLevel, advancedLevel);
+    }
+
+    public static int GetTimeEV_EVRecommend()
+    {
+        User player = UserControl.actualUser;
+
+        float basicLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_basic, player.Score);
+        float intermediateLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_inter, player.Score);
+        float advancedLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_advan, player.Score);
+
+        return RecommendConfigurationVariables.GetTimeEV_EVAdapted(basicLevel, intermediateLevel, advancedLevel);
+    }
+
+    public static int GetStreakFailureForPositiveRecommend()
+    {
+        User player = UserControl.actualUser;
+
+        float basicLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_basic, player.Score);
+        float intermediateLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_inter, player.Score);
+        float advancedLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_advan, player.Score);
+
+        return RecommendConfigurationVariables.GetStreakFailureForPositiveAdapted(basicLevel, intermediateLevel, advancedLevel);
+    }
+
+    public static float GetProdWorkerDayCorrect()
+    {
+        User player = UserControl.actualUser;
+
+        float basicLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_basic, player.Score);
+        float intermediateLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_inter, player.Score);
+        float advancedLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_advan, player.Score);
+
+        return RecommendConfigurationVariables.GetProdWorkerDayCorrect(basicLevel, intermediateLevel, advancedLevel);
+    }
+
+    public static float GetProdWorkerDayFailure()
+    {
+        User player = UserControl.actualUser;
+
+        float basicLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_basic, player.Score);
+        float intermediateLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_inter, player.Score);
+        float advancedLevel = CalculateMembership(RecommendConfigurationVariables.fuzz_advan, player.Score);
+
+        return RecommendConfigurationVariables.GetProdWorkerDayFailure(basicLevel, intermediateLevel, advancedLevel);
     }
 
     private static float CalculateMembership(int[] group, int x)
@@ -79,7 +132,7 @@ public class RecommendConfiguration
         }
 
         int[] teamSizeDivision = GetTeamSizes(gameConfiguration.NumSites, (int)problemAdapted["TeamSize"]);
-
+        /*
         switch((string)problemAdapted["CommonLanguage"])
         {
             case "English":
@@ -91,14 +144,16 @@ public class RecommendConfiguration
             case "Random":
                 gameConfiguration.CommonLanguage = GetCommonLanguageRandom(countriesList, countriesIndexSelected);
                 break;
-        }
+        }*/
+
+        gameConfiguration.CommonLanguage = "English";
 
         gameConfiguration.SitesList = new List<SiteConfiguration>();
         int contCountry = 0;
 
         for(int i = 0; i < gameConfiguration.NumSites; i++)
         {
-            gameConfiguration.SitesList.Add(new SiteConfiguration(countriesList[countriesIndexSelected[contCountry]].Name, teamSizeDivision[i], CommonLanguageLevels.HIGH));
+            gameConfiguration.SitesList.Add(new SiteConfiguration($"Site {i+1}", countriesList[countriesIndexSelected[contCountry]].Name, teamSizeDivision[i], CommonLanguageLevels.HIGH));
 
             contCountry++;
             if(contCountry >= countriesIndexSelected.Length)
@@ -124,7 +179,42 @@ public class RecommendConfiguration
             gameConfiguration.SitesList[rnd.Next(0, gameConfiguration.NumSites - 1)].MainSite = 1;
         }
 
+        gameConfiguration.CommunicationTools = new CommunicationConfiguration(GetCommunicationTools((int)problemAdapted["CommunicationSynchronous"]));
+
         return gameConfiguration;
+    }
+
+    private static List<string> GetCommunicationTools(int synchronousTools)
+    {
+        List<string> tools = new List<string>();
+        List<string> ToolsAsync = GameConfigurationControl.GetCommunicationTools("ASYNCHRONOUS");
+        List<string> ToolsSync = GameConfigurationControl.GetCommunicationTools("SYNCHRONOUS");
+
+        for (int i = 0; i < synchronousTools; i++)
+        {
+            System.Random rnd = new System.Random();
+
+            int toolNum = rnd.Next(0, 6);
+            while(tools.Contains(ToolsSync[toolNum]))
+            {
+                toolNum = rnd.Next(0, 6);
+            }
+            tools.Add(ToolsSync[toolNum]);
+        }
+
+        for (int i = 0; i < (3 - synchronousTools); i++)
+        {
+            System.Random rnd = new System.Random();
+
+            int toolNum = rnd.Next(0, 6);
+            while (tools.Contains(ToolsAsync[toolNum]))
+            {
+                toolNum = rnd.Next(0, 6);
+            }
+            tools.Add(ToolsAsync[toolNum]);
+        }
+
+        return tools;
     }
 
     private static int[] GetRandomCountries(int numCountries, List<Country> countriesList, int diffTimeZone, int mainCountry)
@@ -169,12 +259,19 @@ public class RecommendConfiguration
     {
         int[] teamSizeDivision = new int[numSites];
         int restWorkers = totalMembers;
+        int maxWorkers = 20;
 
         System.Random rnd = new System.Random();
 
         for(int i = 0; i < numSites - 1; i++)
         {
-            int teamSize = rnd.Next(2, 20);
+            maxWorkers = restWorkers - (2 * (numSites - i));
+            if(maxWorkers > 20)
+            {
+                maxWorkers = 20;
+            }
+
+            int teamSize = rnd.Next(2, maxWorkers);
             teamSizeDivision[i] = teamSize;
             restWorkers -= teamSize;
         }

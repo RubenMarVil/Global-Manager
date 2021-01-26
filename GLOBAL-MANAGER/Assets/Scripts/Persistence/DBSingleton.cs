@@ -38,14 +38,14 @@ public class DBSingleton
         if (!created)
         {
             string sqlQuery = File.ReadAllText(@".\Assets\Scripts\Persistence\CreateDB.sql");
-            Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
+            //Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
 
             dbCommand = dbConnection.CreateCommand();
             dbCommand.CommandText = sqlQuery;
             dbCommand.ExecuteNonQuery();
 
             sqlQuery = File.ReadAllText(@".\Assets\Scripts\Persistence\Prueba.sql");
-            Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
+            //Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
 
             dbCommand = dbConnection.CreateCommand();
             dbCommand.CommandText = sqlQuery;
@@ -61,7 +61,7 @@ public class DBSingleton
     {
         dbCommand = dbConnection.CreateCommand();
         dbCommand.CommandText = sqlQuery;
-        Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
+        //Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
 
         IDataReader result = dbCommand.ExecuteReader();
 
@@ -72,7 +72,7 @@ public class DBSingleton
     {
         dbCommand = dbConnection.CreateCommand();
         dbCommand.CommandText = sqlQuery;
-        Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
+        //Debug.Log($"[DBSingleton - INFO] SQL QUERY = {sqlQuery}");
 
         int result = dbCommand.ExecuteNonQuery();
 

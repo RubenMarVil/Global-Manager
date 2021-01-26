@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
+using System.Collections;
 
 public class GameHandle : MonoBehaviour
 {
@@ -17,6 +19,9 @@ public class GameHandle : MonoBehaviour
     public static int TimePerEvent;
     private double TimeForNextDay;
     public double TimePerDay;
+    public static int streakFailureForPositive;
+
+    public static float workOfWorkerPerDay;
 
     public static float dropVelocity = 1.5f;
 
@@ -43,6 +48,14 @@ public class GameHandle : MonoBehaviour
 
     public static int NumEventsActive;
 
+    public static List<int> communicationEvents;
+    public static List<int> coordinationEvents;
+    public static List<int> controlEvents;
+
+    public bool waiting;
+
+    public Animator transitionAnim;
+    /*
     [Task]
     bool IsPlayerBasic;
 
@@ -51,7 +64,7 @@ public class GameHandle : MonoBehaviour
 
     [Task]
     bool IsPlayerAdvanced;
-
+    */
     void Start()
     {
         NegativeWeight = 1.0f;
@@ -71,6 +84,14 @@ public class GameHandle : MonoBehaviour
 
         NumEventsActive = 0;
 
+        streakFailureForPositive = RecommendConfiguration.GetStreakFailureForPositiveRecommend();
+
+        communicationEvents = new List<int>();
+        coordinationEvents = new List<int>();
+        controlEvents = new List<int>();
+
+        waiting = false;
+        /*
         IsPlayerBasic = false;
         IsPlayerIntermediate = false;
         IsPlayerAdvanced = false;
@@ -90,314 +111,45 @@ public class GameHandle : MonoBehaviour
                 IsPlayerAdvanced = true; 
                 break;
         }
-        TimeForNextEvent = 5 + Convert.ToInt32(Time.time);
+        */
         TimeForNextDay = TimePerDay + Convert.ToInt32(Time.time);
 
         salaryPerDay = CalculateSalaryPerDay() * 8;
         workers = CalculateNumWorkers();
 
-        GameObject.Find("/InfoUI/UI/Username").GetComponent<Text>().text = UserControl.actualUser.Name;
+        //GameObject.Find("/InfoUI/UI/Username").GetComponent<Text>().text = UserControl.actualUser.Name;
         GameObject.Find("/InfoUI/UI/InitialCharacteristics/ProjectDifficulty/Value").GetComponent<Text>().text = GameConfigurationControl.actualGameConfiguration.ProjectDifficulty.ToString();
         GameObject.Find("/InfoUI/UI/InitialCharacteristics/ProjectBudget/Value").GetComponent<Text>().text = Math.Truncate(GameConfigurationControl.actualGameConfiguration.InitialBudget).ToString() + "$";
-        GameObject.Find("/InfoUI/UI/InitialCharacteristics/ProjectDuration/Value").GetComponent<Text>().text = (Math.Truncate(100 * GameConfigurationControl.actualGameConfiguration.InitialDuration) / 100).ToString() + " Years";
+        GameObject.Find("/InfoUI/UI/InitialCharacteristics/ProjectDuration/Value").GetComponent<Text>().text = Math.Truncate(GameConfigurationControl.actualGameConfiguration.InitialDuration).ToString() + " Days";
     }
 
     void Update()
     {
         if(Time.time >= TimeForNextDay)
         {
-            StressBar.AddValueConst(-0.0005f);
+            StressBar.AddValueConst(0.0005f*NumEventsActive);
             DurationBar.AddValueConst(-1);
             BudgetBar.AddValueConst(-salaryPerDay);
-            ProgressBar.AddValueConst(workers * 0.0075f);
+            ProgressBar.AddValueConst(workers * workOfWorkerPerDay);
 
             TimeForNextDay += TimePerDay;
         }
-    }
 
-    [Task]
-    void CreatePositiveEvent()
-    {
-        GeneratePositiveEvent(-1);
-        Task.current.Succeed();
-    }
+        Debug.Log($"Time --> {Convert.ToInt32(Time.time)}\tTime For Next Event --> {TimeForNextEvent}");
 
-    [Task]
-    void CreateNegativeEvent()
-    {
-        GenerateNegativeEvent(-1);
-        Task.current.Succeed();
-    }
-
-    [Task]
-    void NegativeEvent()
-    {
-        if(UnityEngine.Random.Range(0.0f, 1.0f) <= NegativeWeight)
+        if(NumEventsActive == 0 && !waiting)
         {
-            Task.current.Succeed();
+            TimeForNextEvent = 5 + Convert.ToInt32(Time.time);
+            waiting = true;
         }
-        else
+        else if(CanDropEventNegative())
         {
-            Task.current.Fail();
+            GenerateNegativeEvent(-1);
+            waiting = false;
         }
-    }
-
-    [Task]
-    void CommunicationNegativeEvent()
-    {
-        RandomNegativeNumber = UnityEngine.Random.Range(0.0f, 1.0f);
-
-        if (RandomNegativeNumber <= NegativeEventsWeights[0])
+        else if(CanDropEventPositive())
         {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CoordinationNegativeEvent()
-    {
-        if (RandomNegativeNumber <= NegativeEventsWeights[1])
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void ControlNegativeEvent()
-    {
-        if (RandomNegativeNumber <= NegativeEventsWeights[2])
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CommunicationPositiveEvent()
-    {
-        RandomPositiveNumber = UnityEngine.Random.Range(0.0f, 1.0f);
-
-        if (RandomPositiveNumber <= PositiveEventsWeights[0])
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CoordinationPositiveEvent()
-    {
-        if (RandomPositiveNumber <= PositiveEventsWeights[1])
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void ControlPositiveEvent()
-    {
-        if (RandomPositiveNumber <= PositiveEventsWeights[2])
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CreateNegativeCommunicationEvent()
-    {
-        GenerateNegativeEvent(0);
-        Task.current.Succeed();
-        /*
-        float changeNumber = UnityEngine.Random.Range(0.0f, negativeCommunicationEvents - correctNegativeCommunicationEvents) / 10;
-        if(changeNumber + NegativeEventsWeights[0] > 1.0f)
-        {
-            changeNumber = 1.0f - NegativeEventsWeights[0];
-        }
-
-        NegativeEventsWeights[0] += changeNumber;
-        NegativeEventsWeights[1] -= changeNumber / 2;
-        NegativeEventsWeights[2] -= changeNumber / 2;
-
-        Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
-        */
-    }
-
-    [Task]
-    void CreateNegativeCoordinationEvent()
-    {
-        GenerateNegativeEvent(1);
-        Task.current.Succeed();
-
-        /*
-        float changeNumber = UnityEngine.Random.Range(0.0f, negativeCoordinationEvents - correctNegativeCoordinationEvents) / 10;
-        if (changeNumber + NegativeEventsWeights[1] > 1.0f)
-        {
-            changeNumber = 1.0f - NegativeEventsWeights[1];
-        }
-
-        NegativeEventsWeights[1] += changeNumber;
-        NegativeEventsWeights[0] -= changeNumber / 2;
-        NegativeEventsWeights[2] -= changeNumber / 2;
-
-        Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
-        */
-    }
-
-    [Task]
-    void CreateNegativeControlEvent()
-    {
-        GenerateNegativeEvent(2);
-        Task.current.Succeed();
-
-        /*
-        float changeNumber = UnityEngine.Random.Range(0.0f, negativeControlEvents - correctNegativeControlEvents) / 10;
-        if (changeNumber + NegativeEventsWeights[2] > 1.0f)
-        {
-            changeNumber = 1.0f - NegativeEventsWeights[2];
-        }
-
-        NegativeEventsWeights[2] += changeNumber;
-        NegativeEventsWeights[0] -= changeNumber / 2;
-        NegativeEventsWeights[1] -= changeNumber / 2;
-
-        Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
-        */
-    }
-
-    [Task]
-    void CreatePositiveCommunicationEvent()
-    {
-        GeneratePositiveEvent(0);
-        Task.current.Succeed();
-    }
-
-    [Task]
-    void CreatePositiveCoordinationEvent()
-    {
-        GeneratePositiveEvent(1);
-        Task.current.Succeed();
-    }
-
-    [Task]
-    void CreatePositiveControlEvent()
-    {
-        GeneratePositiveEvent(2);
-        Task.current.Succeed();
-    }
-
-    [Task]
-    void IsCommunicationLowest()
-    {
-        if(Math.Min(Math.Min(negativeCommunicationEvents, negativeCoordinationEvents), negativeControlEvents) == negativeCommunicationEvents)
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void IsCoordinationLowest()
-    {
-        if (Math.Min(Math.Min(negativeCommunicationEvents, negativeCoordinationEvents), negativeControlEvents) == negativeCoordinationEvents)
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void IsControlLowest()
-    {
-        if (Math.Min(Math.Min(negativeCommunicationEvents, negativeCoordinationEvents), negativeControlEvents) == negativeControlEvents)
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CheckStress()
-    {
-        if(StressBar.GetPercentageValue() >= 70.0f)
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CheckBudget()
-    {
-        if(BudgetBar.GetPercentageValue() <= 15.0f)
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CheckDuration()
-    {
-        if (DurationBar.GetPercentageValue() <= 20.0f)
-        {
-            Task.current.Succeed();
-        }
-        else
-        {
-            Task.current.Fail();
-        }
-    }
-
-    [Task]
-    void CanDropEvent()
-    {
-        if (Time.time >= TimeForNextEvent)
-        {
-            Debug.Log("Evento!!");
-            Task.current.Succeed();
-
-            TimeForNextEvent += TimePerEvent;
-        }
-        else
-        {
-            Task.current.Fail();
+            GeneratePositiveEvent(-1);
         }
     }
 
@@ -409,12 +161,13 @@ public class GameHandle : MonoBehaviour
         if (type == -1)
         {
             System.Random rng = new System.Random();
-            type = rng.Next(0, typesEventsNegative.Length - 1);
+            type = rng.Next(0, typesEventsNegative.Length);
         }
 
+        Debug.Log($"[GAME HANDLE - INFO] Creating event type {type}");
         Instantiate(typesEventsNegative[type]);
 
-        switch(type)
+        switch (type)
         {
             case 0: negativeCommunicationEvents++; break;
             case 1: negativeCoordinationEvents++; break;
@@ -436,6 +189,322 @@ public class GameHandle : MonoBehaviour
 
         Instantiate(typesEventsPositive[type]);
     }
+
+    private bool CanDropEventNegative()
+    {
+        bool drop = false;
+        if (Time.time >= TimeForNextEvent)
+        {
+            Debug.Log("Evento!!");
+            TimeForNextEvent += TimePerEvent;
+            drop = true;
+        }
+
+        return drop;
+    }
+
+    private bool CanDropEventPositive()
+    {
+        bool drop = false;
+        if(negativeFailureStreak >= streakFailureForPositive)
+        {
+            drop = true;
+            negativeFailureStreak = 0;
+        }
+
+        return drop;
+    }
+
+    public static void UpdateWorkOfWorkerPerDay(float variance)
+    {
+        workOfWorkerPerDay *= variance;
+    }
+
+    //[Task]
+    //void CreatePositiveEvent()
+    //{
+    //    GeneratePositiveEvent(-1);
+    //    Task.current.Succeed();
+    //}
+
+    //[Task]
+    //void CreateNegativeEvent()
+    //{
+    //    GenerateNegativeEvent(-1);
+    //    Task.current.Succeed();
+    //}
+
+    //[Task]
+    //void NegativeEvent()
+    //{
+    //    if(UnityEngine.Random.Range(0.0f, 1.0f) <= NegativeWeight)
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CommunicationNegativeEvent()
+    //{
+    //    RandomNegativeNumber = UnityEngine.Random.Range(0.0f, 1.0f);
+
+    //    if (RandomNegativeNumber <= NegativeEventsWeights[0])
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CoordinationNegativeEvent()
+    //{
+    //    if (RandomNegativeNumber <= NegativeEventsWeights[1])
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void ControlNegativeEvent()
+    //{
+    //    if (RandomNegativeNumber <= NegativeEventsWeights[2])
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CommunicationPositiveEvent()
+    //{
+    //    RandomPositiveNumber = UnityEngine.Random.Range(0.0f, 1.0f);
+
+    //    if (RandomPositiveNumber <= PositiveEventsWeights[0])
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CoordinationPositiveEvent()
+    //{
+    //    if (RandomPositiveNumber <= PositiveEventsWeights[1])
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void ControlPositiveEvent()
+    //{
+    //    if (RandomPositiveNumber <= PositiveEventsWeights[2])
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CreateNegativeCommunicationEvent()
+    //{
+    //    GenerateNegativeEvent(0);
+    //    Task.current.Succeed();
+    //    /*
+    //    float changeNumber = UnityEngine.Random.Range(0.0f, negativeCommunicationEvents - correctNegativeCommunicationEvents) / 10;
+    //    if(changeNumber + NegativeEventsWeights[0] > 1.0f)
+    //    {
+    //        changeNumber = 1.0f - NegativeEventsWeights[0];
+    //    }
+
+    //    NegativeEventsWeights[0] += changeNumber;
+    //    NegativeEventsWeights[1] -= changeNumber / 2;
+    //    NegativeEventsWeights[2] -= changeNumber / 2;
+
+    //    Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
+    //    */
+    //}
+
+    //[Task]
+    //void CreateNegativeCoordinationEvent()
+    //{
+    //    GenerateNegativeEvent(1);
+    //    Task.current.Succeed();
+
+    //    /*
+    //    float changeNumber = UnityEngine.Random.Range(0.0f, negativeCoordinationEvents - correctNegativeCoordinationEvents) / 10;
+    //    if (changeNumber + NegativeEventsWeights[1] > 1.0f)
+    //    {
+    //        changeNumber = 1.0f - NegativeEventsWeights[1];
+    //    }
+
+    //    NegativeEventsWeights[1] += changeNumber;
+    //    NegativeEventsWeights[0] -= changeNumber / 2;
+    //    NegativeEventsWeights[2] -= changeNumber / 2;
+
+    //    Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
+    //    */
+    //}
+
+    //[Task]
+    //void CreateNegativeControlEvent()
+    //{
+    //    GenerateNegativeEvent(2);
+    //    Task.current.Succeed();
+
+    //    /*
+    //    float changeNumber = UnityEngine.Random.Range(0.0f, negativeControlEvents - correctNegativeControlEvents) / 10;
+    //    if (changeNumber + NegativeEventsWeights[2] > 1.0f)
+    //    {
+    //        changeNumber = 1.0f - NegativeEventsWeights[2];
+    //    }
+
+    //    NegativeEventsWeights[2] += changeNumber;
+    //    NegativeEventsWeights[0] -= changeNumber / 2;
+    //    NegativeEventsWeights[1] -= changeNumber / 2;
+
+    //    Debug.Log("CommunicationWeight: " + NegativeEventsWeights[0] + "\nCoordinationWeight: " + NegativeEventsWeights[1] + "\nControlWeight: " + NegativeEventsWeights[2]);
+    //    */
+    //}
+
+    //[Task]
+    //void CreatePositiveCommunicationEvent()
+    //{
+    //    GeneratePositiveEvent(0);
+    //    Task.current.Succeed();
+    //}
+
+    //[Task]
+    //void CreatePositiveCoordinationEvent()
+    //{
+    //    GeneratePositiveEvent(1);
+    //    Task.current.Succeed();
+    //}
+
+    //[Task]
+    //void CreatePositiveControlEvent()
+    //{
+    //    GeneratePositiveEvent(2);
+    //    Task.current.Succeed();
+    //}
+
+    //[Task]
+    //void IsCommunicationLowest()
+    //{
+    //    if(Math.Min(Math.Min(negativeCommunicationEvents, negativeCoordinationEvents), negativeControlEvents) == negativeCommunicationEvents)
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void IsCoordinationLowest()
+    //{
+    //    if (Math.Min(Math.Min(negativeCommunicationEvents, negativeCoordinationEvents), negativeControlEvents) == negativeCoordinationEvents)
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void IsControlLowest()
+    //{
+    //    if (Math.Min(Math.Min(negativeCommunicationEvents, negativeCoordinationEvents), negativeControlEvents) == negativeControlEvents)
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CheckStress()
+    //{
+    //    if(StressBar.GetPercentageValue() >= 70.0f)
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CheckBudget()
+    //{
+    //    if(BudgetBar.GetPercentageValue() <= 15.0f)
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CheckDuration()
+    //{
+    //    if (DurationBar.GetPercentageValue() <= 20.0f)
+    //    {
+    //        Task.current.Succeed();
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
+
+    //[Task]
+    //void CanDropEvent()
+    //{
+    //    if (Time.time >= TimeForNextEvent)
+    //    {
+    //        Debug.Log("Evento!!");
+    //        Task.current.Succeed();
+
+    //        TimeForNextEvent += TimePerEvent;
+    //    }
+    //    else
+    //    {
+    //        Task.current.Fail();
+    //    }
+    //}
 
     private float CalculateSalaryPerDay()
     {
@@ -474,16 +543,17 @@ public class GameHandle : MonoBehaviour
         int totalNegativeEvents = negativeCommunicationEvents + negativeCoordinationEvents + negativeControlEvents;
         int correctNegativeEvents = correctNegativeCommunicationEvents + correctNegativeCoordinationEvents + correctNegativeControlEvents;
 
-        float durationValue = DurationBar.GetValue() / 365.0f;
+        float durationValue = DurationBar.GetValue();
 
         bool inserted = GameConfigurationControl.InsertResultGame(StressBar.GetValue(), ProgressBar.GetValue(), BudgetBar.GetValue(), durationValue, totalNegativeEvents, correctNegativeEvents);
 
-        UpdateLevelPlayer();
-
         if (inserted)
         {
+            transitionAnim.SetTrigger("end");
             Time.timeScale = 1;
+            UpdateLevelPlayer();
             SceneManager.LoadScene(0, LoadSceneMode.Single);
+            //SceneManager.LoadScene(0, LoadSceneMode.Single);
         }
     }
 
@@ -505,7 +575,6 @@ public class GameHandle : MonoBehaviour
             UserControl.UpdateScoreUserLevel();
         }
         
-
         Debug.Log("Score = " + UserControl.actualUser.Score + "\nUserLevel = " + UserControl.actualUser.UserLevel);
     }
 
@@ -683,5 +752,18 @@ public class GameHandle : MonoBehaviour
         }
 
         return listPercentageSuccessProjects;
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+    }
+
+    public void MainMenu()
+    {
+        transitionAnim.SetTrigger("end");
+        GameConfigurationControl.RemoveGame();
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        //SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 }

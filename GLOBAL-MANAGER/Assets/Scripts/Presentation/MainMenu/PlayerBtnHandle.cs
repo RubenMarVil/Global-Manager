@@ -47,5 +47,7 @@ public class PlayerBtnHandle : MonoBehaviour
         UserControl.actualUser = user;
 
         GameObject.FindGameObjectWithTag("StartGameBtn").GetComponent<Button>().interactable = true;
+
+        Debug.Log($"[PlayerBtn - INFO] User selected --> {user.Name}");
     }
 }

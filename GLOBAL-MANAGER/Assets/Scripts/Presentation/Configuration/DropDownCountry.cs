@@ -48,17 +48,24 @@ public class DropDownCountry : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     void Update()
     {
-        if(GameObject.Find("ClientCountryDropdown/Dropdown List") == null && CountryDropdown.IsActive())
+        var prueba = GameObject.Find("ClientCountryDropdown/Dropdown List");
+        var prueba2 = GameObject.Find("CountryDropdown/Dropdown List");
+
+        if(CountryDropdown.IsActive())
         {
-            if(string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
+            if((CountryDropdown.name == "ClientCountryDropdown" && GameObject.Find("ClientCountryDropdown/Dropdown List") == null) || 
+                (CountryDropdown.name == "CountryDropdown" && GameObject.Find("CountryDropdown/Dropdown List") == null))
             {
-                background.sprite = IdleNoSelected;
-                Deployed = false;
-            }
-            else if(!string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
-            {
-                background.sprite = IdleSelected;
-                Deployed = false;
+                if (string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
+                {
+                    background.sprite = IdleNoSelected;
+                    Deployed = false;
+                }
+                else if (!string.IsNullOrWhiteSpace(CountrySelected) && Deployed)
+                {
+                    background.sprite = IdleSelected;
+                    Deployed = false;
+                }
             }
         }
     }

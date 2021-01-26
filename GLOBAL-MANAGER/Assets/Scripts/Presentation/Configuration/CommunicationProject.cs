@@ -8,11 +8,6 @@ public class CommunicationProject : MonoBehaviour
     public List<ToggleButton> toolsList;
     public List<ToggleButton> toolsActives;
 
-    public Sprite buttonIdle;
-    public Sprite buttonHover;
-    public Sprite buttonActive;
-    public Sprite buttonDissable;
-
     public GameObject panelActiveTools;
 
     public void Subscribe(ToggleButton tool)
@@ -32,11 +27,11 @@ public class CommunicationProject : MonoBehaviour
             tool.active = true;
             toolsActives.Add(tool);
             ResetButtons();
-            tool.background.sprite = buttonActive;
+            tool.background.sprite = tool.buttonActive;
 
             GameObject newTool = new GameObject("Tool" + toolsActives.Count);
             newTool.AddComponent<Image>();
-            newTool.GetComponent<Image>().sprite = tool.transform.GetChild(0).GetComponent<Image>().sprite;
+            newTool.GetComponent<Image>().sprite = tool.icon;
             newTool.GetComponent<RectTransform>().sizeDelta = new Vector2(130, 130);
             newTool.transform.SetParent(panelActiveTools.transform);
             newTool.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
@@ -51,11 +46,11 @@ public class CommunicationProject : MonoBehaviour
             tool.active = false;
             toolsActives.Remove(tool);
             ResetButtons();
-            tool.background.sprite = buttonHover;
+            tool.background.sprite = tool.buttonHover;
 
             for(int i = 0; i < panelActiveTools.transform.childCount; i++)
             {
-                if(panelActiveTools.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == tool.transform.GetChild(0).GetComponent<Image>().sprite)
+                if(panelActiveTools.transform.GetChild(i).gameObject.GetComponent<Image>().sprite == tool.icon)
                 {
                     Destroy(panelActiveTools.transform.GetChild(i).gameObject);
                 }
@@ -73,7 +68,7 @@ public class CommunicationProject : MonoBehaviour
         ResetButtons();
         if(!tool.active && !tool.dissable)
         {
-            tool.background.sprite = buttonHover;
+            tool.background.sprite = tool.buttonHover;
         }
     }
 
@@ -88,15 +83,15 @@ public class CommunicationProject : MonoBehaviour
         {
             if(tool.active)
             {
-                tool.background.sprite = buttonActive;
+                tool.background.sprite = tool.buttonActive;
             }
             else if(tool.dissable)
             {
-                tool.background.sprite = buttonDissable;
+                tool.background.sprite = tool.buttonDissable;
             }
             else
             {
-                tool.background.sprite = buttonIdle;
+                tool.background.sprite = tool.buttonIdle;
             }
         }
     }
@@ -107,11 +102,11 @@ public class CommunicationProject : MonoBehaviour
         {
             if(tool.active)
             {
-                tool.background.sprite = buttonActive;
+                tool.background.sprite = tool.buttonActive;
             }
             else
             {
-                tool.background.sprite = buttonDissable;
+                tool.background.sprite = tool.buttonDissable;
                 tool.dissable = true;
             }
         }
@@ -123,7 +118,7 @@ public class CommunicationProject : MonoBehaviour
         {
             if(tool.dissable)
             {
-                tool.background.sprite = buttonIdle;
+                tool.background.sprite = tool.buttonIdle;
                 tool.dissable = false;
             }
         }

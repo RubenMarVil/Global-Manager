@@ -5,32 +5,38 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DropDownLanguage : MonoBehaviour, IPointerClickHandler
+public class DropDownLanguage : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler, IPointerUpHandler
 {
     public Dropdown LanguageDropdown;
     public Image background;
-    public Image shadow;
 
     public List<string> LanguagesList;
 
     public string LanguageSelected;
 
-    bool active;
-    public Sprite DropdownActive;
-    public Sprite DropdownIdle;
+    public bool Deployed;
 
-    public Sprite DropdownActiveShadow;
-    public Sprite DropdownIdleShadow;
+    public Sprite IdleNoSelected;
+    public Sprite HoverNoSelected;
+    public Sprite ActiveNoSelected;
+
+    public Sprite IdleDeployed;
+    public Sprite HoverDeployed;
+    public Sprite ActiveDeployed;
+
+    public Sprite IdleSelected;
+    public Sprite HoverSelected;
+    public Sprite ActiveSelected;
 
     void Start()
     {
-        active = false;
+        Deployed = false;
         LanguageDropdown = GetComponent<Dropdown>();
         background = GetComponent<Image>();
 
         LanguageDropdown.options.Add(new Dropdown.OptionData(""));
 
-        LanguagesList = GameConfigurationControl.GetLanguages();
+        LanguagesList = /*GameConfigurationControl.GetLanguages();*/ new List<string>() { "English", "Spanish" }; 
 
         foreach(string language in LanguagesList)
         {
@@ -40,21 +46,18 @@ public class DropDownLanguage : MonoBehaviour, IPointerClickHandler
 
     void Update()
     {
-        if (GameObject.Find("CommonLanguageDropdown/Dropdown List") == null)
+        if (GameObject.Find("CommonLanguageDropdown/Dropdown List") == null && LanguageDropdown.IsActive())
         {
-            background.sprite = DropdownIdle;
-            shadow.sprite = DropdownIdleShadow;
-            active = false;
-            Debug.Log("CommonLanguageDropdown to IDLE!");
-        }
-    }
-
-    public void FirstClick()
-    {
-        if(string.IsNullOrEmpty(LanguageSelected))
-        {
-            LanguageDropdown.transform.GetChild(0).gameObject.SetActive(false);
-            LanguageDropdown.transform.GetChild(1).gameObject.SetActive(true);
+            if(string.IsNullOrWhiteSpace(LanguageSelected) && Deployed)
+            {
+                background.sprite = IdleNoSelected;
+                Deployed = false;
+            }
+            else if(!string.IsNullOrWhiteSpace(LanguageSelected) && Deployed)
+            {
+                background.sprite = IdleSelected;
+                Deployed = false;
+            }
         }
     }
 
@@ -62,24 +65,74 @@ public class DropDownLanguage : MonoBehaviour, IPointerClickHandler
     {
         LanguageSelected = LanguageDropdown.options.ElementAt(value).text;
 
-        background.sprite = DropdownIdle;
-        shadow.sprite = DropdownIdleShadow;
-        active = false;
+        background.sprite = IdleSelected;
+        Deployed = false;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (active)
+        if (string.IsNullOrWhiteSpace(LanguageSelected) && !Deployed)
         {
-            background.sprite = DropdownIdle;
-            shadow.sprite = DropdownIdleShadow;
-            active = false;
+            background.sprite = HoverNoSelected;
         }
-        else
+        else if (!string.IsNullOrWhiteSpace(LanguageSelected) && !Deployed)
         {
-            background.sprite = DropdownActive;
-            shadow.sprite = DropdownActiveShadow;
-            active = true;
+            background.sprite = HoverSelected;
+        }
+        else if (Deployed)
+        {
+            background.sprite = HoverDeployed;
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (string.IsNullOrWhiteSpace(LanguageSelected) && !Deployed)
+        {
+            background.sprite = IdleNoSelected;
+        }
+        else if (!string.IsNullOrWhiteSpace(LanguageSelected) && !Deployed)
+        {
+            background.sprite = IdleSelected;
+        }
+        else if (Deployed)
+        {
+            background.sprite = IdleDeployed;
+        }
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        if (string.IsNullOrWhiteSpace(LanguageSelected) && !Deployed)
+        {
+            background.sprite = ActiveNoSelected;
+        }
+        else if (!string.IsNullOrWhiteSpace(LanguageSelected) && !Deployed)
+        {
+            background.sprite = ActiveSelected;
+        }
+        else if (Deployed)
+        {
+            background.sprite = ActiveDeployed;
+        }
+    }
+
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        if (!Deployed)
+        {
+            background.sprite = IdleDeployed;
+            Deployed = true;
+        }
+        else if (string.IsNullOrWhiteSpace(LanguageSelected) && Deployed)
+        {
+            background.sprite = IdleNoSelected;
+            Deployed = false;
+        }
+        else if (!string.IsNullOrWhiteSpace(LanguageSelected) && Deployed)
+        {
+            background.sprite = IdleSelected;
+            Deployed = false;
         }
     }
 }

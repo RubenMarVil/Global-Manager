@@ -18,7 +18,7 @@ public class UserControl
             inserted = false;
         } 
         else if(result == 1) {
-            Debug.Log($"[CONTROL USER - ERROR] New user '{newUser.Name}' inserted into the database.");
+            Debug.Log($"[CONTROL USER - INFO] New user '{newUser.Name}' inserted into the database.");
             actualUser = newUser;
         }
 

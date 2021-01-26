@@ -42,6 +42,9 @@ namespace Assets.Scripts.Control
                 case "VERY HIGH":
                     ProjectDifficulty = ProjectDifficultyLevels.VERY_HIGH;
                     break;
+                case "VERY_HIGH":
+                    ProjectDifficulty = ProjectDifficultyLevels.VERY_HIGH;
+                    break;
                 case "HIGH":
                     ProjectDifficulty = ProjectDifficultyLevels.HIGH;
                     break;
@@ -52,6 +55,9 @@ namespace Assets.Scripts.Control
                     ProjectDifficulty = ProjectDifficultyLevels.LOW;
                     break;
                 case "VERY LOW":
+                    ProjectDifficulty = ProjectDifficultyLevels.VERY_LOW;
+                    break;
+                case "VERY_LOW":
                     ProjectDifficulty = ProjectDifficultyLevels.VERY_LOW;
                     break;
             }

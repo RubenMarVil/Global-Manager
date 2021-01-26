@@ -19,7 +19,7 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
     public Sprite tabDissable;
 
     public bool site;
-    public GameObject siteName;
+    public Text siteName;
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -68,29 +68,18 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         background = GetComponent<Image>();
         tabGroup.Subscribe(this);
 
-        if (site)
-        {
-            siteName = transform.GetChild(0).gameObject;
-        }
-
         if (dissable)
         {
-            tabGroup.SetDissable(this);
+            SetDissable();
         }
-
-        if(name == "TabGeneral" || name == "Site1")
+        else
         {
-            tabGroup.OnTabSelected(this);
-        }
+            SetAble();
 
-        if(name == "Site1" || name == "Site2")
-        {
-            tabGroup.SetAble(this);
-        }
-
-        if(name == "Site3" || name == "Site4" || name == "Site5" || name == "Site6" || name == "Site7")
-        {
-            tabGroup.SetDissable(this);
+            if(name == "TabGeneral" || name == "Site1")
+            {
+                tabGroup.OnTabSelected(this);
+            }
         }
     }
 }

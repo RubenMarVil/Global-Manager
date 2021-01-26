@@ -122,4 +122,22 @@ public class DBGameConfiguration
 
         return listGames;
     }
+
+    public int DeleteGameConfiguration(int codGame)
+    {
+        int result = -1;
+
+        try
+        {
+            string sqlQuery = "DELETE FROM GAME WHERE CodGame=" + codGame + ";";
+
+            result = DBSingleton.GetInstance().Insert(sqlQuery);
+        }
+        catch (SqliteException e)
+        {
+            Debug.Log($"[DATABASE - ERROR] SQLiteException to get users with the code #{e}.");
+        }
+
+        return result;
+    }
 }

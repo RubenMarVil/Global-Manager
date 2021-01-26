@@ -77,4 +77,22 @@ public class DBSite
 
         return codSite;
     }
+
+    public int DeleteSitesGame(int codGame)
+    {
+        int result = -1;
+
+        try
+        {
+            string sqlQuery = "DELETE FROM SiteGame WHERE Game=" + codGame + ";";
+
+            result = DBSingleton.GetInstance().Insert(sqlQuery);
+        }
+        catch (SqliteException e)
+        {
+            Debug.Log($"[DATABASE - ERROR] SQLiteException to get users with the code #{e}.");
+        }
+
+        return result;
+    }
 }

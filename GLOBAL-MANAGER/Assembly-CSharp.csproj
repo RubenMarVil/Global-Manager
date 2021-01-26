@@ -115,6 +115,9 @@
     <Compile Include="Assets\ExternalTools\PandaBehaviour\Examples\03_Shooter\Assets\Unit.cs" />
     <Compile Include="Assets\ExternalTools\PandaBehaviour\Examples\03_Shooter\Assets\UnitExplosion.cs" />
     <Compile Include="Assets\ExternalTools\PandaBehaviour\Examples\03_Shooter\Assets\WaypointPath.cs" />
+    <Compile Include="Assets\ExternalTools\SimpleDragAndDrop\Scripts\DragAndDropCell.cs" />
+    <Compile Include="Assets\ExternalTools\SimpleDragAndDrop\Scripts\DragAndDropItem.cs" />
+    <Compile Include="Assets\ExternalTools\SimpleDragAndDrop\Scripts\DummyControlUnit.cs" />
     <Compile Include="Assets\ExternalTools\SmartTimersManager\ScriptExamples\BlueLightFlicker.cs" />
     <Compile Include="Assets\ExternalTools\SmartTimersManager\ScriptExamples\RedLightFlicker.cs" />
     <Compile Include="Assets\ExternalTools\SmartTimersManager\TimerManager\GUI_TimersList.cs" />
@@ -150,6 +153,7 @@
     <Compile Include="Assets\Scripts\Presentation\Configuration\DropdownCountry-obsolete.cs" />
     <Compile Include="Assets\Scripts\Presentation\Configuration\DropDownLanguage.cs" />
     <Compile Include="Assets\Scripts\Presentation\Configuration\DropdownLanguage-obsolete.cs" />
+    <Compile Include="Assets\Scripts\Presentation\Configuration\DropDownMainSite.cs" />
     <Compile Include="Assets\Scripts\Presentation\Configuration\GameConfigurationHandle-obsolete.cs" />
     <Compile Include="Assets\Scripts\Presentation\Configuration\GradientEffect.cs" />
     <Compile Include="Assets\Scripts\Presentation\Configuration\ProjectCharacteristicHandle-obsolete.cs" />
@@ -167,6 +171,7 @@
     <Compile Include="Assets\Scripts\Presentation\Game\ClickEvent.cs" />
     <Compile Include="Assets\Scripts\Presentation\Game\DurationBar.cs" />
     <Compile Include="Assets\Scripts\Presentation\Game\EventHandle.cs" />
+    <Compile Include="Assets\Scripts\Presentation\Game\EventHandleAnswer.cs" />
     <Compile Include="Assets\Scripts\Presentation\Game\GameHandle.cs" />
     <Compile Include="Assets\Scripts\Presentation\Game\GreenLoupeHandle.cs" />
     <Compile Include="Assets\Scripts\Presentation\Game\GreenPositHandle.cs" />
@@ -293,37 +298,37 @@
     <None Include="Assets\ExternalTools\Animations\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
     <None Include="Assets\ExternalTools\Animations\RPG Character Animation Pack FREE\Elements\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
     <Reference Include="Unity.ProGrids">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AssetIdRemapUtility">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AssetIdRemapUtility.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProGrids.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ProBuilder.AddOns.Editor">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.ProBuilder.AddOns.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -526,14 +531,14 @@
     <Reference Include="UnityEngine.SpatialTracking">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
-    </Reference>
     <Reference Include="PandaBehaviour">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/PandaBehaviour.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Assets/ExternalTools/PandaBehaviour/Core/PandaBehaviour.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Data.Sqlite">
-      <HintPath>C:/Users/RubenMa/OneDrive/4ºCURSO/TRABAJO FIN DE GRADO/Global-Manager_TFG/GLOBAL-MANAGER/Assets/ExternalTools/Plugins/Mono.Data.Sqlite.dll</HintPath>
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Assets/ExternalTools/Plugins/Mono.Data.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Analytics.StandardEvents">
+      <HintPath>C:/Users/RubenMa/Documents/Global-Manager/GLOBAL-MANAGER/Library/PackageCache/com.unity.analytics@3.2.3/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.4.23f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

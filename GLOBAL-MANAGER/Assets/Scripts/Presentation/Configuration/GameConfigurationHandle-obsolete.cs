@@ -113,7 +113,7 @@ public class GameConfigurationHandleObsolete : MonoBehaviour
 
         ProjectCharacteristicLevels[] projectCharacteristicsActual = GameConfigurationControl.CalculateProjectCharacteristics(Convert.ToInt32(siteNumberSlider.value), 
             sitesCountryName, sitesLanguageLevelToggleNameSelected, commonLanguageDropdown.options[commonLanguageDropdown.value].text,
-            clientCountryDropdown.options[clientCountryDropdown.value].text, mainSiteNum);
+            clientCountryDropdown.options[clientCountryDropdown.value].text, mainSiteNum, new List<string>());
         SetProjectCharacteristics(projectCharacteristicsActual);
 
         ProjectDifficultyLevels projectDifficultyActual = GameConfigurationControl.CalculateProjectDifficulty(projectCharacteristicsActual);

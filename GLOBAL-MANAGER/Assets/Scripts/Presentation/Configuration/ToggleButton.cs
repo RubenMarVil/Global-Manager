@@ -16,6 +16,12 @@ public class ToggleButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHa
 
     public Image background;
 
+    public Sprite buttonIdle;
+    public Sprite buttonHover;
+    public Sprite buttonActive;
+    public Sprite buttonDissable;
+    public Sprite icon;
+
     public bool active;
     public bool dissable;
 

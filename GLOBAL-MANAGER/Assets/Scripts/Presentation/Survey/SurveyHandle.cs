@@ -5,6 +5,7 @@ using System;
 using Assets.Scripts.Control;
 using UnityEngine.SceneManagement;
 using Lean.Gui;
+using System.Collections;
 
 public class SurveyHandle : MonoBehaviour
 {
@@ -51,6 +52,8 @@ public class SurveyHandle : MonoBehaviour
     private String ErrorMessage;
 
     private GameObject PlayerModal;
+
+    public Animator transitionAnim;
 
     void Start()
     {
@@ -394,12 +397,14 @@ public class SurveyHandle : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        StartCoroutine(LoadScene(0));
+        //SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     public void BackMainMenu()
     {
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        StartCoroutine(LoadScene(0));
+        //SceneManager.LoadScene(0, LoadSceneMode.Single);
     }
 
     private void ShowResult(bool inserted, User newUser)
@@ -418,12 +423,23 @@ public class SurveyHandle : MonoBehaviour
             content.transform.GetChild(4).GetComponent<Text>().text = newUser.Score.ToString();
             content.transform.GetChild(5).GetComponent<Text>().text = userLevel;
             PlayerModal.GetComponent<LeanWindow>().TurnOn();
+
+            Debug.Log($"[SurveyHandle - INFO] New user created --> {newUser.Name}");
         }
         else
         {
             ErrorMessage = "Unexpected error when adding the new user to the database.";
             ErrorModal.transform.GetChild(0).GetChild(1).GetChild(1).GetComponent<Text>().text = ErrorMessage;
             ErrorModal.GetComponent<LeanWindow>().TurnOn();
+
+            Debug.Log($"[SurveyHandle - ERROR] Error to create user --> {newUser.Name}");
         }
+    }
+
+    IEnumerator LoadScene(int scene)
+    {
+        transitionAnim.SetTrigger("end");
+        yield return new WaitForSeconds(1.5f);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }

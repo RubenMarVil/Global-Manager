@@ -44,5 +44,11 @@ namespace Assets.Scripts.Control
                     break;
             }
         }
+
+        public ProjectCharacteristic(string name, ProjectCharacteristicLevels level)
+        {
+            Name = name;
+            Level = level;
+        }
     }
 }
