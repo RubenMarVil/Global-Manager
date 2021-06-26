@@ -7,17 +7,21 @@ public class RedLoupeHandle : MonoBehaviour
 {
     private float[] xMargin = { -4.3f, -3.48f };
     private float yStart = 3.5f;
-    private float yEnd = 0.52f;
+    private float yEnd = 0.6f;
     private float[] zMargin = { 1.4f, 1.64f };
     private float[] rotationMargin = { 100f, 220f };
     private bool falling;
 
     private GameObject windowEvent;
-    private int maxNumEvent = 11;
+    private int maxNumEvent = 12;
+
+    //public FeedbackHandle feedback;
 
     void Start()
     {
         Debug.Log("Red Loupe Event Created!");
+
+        //feedback = GameObject.Find("/Canvas").GetComponent<FeedbackHandle>();
 
         System.Random rnd = new System.Random();
 
@@ -31,16 +35,32 @@ public class RedLoupeHandle : MonoBehaviour
         falling = true;
 
         int eventNum = rnd.Next(1, maxNumEvent + 1);
-        /*while (GameHandle.controlEvents.Contains(eventNum))
+        if(GameHandle.controlEvents.Count >= maxNumEvent)
+        {
+            GameHandle.controlEvents = GameHandle.controlEvents.GetRange(maxNumEvent - 5, 5);
+        }
+        while (GameHandle.controlEvents.Contains(eventNum))
         {
             eventNum = rnd.Next(1, maxNumEvent + 1);
-        }*/
+        }
 
         Debug.Log($"[RED LOUPE HANDLE - INFO] Creating control event number {eventNum}");
+        switch (eventNum)
+        {
+            case 1: GameHandle.coordinationEvents.Add(3); break;
+            case 2: GameHandle.coordinationEvents.Add(4); break;
+            case 4: GameHandle.communicationEvents.Add(2); break;
+            case 5: GameHandle.coordinationEvents.Add(5); break;
+            case 7: GameHandle.coordinationEvents.Add(7); break;
+            case 8: GameHandle.coordinationEvents.Add(11); break;
+            case 12: GameHandle.communicationEvents.Add(12); break;
+        }
         GameHandle.controlEvents.Add(eventNum);
 
         string eventName = "/Questions/ControlRed" + eventNum;
         windowEvent = GameObject.Find(eventName);
+
+        //feedback.StartNegativeStressEventLoupe();
     }
 
     void Update()

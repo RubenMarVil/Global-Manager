@@ -16,30 +16,30 @@ public class SurveyHandle : MonoBehaviour
     private ToggleGroup culturalKnowledgeGroup;
     private ToggleGroup languageKnowledgeGroup;
     private ToggleGroup timeKnowledgeGroup;
-    private ToggleGroup siteAnswerGroup;
+    /*private ToggleGroup siteAnswerGroup;
     private ToggleGroup followTheSunAnswerGroup;
     private ToggleGroup offshoringAnswerGroup;
-    private ToggleGroup outsourcingAnswerGroup;
+    private ToggleGroup outsourcingAnswerGroup;*/
     private ToggleGroup sexGroup;
 
     private Toggle colocalized_globalKnowledge;
     private Toggle culturalKnowledge;
     private Toggle languageKnowledge;
     private Toggle timeKnowledge;
-    private Toggle siteAnswer;
+    /*private Toggle siteAnswer;
     private Toggle followTheSunAnswer;
     private Toggle offshoringAnswer;
-    private Toggle outsourcingAnswer;
+    private Toggle outsourcingAnswer;*/
     private Toggle sex;
 
     private bool colocalized_globalKnowledgeAny;
     private bool culturalKnowledgeAny;
     private bool languageKnowledgeAny;
     private bool timeKnowledgeAny;
-    private bool siteAnswerAny;
+    /*private bool siteAnswerAny;
     private bool followTheSunAnswerAny;
     private bool offshoringAnswerAny;
-    private bool outsourcingAnswerAny;
+    private bool outsourcingAnswerAny;*/
     private bool sexAnswerAny;
 
     public GameObject panelResult;
@@ -67,20 +67,20 @@ public class SurveyHandle : MonoBehaviour
         culturalKnowledgeGroup = GameObject.Find("ScrollView/Viewport/Content/Q5/RadioButtonGroup").GetComponent<ToggleGroup>();
         languageKnowledgeGroup = GameObject.Find("ScrollView/Viewport/Content/Q6/RadioButtonGroup").GetComponent<ToggleGroup>();
         timeKnowledgeGroup = GameObject.Find("ScrollView/Viewport/Content/Q7/RadioButtonGroup").GetComponent<ToggleGroup>();
-        siteAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q8/RadioButtonGroup").GetComponent<ToggleGroup>();
+        /*siteAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q8/RadioButtonGroup").GetComponent<ToggleGroup>();
         followTheSunAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q9/RadioButtonGroup").GetComponent<ToggleGroup>();
         offshoringAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q10/RadioButtonGroup").GetComponent<ToggleGroup>();
-        outsourcingAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q11/RadioButtonGroup").GetComponent<ToggleGroup>();
+        outsourcingAnswerGroup = GameObject.Find("ScrollView/Viewport/Content/Q11/RadioButtonGroup").GetComponent<ToggleGroup>();*/
         sexGroup = GameObject.Find("ScrollView/Viewport/Content/Q1/Sex").GetComponent<ToggleGroup>();
 
         colocalized_globalKnowledgeAny = false;
         culturalKnowledgeAny = false;
         languageKnowledgeAny = false;
         timeKnowledgeAny = false;
-        siteAnswerAny = false;
+        /*siteAnswerAny = false;
         followTheSunAnswerAny = false;
         offshoringAnswerAny = false;
-        outsourcingAnswerAny = false;
+        outsourcingAnswerAny = false;*/
         sexAnswerAny = false;
 }
 
@@ -187,7 +187,7 @@ public class SurveyHandle : MonoBehaviour
             intro = !intro;
             timeKnowledgeAny = false;
         }
-
+        /*
         try
         {
             siteAnswer = siteAnswerGroup.ActiveToggles().ElementAt<Toggle>(0);
@@ -262,14 +262,14 @@ public class SurveyHandle : MonoBehaviour
             }
             intro = !intro;
             outsourcingAnswerAny = false;
-        }
+        }*/
     }
 
     public void CreateUser()
     {
         if(String.IsNullOrWhiteSpace(userName.text) || !colocalized_globalKnowledgeAny || !languageKnowledgeAny || 
-            !timeKnowledgeAny || !culturalKnowledgeAny || !siteAnswerAny || !followTheSunAnswerAny || !offshoringAnswerAny 
-            || !outsourcingAnswerAny)
+            !timeKnowledgeAny || !culturalKnowledgeAny/* || !siteAnswerAny || !followTheSunAnswerAny || !offshoringAnswerAny 
+            || !outsourcingAnswerAny*/)
         {
             ErrorModal.transform.GetChild(0).GetChild(1).GetChild(1).GetComponent<Text>().text = ErrorMessage;
             ErrorModal.GetComponent<LeanWindow>().TurnOn();
@@ -320,7 +320,7 @@ public class SurveyHandle : MonoBehaviour
                 user.TimeKnowledge = KnowledgeLevels.LOW;
                 Debug.Log("Time Difference Knowledge: LOW");
             }
-
+            /*
             switch(siteAnswer.name)
             {
                 case "Right":
@@ -384,7 +384,7 @@ public class SurveyHandle : MonoBehaviour
                     Debug.Log("Outsourcing Question: NOT RIGHT");
                     break;
             }
-
+            */
             user.SetSex(sex.name);
 
             Debug.Log("[SurveyHandle - INFO] Creating new user...");

@@ -15,11 +15,15 @@ public class RedTelephoneHandle : MonoBehaviour
     private bool falling;
 
     private GameObject windowEvent;
-    private int maxNumEvent = 11;
+    private int maxNumEvent = 12;
+
+    //public FeedbackHandle feedback;
 
     void Start()
     {
         Debug.Log("Red Telephone Event Created!");
+
+        //feedback = GameObject.Find("/Canvas").GetComponent<FeedbackHandle>();
 
         System.Random rnd = new System.Random();
 
@@ -33,16 +37,30 @@ public class RedTelephoneHandle : MonoBehaviour
         falling = true;
 
         int eventNum = rnd.Next(1, maxNumEvent + 1);
-        /*while(GameHandle.communicationEvents.Contains(eventNum))
+        if(GameHandle.communicationEvents.Count >= maxNumEvent)
+        {
+            GameHandle.communicationEvents = GameHandle.communicationEvents.GetRange(maxNumEvent - 5, 5);
+        }
+        while (GameHandle.communicationEvents.Contains(eventNum))
         {
             eventNum = rnd.Next(1, maxNumEvent + 1);
-        }*/
+        }
 
         Debug.Log($"[RED TELEPHONE HANDLE - INFO] Creating communication event number {eventNum}");
+        switch(eventNum)
+        {
+            case 1: GameHandle.coordinationEvents.Add(2); break;
+            case 2: GameHandle.controlEvents.Add(4); break;
+            case 5: GameHandle.coordinationEvents.Add(6); break;
+            case 7: GameHandle.coordinationEvents.Add(8); break;
+            case 12: GameHandle.controlEvents.Add(12); break;
+        }
         GameHandle.communicationEvents.Add(eventNum);
 
         string eventName = "/Questions/CommunicationRed" + eventNum;
         windowEvent = GameObject.Find(eventName);
+
+        //feedback.StartNegativeStressEventTelephone();
     }
 
     void Update()

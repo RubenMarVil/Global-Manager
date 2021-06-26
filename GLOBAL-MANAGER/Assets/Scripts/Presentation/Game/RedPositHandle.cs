@@ -14,11 +14,15 @@ public class RedPositHandle : MonoBehaviour
     private bool falling;
 
     private GameObject windowEvent;
-    private int maxNumEvent = 11;
+    private int maxNumEvent = 13;
+
+    //public FeedbackHandle feedback;
 
     void Start()
     {
         Debug.Log("Red Posit Event Created!");
+
+        //feedback = GameObject.Find("/Canvas").GetComponent<FeedbackHandle>();
 
         System.Random rnd = new System.Random();
 
@@ -29,16 +33,33 @@ public class RedPositHandle : MonoBehaviour
         falling = true;
 
         int eventNum = rnd.Next(1, maxNumEvent + 1);
-        /*while (GameHandle.coordinationEvents.Contains(eventNum))
+        if(GameHandle.coordinationEvents.Count >= maxNumEvent)
+        {
+            GameHandle.coordinationEvents = GameHandle.coordinationEvents.GetRange(maxNumEvent - 5, 5);
+        }
+        while (GameHandle.coordinationEvents.Contains(eventNum))
         {
             eventNum = rnd.Next(1, maxNumEvent + 1);
-        }*/
+        }
 
         Debug.Log($"[RED POSIT HANDLE - INFO] Creating coordination event number {eventNum}");
+        switch (eventNum)
+        {
+            case 2: GameHandle.communicationEvents.Add(1); break;
+            case 3: GameHandle.controlEvents.Add(1); break;
+            case 4: GameHandle.controlEvents.Add(2); break;
+            case 5: GameHandle.controlEvents.Add(5); break;
+            case 6: GameHandle.communicationEvents.Add(5); break;
+            case 7: GameHandle.controlEvents.Add(7); break;
+            case 8: GameHandle.communicationEvents.Add(7); break;
+            case 11: GameHandle.controlEvents.Add(8); break;
+        }
         GameHandle.coordinationEvents.Add(eventNum);
 
         string eventName = "/Questions/CoordinationRed" + eventNum;
         windowEvent = GameObject.Find(eventName);
+
+        //feedback.StartNegativeStressEventPosit();
     }
 
     void Update()

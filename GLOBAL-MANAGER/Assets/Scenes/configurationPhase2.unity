@@ -7633,7 +7633,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Please fill in the following fields
+  m_Text: Please, fill in the following fields
 --- !u!222 &270367684
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11666,7 +11666,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2098183877}
-  m_RootOrder: 9
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20179,7 +20179,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2098183877}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -22878,7 +22878,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 121, y: 225}
+  m_AnchoredPosition: {x: 169, y: 225}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &783267326
@@ -23045,7 +23045,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 597, y: 234.20004}
+  m_AnchoredPosition: {x: 624, y: 234.20004}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &786918909
@@ -24884,11 +24884,11 @@ RectTransform:
   - {fileID: 880624364}
   - {fileID: 1131823579}
   m_Father: {fileID: 2098183877}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160, y: 234.20004}
+  m_AnchoredPosition: {x: 285, y: 234.20004}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840034416
@@ -27120,7 +27120,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Costumer Proximity
+  m_Text: Customer Proximity
 --- !u!222 &894400090
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35008,7 +35008,7 @@ RectTransform:
   - {fileID: 320087251}
   - {fileID: 1526916600}
   m_Father: {fileID: 2098183877}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -44119,7 +44119,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Please select 3 communication tools
+  m_Text: Please, select three communication tools
 --- !u!222 &1577077581
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -44757,7 +44757,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Please fill in the fields of any site
+  m_Text: Please, fill in the sites configuration
 --- !u!222 &1605761965
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48242,7 +48242,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Please fill in the fields or leave the recommendation
+  m_Text: Please, fill in the fields or leave the recommendation
 --- !u!222 &1730288927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -49523,7 +49523,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2098183877}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -50261,7 +50261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73, y: 234.20004}
+  m_AnchoredPosition: {x: 81, y: 234.20004}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1800651670
@@ -54436,7 +54436,7 @@ RectTransform:
   - {fileID: 1406859415}
   - {fileID: 1834335309}
   m_Father: {fileID: 2098183877}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -58519,12 +58519,12 @@ RectTransform:
   - {fileID: 1577077579}
   - {fileID: 69413552}
   - {fileID: 1672159041}
+  - {fileID: 394350518}
   - {fileID: 1200662290}
   - {fileID: 1969284748}
   - {fileID: 721024515}
   - {fileID: 1781487271}
   - {fileID: 840034415}
-  - {fileID: 394350518}
   m_Father: {fileID: 2128929118}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

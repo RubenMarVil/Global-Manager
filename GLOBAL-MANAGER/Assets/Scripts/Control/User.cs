@@ -41,10 +41,10 @@ namespace Assets.Scripts.Control
         public KnowledgeLevels CulturalKnowledge { get; set; }
         public KnowledgeLevels LanguageKnowledge { get; set; }
         public KnowledgeLevels TimeKnowledge { get; set; }
-        public AnswersToQuestions SiteQuestion { get; set; }
+        /*public AnswersToQuestions SiteQuestion { get; set; }
         public AnswersToQuestions FollowTheSunQuestion { get; set; }
         public AnswersToQuestions OffshoringQuestion { get; set; }
-        public AnswersToQuestions OutsourcingQuestion { get; set; }
+        public AnswersToQuestions OutsourcingQuestion { get; set; }*/
 
         private Level BasicLevel = new Level() { min = 0, max = 5 };
         private Level IntermediateLevel = new Level() { min = 5, max = 14 };
@@ -101,7 +101,7 @@ namespace Assets.Scripts.Control
             if(LanguageKnowledge.Equals(KnowledgeLevels.HIGH)) { Score += 3; }
 
             if(TimeKnowledge.Equals(KnowledgeLevels.HIGH)) { Score += 3; }
-
+            /*
             if(SiteQuestion.Equals(AnswersToQuestions.RIGHT)) { Score += 2; }
             else if(SiteQuestion.Equals(AnswersToQuestions.ALMOST_RIGHT)) { Score += 1; }
 
@@ -113,7 +113,7 @@ namespace Assets.Scripts.Control
 
             if (OutsourcingQuestion.Equals(AnswersToQuestions.RIGHT)) { Score += 2; }
             else if (OutsourcingQuestion.Equals(AnswersToQuestions.ALMOST_RIGHT)) { Score += 1; }
-
+            */
             CalculateLevelUser();
         }
 
@@ -170,6 +170,12 @@ namespace Assets.Scripts.Control
             CalculateLevelUser();
 
             return change;
+        }
+
+        public void SetScore(int score)
+        {
+            Score = score;
+            CalculateLevelUser();
         }
     }
 }

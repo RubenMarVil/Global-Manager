@@ -84,6 +84,8 @@ public class BudgetBar : MonoBehaviour
             Finish.TurnOn();
 
             GameHandle.PauseGame();
+
+            GameHandle.SaveGameUpdatePlayer();
         }
     }
 

@@ -80,6 +80,8 @@ public class StressBar : MonoBehaviour
             Finish.TurnOn();
 
             GameHandle.PauseGame();
+
+            GameHandle.SaveGameUpdatePlayer();
         }
     }
 

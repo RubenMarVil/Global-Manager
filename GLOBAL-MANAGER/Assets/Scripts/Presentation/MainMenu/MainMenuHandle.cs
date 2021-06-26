@@ -18,6 +18,8 @@ public class MainMenuHandle : MonoBehaviour
 
     void Start()
     {
+        GameObject.Find("/Music").GetComponent<AudioSource>().volume = 0.15f;
+
         animScrollView = GameObject.FindGameObjectWithTag("Menu").GetComponent<Animator>();
 
         Time.timeScale = 1;

@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Collections;
+using Lean.Gui;
 
 public class GameHandle : MonoBehaviour
 {
@@ -55,6 +56,16 @@ public class GameHandle : MonoBehaviour
     public bool waiting;
 
     public Animator transitionAnim;
+
+    public LeanWindow Summary;
+    public List<Text> summaryContent;
+
+    public int startTime;
+
+    public static int beforeScore;
+    public static int afterScore;
+
+    public static bool update;
     /*
     [Task]
     bool IsPlayerBasic;
@@ -67,6 +78,14 @@ public class GameHandle : MonoBehaviour
     */
     void Start()
     {
+        startTime = Convert.ToInt32(Time.time);
+
+        beforeScore = UserControl.actualUser.Score;
+
+        update = true;
+
+        GameObject.Find("/Music").GetComponent<AudioSource>().volume = 0.1f;
+
         NegativeWeight = 1.0f;
         NegativeEventsWeights = new[] { 0.33f, 0.66f, 1.00f };
         PositiveEventsWeights = new[] { 0.33f, 0.66f, 1.00f };
@@ -540,24 +559,46 @@ public class GameHandle : MonoBehaviour
 
     public void ReturnMainMenu()
     {
-        int totalNegativeEvents = negativeCommunicationEvents + negativeCoordinationEvents + negativeControlEvents;
-        int correctNegativeEvents = correctNegativeCommunicationEvents + correctNegativeCoordinationEvents + correctNegativeControlEvents;
+        //int totalNegativeEvents = negativeCommunicationEvents + negativeCoordinationEvents + negativeControlEvents;
+        //int correctNegativeEvents = correctNegativeCommunicationEvents + correctNegativeCoordinationEvents + correctNegativeControlEvents;
 
-        float durationValue = DurationBar.GetValue();
+        //float durationValue = DurationBar.GetValue();
 
-        bool inserted = GameConfigurationControl.InsertResultGame(StressBar.GetValue(), ProgressBar.GetValue(), BudgetBar.GetValue(), durationValue, totalNegativeEvents, correctNegativeEvents);
+        //bool inserted = GameConfigurationControl.InsertResultGame(StressBar.GetValue(), ProgressBar.GetValue(), BudgetBar.GetValue(), durationValue, totalNegativeEvents, correctNegativeEvents);
 
-        if (inserted)
+        //if (inserted)
+        //{
+        Time.timeScale = 1;
+        transitionAnim.SetTrigger("end");
+        //UpdateLevelPlayer();
+        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        //SceneManager.LoadScene(0, LoadSceneMode.Single);
+        //}
+    }
+
+    public static void SaveGameUpdatePlayer()
+    {
+        GameObject.Find("/Music").GetComponent<AudioSource>().volume = 0f;
+
+        if (update)
         {
-            transitionAnim.SetTrigger("end");
-            Time.timeScale = 1;
-            UpdateLevelPlayer();
-            SceneManager.LoadScene(0, LoadSceneMode.Single);
-            //SceneManager.LoadScene(0, LoadSceneMode.Single);
+            int totalNegativeEvents = negativeCommunicationEvents + negativeCoordinationEvents + negativeControlEvents;
+            int correctNegativeEvents = correctNegativeCommunicationEvents + correctNegativeCoordinationEvents + correctNegativeControlEvents;
+
+            float durationValue = DurationBar.GetValue();
+
+            bool inserted = GameConfigurationControl.InsertResultGame(StressBar.GetValue(), ProgressBar.GetValue(), BudgetBar.GetValue(), durationValue, totalNegativeEvents, correctNegativeEvents);
+
+            if (inserted)
+            {
+                UpdateLevelPlayer();
+            }
+
+            update = false;
         }
     }
 
-    private void UpdateLevelPlayer()
+    private static void UpdateLevelPlayer()
     {
         List<GameConfiguration> listGames = GameConfigurationControl.GetAllGamesOfPlayer(UserControl.actualUser.Name);
 
@@ -570,15 +611,22 @@ public class GameHandle : MonoBehaviour
 
         int changeScore = UserControl.actualUser.UpdateScoreLevel(performance, resilience);
 
-        if((changeScore > 0 && ProgressBar.GetValue() >= 90.0f) || (changeScore < 0 && ProgressBar.GetValue() < 90.0f))
+        if((changeScore > 0 && ProgressBar.GetValue() >= 95.0f) || (changeScore < 0 && ProgressBar.GetValue() < 90.0f))
         {
+            UserControl.UpdateScoreUserLevel();
+        }
+        else
+        {
+            UserControl.actualUser.SetScore(beforeScore);
             UserControl.UpdateScoreUserLevel();
         }
         
         Debug.Log("Score = " + UserControl.actualUser.Score + "\nUserLevel = " + UserControl.actualUser.UserLevel);
+
+        afterScore = UserControl.actualUser.Score;
     }
 
-    private int CalculateResilience(List<GameConfiguration> listGames)
+    private static int CalculateResilience(List<GameConfiguration> listGames)
     {
         int resilience = 1;
         float[] averageDeviationCorrectNegativeEvents = { 0, 0 };
@@ -609,7 +657,7 @@ public class GameHandle : MonoBehaviour
         return resilience;
     }
 
-    private float[] CalculateAverageDeviationPastEvents(List<GameConfiguration> listGames)
+    private static float[] CalculateAverageDeviationPastEvents(List<GameConfiguration> listGames)
     {
         float[] averageDeviation = new float[2];
         float[] percentageCorrectEvents = new float[listGames.Count];
@@ -644,7 +692,7 @@ public class GameHandle : MonoBehaviour
         return averageDeviation;
     }
 
-    private int CalculatePerformance(List<GameConfiguration> listGames)
+    private static int CalculatePerformance(List<GameConfiguration> listGames)
     {
         int performance = 1;
         int[] range = { listGames.Count-10, 10 };
@@ -717,7 +765,7 @@ public class GameHandle : MonoBehaviour
         return performance;
     }
 
-    private float[] CalculateSuccessProjects(List<GameConfiguration> listGames)
+    private static float[] CalculateSuccessProjects(List<GameConfiguration> listGames)
     {
         float[] listPercentageSuccessProjects = new float[5];
         int[] listTotalProjects = new int[5];
@@ -765,5 +813,54 @@ public class GameHandle : MonoBehaviour
         GameConfigurationControl.RemoveGame();
         SceneManager.LoadScene(0, LoadSceneMode.Single);
         //SceneManager.LoadScene(0, LoadSceneMode.Single);
+    }
+
+    public void ShowSummary()
+    {
+        // Username
+        summaryContent[0].text = UserControl.actualUser.Name;
+
+        // Time
+        int totalSecTime = Convert.ToInt32(Time.time) - startTime;
+        int minTime = totalSecTime / 60;
+        int secTime = totalSecTime % 60;
+        summaryContent[1].text = String.Format("{0}:{1} min", minTime, secTime);
+
+        // Total events
+        int totalEvents = negativeCommunicationEvents + negativeCoordinationEvents + negativeControlEvents;
+        summaryContent[2].text = totalEvents.ToString();
+
+        // Successful events
+        int successfulEvents = correctNegativeCommunicationEvents + correctNegativeCoordinationEvents + correctNegativeControlEvents;
+        double successfulEventsPercentage = Math.Round(Convert.ToSingle(successfulEvents) / Convert.ToSingle(totalEvents), 3) * 100;
+        summaryContent[3].text = String.Format("{0} ({1}%)", successfulEvents, successfulEventsPercentage);
+
+        // Communication mistakes
+        int communicationMistakes = negativeCommunicationEvents - correctNegativeCommunicationEvents;
+        double communicationMistakesPercentage = Math.Round(Convert.ToSingle(communicationMistakes) / Convert.ToSingle(negativeCommunicationEvents), 3) * 100;
+        summaryContent[4].text = String.Format("{0} ({1}%)", communicationMistakes, communicationMistakesPercentage);
+
+        // Coordination mistakes
+        int coordinationMistakes = negativeCoordinationEvents - correctNegativeCoordinationEvents;
+        double coordinationMistakesPercentage = Math.Round(Convert.ToSingle(coordinationMistakes) / Convert.ToSingle(negativeCoordinationEvents), 3) * 100;
+        summaryContent[5].text = String.Format("{0} ({1}%)", coordinationMistakes, coordinationMistakesPercentage);
+
+        // Control mistakes
+        int controlMistakes = negativeControlEvents - correctNegativeControlEvents;
+        double controlMistakesPercentage = Math.Round(Convert.ToSingle(controlMistakes) / Convert.ToSingle(negativeControlEvents), 3) * 100;
+        summaryContent[6].text = String.Format("{0} ({1}%)", controlMistakes, controlMistakesPercentage);
+
+        // Score
+        summaryContent[7].text = beforeScore.ToString();
+        if(beforeScore <= afterScore)
+        {
+            summaryContent[8].text = afterScore.ToString();
+        }
+        else
+        {
+            summaryContent[9].text = afterScore.ToString();
+        }
+
+        Summary.TurnOn();
     }
 }

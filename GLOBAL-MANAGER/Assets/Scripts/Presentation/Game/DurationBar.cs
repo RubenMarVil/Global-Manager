@@ -85,6 +85,8 @@ public class DurationBar : MonoBehaviour
             Finish.TurnOn();
 
             GameHandle.PauseGame();
+
+            GameHandle.SaveGameUpdatePlayer();
         }
     }
 

@@ -8,11 +8,11 @@ namespace Assets.Scripts.Control
 {
     public enum ProjectDifficultyLevels
     {
-        VERY_LOW = 10,
-        LOW = 5,
-        MEDIUM = 3,
-        HIGH = 0,
-        VERY_HIGH = -2
+        VERY_LOW = -6,
+        LOW = -3,
+        MEDIUM = 0,
+        HIGH = 6,
+        VERY_HIGH = 10
     }
 
     public class GameConfiguration

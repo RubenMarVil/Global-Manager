@@ -96,10 +96,10 @@ public class ModeBtnHandle : MonoBehaviour
         DurationText.text = $"{budgetDuration[1]} Days";
         CommunicationToolsText.text = $"{configuration.CommunicationTools.Communication[0]}, {configuration.CommunicationTools.Communication[1]}, " +
             $"{configuration.CommunicationTools.Communication[2]}";;
-        SitesText.text = $"{configuration.SitesList[0].Country} with {configuration.SitesList[0].TeamSize} workers";
+        SitesText.text = $"Site1 in {configuration.SitesList[0].Country} with {configuration.SitesList[0].TeamSize} workers";
         for(int i = 1; i < configuration.NumSites; i++)
         {
-            SitesText.text += $", {configuration.SitesList[i].Country} with {configuration.SitesList[i].TeamSize} workers";
+            SitesText.text += $", Site{i+1} in {configuration.SitesList[i].Country} with {configuration.SitesList[i].TeamSize} workers";
         }
     }
 

@@ -11,8 +11,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5679572, y: 1.1953772, z: 0.75135183}
-  m_Center: {x: 0.27104273, y: -0.14384061, z: -0.32594302}
+  m_Size: {x: 0.75, y: 1.2, z: 1}
+  m_Center: {x: 0.27104273, y: -0.14384063, z: -0.32594302}
 --- !u!95 &95098154427896838
 Animator:
   serializedVersion: 3

@@ -7,7 +7,7 @@ public class GreenLoupeHandle : MonoBehaviour
 {
     private float[] xMargin = { -4.3f, -3.48f };
     private float yStart = 3.5f;
-    private float yEnd = 0.52f;
+    private float yEnd = 0.6f;
     private float[] zMargin = { 1.4f, 1.64f };
     private float[] rotationMargin = { 100f, 220f };
     private bool falling;

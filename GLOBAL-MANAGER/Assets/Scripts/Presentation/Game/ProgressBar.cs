@@ -26,6 +26,8 @@ public class ProgressBar : MonoBehaviour
             Finish.TurnOn();
 
             GameHandle.PauseGame();
+
+            GameHandle.SaveGameUpdatePlayer();
         }
     }
 

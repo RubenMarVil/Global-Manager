@@ -162,15 +162,16 @@ public class RecommendConfiguration
             }
         }
 
-        gameConfiguration.ClientCountry = GetClientCountry(countriesList, countriesIndexSelected, gameConfiguration.CommonLanguage);
+        gameConfiguration.ClientCountry = GetClientCountry(countriesList, countriesIndexSelected, gameConfiguration.CommonLanguage, (int)problemAdapted["ClientMainSite"]);
 
-        if((int)problemAdapted["ClientMainSite"] == 1)
+        if ((int)problemAdapted["ClientMainSite"] == 1)
         {
             foreach(SiteConfiguration site in gameConfiguration.SitesList)
             {
                 if(site.Country == gameConfiguration.ClientCountry)
                 {
                     site.MainSite = 1;
+                    break;
                 }
             }
         }
@@ -344,8 +345,13 @@ public class RecommendConfiguration
         return languages[rnd.Next(0, languages.Count - 1)];
     }
 
-    private static string GetClientCountry(List<Country> countriesList, int[] countriesIndexSelected, string commonLanguage)
+    private static string GetClientCountry(List<Country> countriesList, int[] countriesIndexSelected, string commonLanguage, int clientProblemAdapted)
     {
+        if(clientProblemAdapted == 1)
+        {
+            return countriesList[countriesIndexSelected[0]].Name;
+        }
+
         foreach(int index in countriesIndexSelected)
         {
             if(countriesList[index].ContainOfficialLanguage(commonLanguage))

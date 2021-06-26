@@ -8,6 +8,8 @@ public class PositiveEventHandle : MonoBehaviour
     public float plusBudget;
     public float plusDuration;
 
+    public FeedbackHandle feedback;
+
     void Start()
     {
         
@@ -20,11 +22,25 @@ public class PositiveEventHandle : MonoBehaviour
 
     public void OkBtn()
     {
+        ProgressBar.AddValue(plusProgress);
+        if (plusProgress > 0)
+            feedback.StartPositiveProgressQuestion();
+        else if (plusProgress < 0)
+            feedback.StartNegativeProgressQuestion();
+
         BudgetBar.AddValue(plusBudget);
+        if (plusBudget > 0)
+            feedback.StartPositiveBudgetQuestion();
+        else if (plusBudget < 0)
+            feedback.StartNegativeBudgetQuestion();
+
         DurationBar.AddValue(plusDuration);
+        if (plusDuration > 0)
+            feedback.StartPositiveDurationQuestion();
+        else if (plusDuration < 0)
+            feedback.StartNegativeDurationQuestion();
 
         ClickEvent.DeleteEvent();
-
 
         GameHandle.NegativeWeight += UnityEngine.Random.Range(0.0f, GameHandle.positiveEventStreak * 10) / 100;
 
